@@ -1,8 +1,10 @@
+scriptencoding utf-8
+
 " :h bufexplorer.txt
 " :h :buffers
 
 " не показывать help
-" let g:bufExplorerDefaultHelp              = 0
+let g:bufExplorerDefaultHelp              = 0
 " отключить клавиши по умолчанию
 let g:bufExplorerDisableDefaultKeyMapping = 1
 " показывать [No Name] буферы
@@ -15,9 +17,10 @@ let g:bufExplorerSortBy                   = 'number'
 let g:bufExplorerSplitBelow               = 0
 " высота окна
 let g:bufExplorerSplitHorzSize            = 15
-" полный путь к файлу буфера
+" полный путь к файлу
 let g:bufExplorerShowRelativePath         = 0
-let g:bufExplorerSplitOutPathName         = 0
+" имя файла отдельно от полного пути
+let g:bufExplorerSplitOutPathName         = 1
 
 " ~/.vim/bundle/bufexplorer.vim/plugin/bufexplorer.vim
 " help, Press <F1> for Help
