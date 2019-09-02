@@ -9,8 +9,8 @@ let g:bufExplorerDefaultHelp              = 0
 let g:bufExplorerDisableDefaultKeyMapping = 1
 " показывать [No Name] буферы
 let g:bufExplorerShowNoName               = 1
-" показывать 'unlisted' буферы
-let g:bufExplorerShowUnlisted             = 1
+" не показывать 'unlisted' буферы
+let g:bufExplorerShowUnlisted             = 0
 " сортировать по номеру буфера
 let g:bufExplorerSortBy                   = 'number'
 " открывать окно сверху
