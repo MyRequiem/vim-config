@@ -31,9 +31,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'MyRequiem/ag.vim'
+Plugin 'jlanzarotta/bufexplorer', {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim'
+Plugin 'MyRequiem/man.vim'
+Plugin 'MyRequiem/sessions.vim'
 Plugin 'vim-syntastic/syntastic', {'name': 'syntastic.vim'}
 Plugin 'MyRequiem/translator.vim'
-Plugin 'jlanzarotta/bufexplorer', {'name': 'bufexplorer.vim'}
 
 call vundle#end()
