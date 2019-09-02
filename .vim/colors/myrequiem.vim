@@ -45,31 +45,31 @@ let g:colors_name = 'myrequiem'
 " обычный текст
 highlight Normal            term=NONE cterm=bold ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=#FFFFFF guibg=#000000
 " темносерый на черном
-highlight DarkGrayOnBlack   term=NONE cterm=bold ctermfg=0    ctermbg=NONE gui=NONE guisp=NONE guifg=#555555 guibg=NONE
+highlight DarkGrayOnBlack   term=NONE cterm=bold ctermfg=0    ctermbg=0    gui=NONE guisp=NONE guifg=#555555 guibg=#000000
 " сообщение '-- More --'
-highlight MoreMsg           term=NONE cterm=NONE ctermfg=2    ctermbg=NONE gui=NONE guisp=NONE guifg=#00AA00 guibg=NONE
+highlight MoreMsg           term=NONE cterm=NONE ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#00AA00 guibg=#000000
 " специальные символы: ^H, ^M, ^F, ^I, ...
-highlight SpecialKey        term=NONE cterm=bold ctermfg=1    ctermbg=NONE gui=NONE guisp=NONE guifg=#FF5555 guibg=NONE
+highlight SpecialKey        term=NONE cterm=bold ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#FF5555 guibg=#000000
 " идентификаторы: var, this и т.д.
-highlight Identifier        term=NONE cterm=NONE ctermfg=3    ctermbg=NONE gui=NONE guisp=NONE guifg=#AA5500 guibg=NONE
+highlight Identifier        term=NONE cterm=NONE ctermfg=3    ctermbg=0    gui=NONE guisp=NONE guifg=#AA5500 guibg=#000000
 " отображние текущего режима в командной строке '-- INSERT --', '-- VISUAL --', '-- REPLACE --' и т.д.
-highlight ModeMsg           term=NONE cterm=bold ctermfg=2    ctermbg=NONE gui=NONE guisp=NONE guifg=#55FF55 guibg=NONE
+highlight ModeMsg           term=NONE cterm=bold ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#55FF55 guibg=#000000
 " номер строки
-highlight LineNr            term=NONE cterm=bold ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=#55FFFF guibg=NONE
+highlight LineNr            term=NONE cterm=bold ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=#55FFFF guibg=#000000
 " окно терминала (:term)
 highlight Terminal          NONE
 " текущий пункт меню автодополнения команд
-highlight WildMenu          term=NONE cterm=bold ctermfg=3    ctermbg=NONE gui=NONE guisp=NONE guifg=#FFFF55 guibg=NONE
+highlight WildMenu          term=NONE cterm=bold ctermfg=3    ctermbg=0    gui=NONE guisp=NONE guifg=#FFFF55 guibg=#000000
 " курсор (для GUI)
-highlight Cursor            term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guisp=NONE guifg=#000000 guibg=#FFFFFF
+highlight Cursor            term=NONE cterm=NONE ctermfg=0    ctermbg=0    gui=NONE guisp=NONE guifg=#000000 guibg=#FFFFFF
 " константы
-highlight Constant          term=NONE cterm=bold ctermfg=4    ctermbg=NONE gui=NONE guisp=NONE guifg=#5555FF guibg=NONE
+highlight Constant          term=NONE cterm=bold ctermfg=4    ctermbg=0    gui=NONE guisp=NONE guifg=#5555FF guibg=#000000
 " строки
-highlight String            term=NONE cterm=bold ctermfg=5    ctermbg=NONE gui=NONE guisp=NONE guifg=#FF55FF guibg=NONE
+highlight String            term=NONE cterm=bold ctermfg=5    ctermbg=0    gui=NONE guisp=NONE guifg=#FF55FF guibg=#000000
 " колонка с левой стороны окна для меток: ошибки, предупреждения, метки git и т.д.
 highlight SignColumn        term=NONE cterm=NONE ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=#00AAAA guibg=#000000
 " целые числа
-highlight Number            term=NONE cterm=NONE ctermfg=1    ctermbg=NONE gui=NONE guisp=NONE guifg=#AA0000 guibg=NONE
+highlight Number            term=NONE cterm=NONE ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000
 if g:issuperuser
     " комментарии
     highlight Comment       term=NONE cterm=NONE ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000
@@ -81,9 +81,9 @@ if g:term_256_color " {{{2
     " сиволы, которые отображаются в буфере но не присутствуют в тексте('»', '«', '¬', '@@@' и т.д.)
     highlight NonText           term=NONE cterm=NONE ctermfg=27   ctermbg=0    gui=NONE guisp=NONE guifg=#005FFF guibg=#000000
     " директории
-    highlight Directory         term=NONE cterm=NONE ctermfg=172  ctermbg=NONE gui=NONE guisp=NONE guifg=#D78700 guibg=NONE
+    highlight Directory         term=NONE cterm=NONE ctermfg=172  ctermbg=0    gui=NONE guisp=NONE guifg=#D78700 guibg=#000000
     " предупреждения в командной строке
-    highlight WarningMsg        term=NONE cterm=NONE ctermfg=51   ctermbg=NONE gui=NONE guisp=NONE guifg=#00FFFF guibg=NONE
+    highlight WarningMsg        term=NONE cterm=NONE ctermfg=51   ctermbg=0    gui=NONE guisp=NONE guifg=#00FFFF guibg=#000000
     " подсветка найденного шаблона
     highlight Search            term=NONE cterm=NONE ctermfg=15   ctermbg=20   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#0000D7
     " выделение в режиме 'visual'
@@ -133,9 +133,9 @@ if g:term_256_color " {{{2
     " позиция курсора в status bar
     highlight StatusFPos        term=NONE cterm=NONE ctermfg=15   ctermbg=236  gui=NONE guisp=NONE guifg=#FFFFFF guibg=#303030
     " атрибуты html тэгов
-    highlight Type              term=NONE cterm=NONE ctermfg=121  ctermbg=NONE gui=NONE guisp=NONE guifg=#87FFAF guibg=NONE
+    highlight Type              term=NONE cterm=NONE ctermfg=121  ctermbg=0    gui=NONE guisp=NONE guifg=#87FFAF guibg=#000000
     " ключевые слова
-    highlight Keyword           term=NONE cterm=NONE ctermfg=81   ctermbg=NONE gui=NONE guisp=NONE guifg=#5FD7FF guibg=NONE
+    highlight Keyword           term=NONE cterm=NONE ctermfg=81   ctermbg=0    gui=NONE guisp=NONE guifg=#5FD7FF guibg=#000000
     " TODO, FIXME, XXX
     highlight Todo              term=NONE cterm=NONE ctermfg=9    ctermbg=19   gui=NONE guisp=NONE guifg=#FF5555 guibg=#0000AF
 
@@ -151,7 +151,7 @@ if g:term_256_color " {{{2
         " колонка вертикального разделения буферов
         highlight! link VertSplit DarkGrayOnBlack
     else
-        highlight VertSplit     term=NONE cterm=NONE ctermfg=0    ctermbg=242  gui=NONE guisp=NONE guifg=#000000 guibg=#6C6C6C
+        highlight VertSplit     term=NONE cterm=NONE ctermfg=0 ctermbg=242 gui=NONE guisp=NONE guifg=#000000 guibg=#6C6C6C
     endif
 
     " скроллбар всплывающего меню
@@ -171,8 +171,8 @@ else " {{{2
     highlight PmenuSbar         term=NONE cterm=NONE         ctermfg=NONE ctermbg=7    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight PmenuThumb        term=NONE cterm=bold,reverse ctermfg=4    ctermbg=NONE gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight Folded            term=NONE cterm=NONE         ctermfg=3    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight StatusFFormat     term=NONE cterm=NONE         ctermfg=7    ctermbg=NONE gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight StatusFPos        term=NONE cterm=bold         ctermfg=7    ctermbg=NONE gui=NONE guisp=NONE guifg=NONE guibg=NONE
+    highlight StatusFFormat     term=NONE cterm=NONE         ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
+    highlight StatusFPos        term=NONE cterm=bold         ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight Keyword           term=NONE cterm=NONE         ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight Todo              term=NONE cterm=NONE         ctermfg=1    ctermbg=4    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight CursorLine        NONE
