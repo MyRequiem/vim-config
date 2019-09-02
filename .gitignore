@@ -1,18 +1,12 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+!.vim/plugin/
+.vim/plugin/*
+!.vim/plugin/__plugin__
 
-# Other files and folders
-.settings/
+.vim/backup
+.vim/bundle
+.vim/sessions
+.vim/spell
+.vim/swap
+.vim/view
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+.vim/.netrwhist
