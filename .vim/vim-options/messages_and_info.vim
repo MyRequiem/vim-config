@@ -20,11 +20,11 @@ scriptencoding utf-8
 "   r   - '[RO]' вместо '[readonly]'
 "   x   - '[dos]' вместо '[dos format]', '[unix]' вместо '[unix format]' и
 "           '[mac]' вместо '[mac format]'.
-"   s   - не показывать 'search hit BOTTOM, continuing at TOP' и
-"           'search hit TOP, continuing at BOTTOM' сообщения при поиске
-"   t   - обрезать сообщение в начале, если он слишком длинный:
+"   s   - не показывать сообщения 'search hit BOTTOM, continuing at TOP' и
+"           'search hit TOP, continuing at BOTTOM' при поиске
+"   t   - обрезать сообщение в начале, если оно слишком длинное:
 "           'too long message' > '<ong message'
-"   T   - обрезать сообщение в середине, если он слишком длинный:
+"   T   - обрезать сообщение в середине, если оно слишком длинное:
 "           'too long message' > 'too ... message'
 "   W   - не добавлять в сообщение 'written' при записи файла
 "   A   - не выдавать сообщение 'ATTENTION' когда swap файл уже существует
@@ -43,7 +43,7 @@ scriptencoding utf-8
 "           '[2/5]' (если отсутствует, то включается флаг 's')
 " Type: string
 " Default: "filnxtToOS"
-set shm=filnxIcqFS
+set shm=filnrxsIcF
 
 " showcmd, sc - отображать вводимую команду в правой части командной строки
 " Type: boolean
