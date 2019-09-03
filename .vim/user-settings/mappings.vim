@@ -23,12 +23,12 @@ nnoremap ? ?\v
 
 " сброс режимов input, visual и op в normal {{{1
 inoremap kj <Esc>
-vnoremap <C-]> <Esc>
+vnoremap <C-m> <Esc>
 onoremap kj <Esc>
 " 1}}}
 
 " снять подсветку найденного {{{1
-nnoremap <silent><leader>ch :nohlsearch<cr>
+nnoremap <silent><C-k> :nohlsearch<cr>
 " 1}}}
 
 " установить/снять ширину вводимого текста в 80 символов {{{1
@@ -145,6 +145,10 @@ vnoremap T g_
 " ../autoload/editing.vim
 vnoremap <silent><C-k> <Esc>:call editing#MoveLines(visualmode(), 'up')<cr>
 vnoremap <silent><C-j> <Esc>:call editing#MoveLines(visualmode(), 'down')<cr>
+" 1}}}
+
+" отключаем замену в режиме Visual {{{1
+    vnoremap r <Nop>
 " 1}}}
 
 " Ex mode {{{1
