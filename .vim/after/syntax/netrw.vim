@@ -58,13 +58,13 @@ highlight! link netrwLink       DarkGrayOnBlack
 " бэкапы
 syntax match netrwBak "\(\S\+ \)*\S\+\.\%(bak\|back\)\>" contains=netrwTreeBar,@NoSpell
 " архивы
-syntax match netrwCompress "\(\S\+ \)*\S\+\.\%(gz\|bz2\|Z\|z\|7z\|zip\|rar\|jar\|arj\|rpm\|deb\|lzma\|cab\|lha\|lzh\|zoo\|arc\|ark\|ace\|tar\|xz\|t?lz\|tgz\|tbz2\)\>" contains=netrwTreeBar,@NoSpell
+syntax match netrwCompress "\(\S\+ \)*\S\+\.\%(gz\|bz2\|Z\|z\|7z\|zip\|rar\|jar\|arj\|rpm\|deb\|lzma\|cab\|lha\|lzh\|zoo\|arc\|ark\|ace\|tar\|xz\|lz\|tlz\|tgz\|tbz2\)\>" contains=netrwTreeBar,@NoSpell
 " txz пакеты
 syntax match netrwCompressTxz "\(\S\+ \)*\S\+\.txz\>" contains=netrwTreeBar,@NoSpell
 " data
 syntax match netrwData "\(\S\+ \)*\S\+\.\%(dbf\|mdn\|db\|mdb\|dat\|fox\|dbx\|mdx\|sql\|mssql\|msql\|ssql\|pgsql\|cdx\|dbi\)\>" contains=netrwTreeBar,@NoSpell
 " source
-syntax match netrwSource "\(\S\+ \)*\S\+\.\%(js\|py\|c|cc\|cpp\|hh\|cxx\|bash\|sh\|SlackBuild\|csh\|zsh\|fish\|diff\|patch\|pl\|asm\|pm\|inc\|cgi\|php\|phps\|java\|jav\|jasm\|pas\|tcl\|tk\|tm\|awk\|m4\|st\|mak\|sl\|ada\|caml\|ml\|mli\|mly\|mll\|mlp\|sas\|prg\|hs\|erl\|vif?m\|jsm\|el\|lisp\|md\|rst\)\>" contains=netrwTreeBar,@NoSpell
+syntax match netrwSource "\(\S\+ \)*\S\+\.\%(js\|py\|c|cc\|cpp\|hh\|cxx\|bash\|sh\|SlackBuild\|csh\|zsh\|fish\|diff\|patch\|pl\|asm\|pm\|inc\|cgi\|php\|phps\|java\|jav\|jasm\|pas\|tcl\|tk\|tm\|awk\|m4\|st\|mak\|sl\|ada\|caml\|ml\|mli\|mly\|mll\|mlp\|sas\|prg\|hs\|erl\|vim\|vifm\|jsm\|el\|lisp\|md\|rst\)\>" contains=netrwTreeBar,@NoSpell
 " docs
 syntax match netrwDoc "\(\S\+ \)*\S\+\.\%(lst\|meta\|asc\|md5\|sha1\|sha256\|sha512\|txt\|TXT\|rtf\|diz\|ctl\|me\|ps\|xsd\|xslt\|dtd\|mail\|msg\|lsm\|po\|nroff\|man\|tex\|sgml\|text\|letter\|chm\|doc\|docx\|docm\|xls\|xlsx\|ppt\|pptx\|pptm\|odt\|odp\)\>" contains=netrwTreeBar,@NoSpell
 " pdf, djvu
