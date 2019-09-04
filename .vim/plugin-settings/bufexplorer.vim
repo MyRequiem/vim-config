@@ -34,7 +34,7 @@ highlight! link bufExplorerMapping      Function
 " тип сортировки в help
 highlight! link bufExplorerSortType     String
 " текущий буфер
-highlight! link bufExplorerCurBuf       SignColumn
+highlight! link bufExplorerCurBuf       LineNr
 " скрытые буферы
 highlight! link bufExplorerHidBuf       Function
 " альтернативный буфер (переход :e #)
