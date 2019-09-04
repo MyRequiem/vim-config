@@ -59,7 +59,7 @@ highlight LineNr            term=NONE cterm=bold ctermfg=6    ctermbg=0    gui=N
 " окно терминала (:term)
 highlight Terminal          NONE
 " текущий пункт меню автодополнения команд
-highlight WildMenu          term=NONE cterm=bold ctermfg=3    ctermbg=0    gui=NONE guisp=NONE guifg=#FFFF55 guibg=#000000
+highlight WildMenu          term=NONE cterm=bold ctermfg=3    ctermbg=NONE gui=NONE guisp=NONE guifg=#FFFF55 guibg=NONE
 " курсор (для GUI)
 highlight Cursor            term=NONE cterm=NONE ctermfg=0    ctermbg=0    gui=NONE guisp=NONE guifg=#000000 guibg=#FFFFFF
 " константы
