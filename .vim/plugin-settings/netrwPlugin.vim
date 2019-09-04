@@ -28,7 +28,7 @@ augroup END
 
 " настройки буфера
 let g:netrw_bufsettings = 'nomodifiable nomodified nonumber nobuflisted ' .
-    \ 'nowrap readonly norelativenumber'
+    \ 'nowrap readonly norelativenumber colorcolumn=0'
 " отключить меню для Gvim
 let g:netrw_menu               = 0
 " окно при нажатии 'P' справа
