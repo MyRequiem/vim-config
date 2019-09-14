@@ -135,7 +135,7 @@ set cul
 "   set cc=-1       textwidth-1
 " Type: string
 " Default: ""
-" set cc=
+set cc=81
 
 " spell - включить проверку орфографии и подсвечивать ошибки
 " Type: boolean
