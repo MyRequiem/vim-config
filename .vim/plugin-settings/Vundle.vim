@@ -33,7 +33,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'MyRequiem/ag.vim'
 Plugin 'jlanzarotta/bufexplorer', {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim'
-Plugin 'Yggdroot/indentLine', {'name': 'indentLine.vim'}
+Plugin 'Yggdroot/indentLine', {'name': 'indent-line.vim'}
 Plugin 'MyRequiem/man.vim'
 Plugin 'MyRequiem/sessions.vim'
 Plugin 'vim-syntastic/syntastic', {'name': 'syntastic.vim'}
