@@ -31,13 +31,18 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'MyRequiem/ag.vim'
-Plugin 'jlanzarotta/bufexplorer', {'name': 'bufexplorer.vim'}
+Plugin 'jlanzarotta/bufexplorer',           {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim'
-Plugin 'Yggdroot/indentLine', {'name': 'indent-line.vim'}
+Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'MyRequiem/man.vim'
 Plugin 'MyRequiem/sessions.vim'
-Plugin 'vim-syntastic/syntastic', {'name': 'syntastic.vim'}
+Plugin 'garbas/vim-snipmate',               {'name': 'snippets.vim'}
+Plugin 'vim-syntastic/syntastic',           {'name': 'syntastic.vim'}
+" deps for vim-snipmate
+Plugin 'tomtom/tlib_vim',                   {'name': 'tlib.vim'}
 Plugin 'MyRequiem/translator.vim'
+" deps for vim-snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils',      {'name': 'vim-addon-mw-utils.vim'}
 
 call vundle#end()
 
@@ -83,10 +88,6 @@ call vundle#end()
 " Plugin 'tpope/vim-repeat'
 " " place, toggle and display marks
 " Plugin 'vim-scripts/vim-signature'
-" " support snippets
-" Plugin 'MarcWeber/vim-addon-mw-utils'   " deps for snipmate
-" Plugin 'tomtom/tlib_vim'                " deps for snipmate
-" Plugin 'garbas/vim-snipmate'
 " " easily delete, change and add surroundings
 " " pairs parentheses, brackets, quotes etc.
 " Plugin 'tpope/vim-surround'

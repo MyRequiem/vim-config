@@ -1,0 +1,74 @@
+# shebang
+snippet shebang
+	#! /usr/bin/env python3
+	# -*- coding: utf-8 -*-
+
+
+
+# docpackage
+snippet docpackage
+	## @package MODULE_NAME
+	# Documentation for this module
+	#
+	# More details
+	#
+	#
+	# URL: http://www.doxygen.nl/manual/docblocks.html
+
+
+
+
+# docfunc
+snippet docfunc
+	## Documentation for a function
+	#
+	# More details
+	#
+	# @brief       ${1:} - краткое описание комментируемой сущности
+	# @detailed    подробное описание сущности
+	# @param       name description
+	# @throw       name - исключение выбрасываемое функцией
+	# @mainpage    основная страница проекта
+	# @page        дополнительные страницы проекта
+	# @ref         ссылки на страницы проекта
+	# @return      возвращаемый функцией тип и описание возвращаемого значения
+	# @code        между @code и @endcode находится пример работы с объектом
+	# @endcode
+	#
+	#
+	# URL: http://www.doxygen.nl/manual/docblocks.html
+# docclass
+snippet docclass
+	## Documentation for a class
+	#
+	# More details
+	#
+	# @brief       ${1:} - краткое описание комментируемой сущности
+	# @detailed    подробное описание сущности
+	# @mainpage    основная страница проекта
+	# @page        дополнительные страницы проекта
+	# @ref         ссылки на страницы проекта
+	# @code        между @code и @endcode находится пример работы с объектом
+	# @endcode
+	#
+	#
+	# URL: http://www.doxygen.nl/manual/docblocks.html
+# cls
+snippet cls
+	class ${1:}(${2:}):
+		def __init__(self):
+			${3:}
+
+		def xxx(self):
+			print(self)
+
+		def yyy(self):
+			print(self)
+# cdef
+snippet cdef
+	def ${1:}(self):
+		${2:}
+# def
+snippet def
+	def ${1:}():
+		${2:}

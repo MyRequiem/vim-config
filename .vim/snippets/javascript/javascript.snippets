@@ -1,0 +1,303 @@
+# meta
+snippet meta
+	// ==UserScript==
+	// @name            ${1}
+	// @namespace       https://github.com/MyRequiem/comfortablePlayingInGW
+	// @description
+	// @id              comfortablePlayingInGW@MyRequiem
+	// @updateURL       https://raw.githubusercontent.com/MyRequiem/comfortablePlayingInGW/master/separatedScripts/${1}/${2}.meta.js
+	// @downloadURL     https://raw.githubusercontent.com/MyRequiem/comfortablePlayingInGW/master/separatedScripts/${1}/${2}.user.js
+	// @include
+	// @grant           none
+	// @license         MIT
+	// @version         1.00-`strftime('%d%m%y')`
+	// @author          MyRequiem [http://www.gwars.ru/info.php?id=2095458]
+	// ==/UserScript==
+
+
+
+# lint
+snippet lint
+	/*global unsafeWindow */
+	/*jslint browser: true, maxlen: 80 */
+
+	/*eslint-env browser */
+	/*eslint no-useless-escape: 'warn', linebreak-style: ['error', 'unix'],
+		quotes: ['error', 'single'], semi: ['error', 'always'],
+		eqeqeq: 'error', curly: 'error'
+	*/
+
+	/*jscs:disable requireMultipleVarDecl, requireVarDeclFirst */
+	/*jscs:disable disallowKeywords, disallowDanglingUnderscores */
+	/*jscs:disable validateIndentation */
+
+
+
+# (f
+snippet (f
+	(function () {
+		'use strict';
+
+		${1}
+
+	}());
+
+
+# cls
+snippet cls
+	/**
+	 * @class ${1:}
+	 * @constructor
+	 */
+	var $1 = function () {
+		${2:}
+	};
+
+# clsG
+snippet clsG
+	/**
+	 * @class General
+	 * @constructor
+	 */
+	var General = function () {
+		${1:}
+	};
+
+# prop
+snippet prop
+	/**
+	 * @property ${1:}
+	 * @type {${2}}
+	 */
+	this.$1 = ${3};
+# proproot
+snippet proproot
+	/**
+	 * @property root
+	 * @type {Object}
+	 */
+	this.root = this.getRoot();
+# propdoc
+snippet propdoc
+	/**
+	 * @property doc
+	 * @type {Object}
+	 */
+	this.doc = this.root.document;
+# proploc
+snippet proploc
+	/**
+	 * @property loc
+	 * @type {String}
+	 */
+	this.loc = this.root.location.href;
+# propst
+snippet propst
+	/**
+	 * @property st
+	 * @type {Object}
+	 */
+	this.st = this.root.localStorage;
+# propstname
+snippet propstname
+	/**
+	 * @property STORAGENAME
+	 * @type {String}
+	 */
+	this.STORAGENAME = '${1}';
+# propmyid
+snippet propmyid
+	/**
+	 * @property myID
+	 * @type {String}
+	 */
+	this.myID = /(^|;) ?uid=([^;]*)(;|$)/.exec(this.doc.cookie)[2];
+# propdv
+snippet propdv
+	/**
+	 * @property DESIGN_VERSION
+	 * @type {RegExpExecArray}
+	 */
+	this.DESIGN_VERSION = /(^|;) ?version=([^;]*)(;|$)/.
+			exec(this.doc.cookie);
+# propimgpath
+snippet propimgpath
+	/**
+	 * @property imgPath
+	 * @type {String}
+	 */
+	this.imgPath = 'https://raw.githubusercontent.com/MyRequiem/' +
+		'comfortablePlayingInGW/master/imgs/';
+# propnojs
+snippet propnojs
+	/**
+	 * @property nojs
+	 * @type {Boolean}
+	 */
+	this.nojs = /\/b0\/b\.php/.test(this.loc);
+# prot
+snippet prot
+	/**
+	 * @lends ${1:}.prototype
+	 */
+	$1.prototype = {
+		${2}
+	};
+
+# protG
+snippet protG
+	/**
+	 * @lends General.prototype
+	 */
+	General.prototype = {
+		${1}
+	};
+
+# meth
+snippet meth
+	/**
+	 * @method  ${1:}
+	 * @param   {}
+	 * @return  {}
+	 */
+	this.$1 = function () {
+		${2:}
+	};
+
+# methprot
+snippet methprot
+	/**
+	 * @method  ${1:}
+	 * @param   {}
+	 * @return  {}
+	 */
+	$1: function () {
+		${2:}
+	},
+
+# methprotgetroot
+snippet methprotgetroot
+	/**
+	 * @method  getRoot
+	 * @return  {Object}
+	 */
+	getRoot: function () {
+		var rt = typeof unsafeWindow;
+		return rt !== 'undefined' ? unsafeWindow : window;
+	},
+
+# methprotsetdata
+snippet methprotsetdata
+	/**
+	 * @method  setData
+	 * @param   {Array} data
+	 */
+	setData: function (data) {
+		this.st.setItem(this.STORAGENAME, data.join('|'));
+	},
+
+# methprotgetdata
+snippet methprotgetdata
+	/**
+	 * @method  getData
+	 * @return  {Array}
+	 */
+	getData: function () {
+		var stData = this.st.getItem(this.STORAGENAME);
+		if (stData) {
+			return stData.split('|');
+		}
+
+		stData = [];
+		this.setData(stData);
+		return stData;
+	},
+
+# methprot$
+snippet methprot$
+	/**
+	 * @method  $
+	 * @param   {String}    id
+	 * @return  {HTMLElement|null}
+	 */
+	$: function (id) {
+		return this.doc.querySelector('#' + id);
+	},
+
+# for
+snippet for
+	for (${1} = ${2}; ${1} < ${3}; ${1}++) {
+		${4}
+	}
+
+# if
+snippet if
+	if (${1:}) {
+		${2:}
+	}
+
+# regtest
+snippet regtest
+	/${1:}/.test(${2:});
+# regexec
+snippet regexec
+	/${1:}/.exec(${2:});
+# al
+snippet al
+	alert('${1:}');
+# alertst
+snippet alertst
+	if (!general.st) {
+		alert('Ваш браузер не поддерживает технологию localStorage.\n' +
+				'MyRequiеm рекомендует вам скачать и установить один из\n' +
+				'ниже перечисленных браузеров или удалите скрипт\n' +
+				'${1:}:\n\nFireFox 4+\nOpera 11+\nChrome 12+');
+
+		return;
+	}
+
+# ajax
+snippet ajax
+	/**
+	 * @class AjaxQuery
+	 * @constructor
+	 */
+	var AjaxQuery = function () {
+		/**
+		 * @method  init
+		 * @param   {String}    url
+		 * @param   {Function}  onsuccess
+		 * @param   {Function}  onfailure
+		 */
+		this.init = function (url, onsuccess, onfailure) {
+			var xmlHttpRequest = new XMLHttpRequest();
+
+			if (!xmlHttpRequest) {
+				general.root.console.log('Error create xmlHttpRequest !!!');
+				return;
+			}
+
+			xmlHttpRequest.open('GET', url, true);
+			xmlHttpRequest.send(null);
+
+			var timeout = general.root.setTimeout(function () {
+				xmlHttpRequest.abort();
+			}, 10000);
+
+			xmlHttpRequest.onreadystatechange = function () {
+				if (xmlHttpRequest.readyState === 4) {
+					clearTimeout(timeout);
+					if (xmlHttpRequest.status === 200) {
+						onsuccess(xmlHttpRequest);
+					} else {
+						onfailure();
+					}
+				}
+			};
+		};
+	};
+
+# vargen
+snippet vargen
+	var general = new General();
+

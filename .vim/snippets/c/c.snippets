@@ -1,0 +1,49 @@
+# for
+snippet for
+	for (${1} = ${2}; ${1} < ${3}; ${1}++) {
+		${4}
+	}
+
+# if
+snippet if
+	if (${1:}) {
+		${2:}
+	}
+
+# doc
+snippet doc
+	/**
+	 * @brief       ${1:} - краткое описание комментируемой сущности
+	 * @detailed    подробное описание сущности
+	 * @param       name description
+	 * @tparam      name description (template parameters для C++ шаблонов)
+	 * @throw       name - исключение выбрасываемое функцией
+	 * @mainpage    основная страница проекта
+	 * @page        дополнительные страницы проекта
+	 * @ref         ссылки на страницы проекта
+	 * @return      возвращаемый функцией тип и описание возвращаемого значения
+	 * @code        между @code и @endcode находится пример работы с объектом
+	 * @endcode
+	 *
+	 *
+	 * URL: http://www.doxygen.nl/manual/docblocks.html
+	 */
+
+# def
+snippet def
+	#define 
+
+# inclst
+snippet inclstd
+	#include <${1:}>
+
+# inclpath
+snippet inclpath
+	#include "${1:}"
+
+# func
+snippet func
+	${1:} ${2:}(${3:})
+	{
+
+	}

@@ -1,0 +1,36 @@
+snippet shebang    #! /bin/bash
+	#! /bin/bash
+
+	${1}
+snippet if[    if [ "${...}" ]; then else fi
+	if [ "\$\{${1}\}" ]; then
+		${2}
+	else
+	fi
+snippet if[[    if [[ "${...}" ]]; then else fi
+	if [[ "\$\{${1}\}" ]]; then
+		${2}
+	else
+	fi
+snippet elif[    elif [ "${...}" ]; then
+	elif [ "\$\{${1}\}" ]; then
+		${2}
+snippet elif[[    elif [[ "${...}" ]]; then
+	elif [[ "\$\{${1}\}" ]]; then
+		${2}
+snippet for    for ... in "${...}"; do...done
+	for ${1} in "\$\{${2}\}"; do
+		${3}
+	done
+snippet while    while read -r FILE; do...done
+	while read -r FILE; do
+		${1}
+	done
+snippet case    case "${...}" in ... esac
+	case "\$\{${1}\}" in
+		${2})
+		;;
+		*)
+	esac
+snippet {{    "${...}"
+	"\$\{${1}\}"
