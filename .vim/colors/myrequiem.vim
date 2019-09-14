@@ -113,7 +113,7 @@ if g:term_256_color " {{{2
     " колонка где находится курсор (см. 'cursorcolumn')
     highlight CursorColumn      term=NONE cterm=NONE ctermfg=NONE ctermbg=237  gui=NONE guisp=NONE guifg=NONE    guibg=#3A3A3A
     " всплывающее меню
-    highlight Pmenu             term=NONE cterm=NONE ctermfg=8    ctermbg=235  gui=NONE guisp=NONE guifg=#555555 guibg=#262626
+    highlight Pmenu             term=NONE cterm=NONE ctermfg=244  ctermbg=235  gui=NONE guisp=NONE guifg=#808080 guibg=#262626
     " текущий пункт во всплывающем меню
     highlight PmenuSel          term=NONE cterm=NONE ctermfg=15   ctermbg=60   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#5F5F87
     " бегунок в скроллбаре всплывающего меню
