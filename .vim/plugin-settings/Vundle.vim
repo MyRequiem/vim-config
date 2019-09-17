@@ -35,6 +35,7 @@ Plugin 'jlanzarotta/bufexplorer',           {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim'
 Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'MyRequiem/man.vim'
+Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
 Plugin 'MyRequiem/sessions.vim'
 Plugin 'garbas/vim-snipmate',               {'name': 'snippets.vim'}
 Plugin 'vim-syntastic/syntastic',           {'name': 'syntastic.vim'}
@@ -79,8 +80,6 @@ call vundle#end()
 " Plugin 'airblade/vim-gitgutter'
 " " view and edit markdown files (.md) in real time
 " Plugin 'suan/vim-instant-markdown'
-" " colored brackets
-" Plugin 'raymond-w-ko/vim-niji'
 " " run a command and show its result quickly
 " Plugin 'thinca/vim-quickrun'
 " " using command '.' after a plugin map
