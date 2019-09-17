@@ -1,12 +1,10 @@
-# shebang
-snippet shebang
+snippet shebang    #! /usr/bin/env python3
 	#! /usr/bin/env python3
 	# -*- coding: utf-8 -*-
 
 
 
-# docpackage
-snippet docpackage
+snippet docpackage    doxygen docs for module
 	## @package MODULE_NAME
 	# Documentation for this module
 	#
@@ -18,13 +16,12 @@ snippet docpackage
 
 
 
-# docfunc
-snippet docfunc
+snippet docfunc    doxygen docs for function
 	## Documentation for a function
 	#
 	# More details
 	#
-	# @brief       ${1:} - краткое описание комментируемой сущности
+	# @brief       ${1} - краткое описание комментируемой сущности
 	# @detailed    подробное описание сущности
 	# @param       name description
 	# @throw       name - исключение выбрасываемое функцией
@@ -37,13 +34,12 @@ snippet docfunc
 	#
 	#
 	# URL: http://www.doxygen.nl/manual/docblocks.html
-# docclass
-snippet docclass
+snippet docclass    doxygen docs for class
 	## Documentation for a class
 	#
 	# More details
 	#
-	# @brief       ${1:} - краткое описание комментируемой сущности
+	# @brief       ${1} - краткое описание комментируемой сущности
 	# @detailed    подробное описание сущности
 	# @mainpage    основная страница проекта
 	# @page        дополнительные страницы проекта
@@ -53,22 +49,19 @@ snippet docclass
 	#
 	#
 	# URL: http://www.doxygen.nl/manual/docblocks.html
-# cls
-snippet cls
-	class ${1:}(${2:}):
+snippet cls    class
+	class ${1}(${2}):
 		def __init__(self):
-			${3:}
+			${3}
 
 		def xxx(self):
 			print(self)
 
 		def yyy(self):
 			print(self)
-# cdef
-snippet cdef
-	def ${1:}(self):
-		${2:}
-# def
-snippet def
-	def ${1:}():
-		${2:}
+snippet cdef    method
+	def ${1}(self):
+		${2}
+snippet def    function
+	def ${1}(${2}):
+		${3}

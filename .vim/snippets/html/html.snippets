@@ -1,31 +1,16 @@
-# <input
-snippet <input
-	<input id="${1:}" type="${2:}" value="${3:}" />
-# <a
-snippet <a
-	<a href="${1:}" style="${2:}">${3:}</a>
-# <form
-snippet <form
-	<form id="${1:}" action="${2:}" method="${3:}">${4:}</form>
-# <div
-snippet <div
-	<div id="${1:}" style="${2:}">${3:}</div>
-# <span
-snippet <span
-	<span style="${1:}">${2:}</span>
-# <table
-snippet <table
-	<table><tr><td>${1:}</td></tr></table>
-# <tr
-snippet <tr
-	<tr><td>${1:}</td></tr>
-# <td
-snippet <td
-	<td>${1:}</td>
-
-# for
-snippet for
-	for (i = ${1:}; i < ${2:}; i++) {
-		${3:}
-	}
-
+snippet <input    <input id="..." type="..." value="..." />
+	<input id="${1}" type="${2}" value="${3}" />
+snippet <a    <a href="..." style="...">...</a>
+	<a href="${1}" style="${2}">${3}</a>
+snippet <form    <form id="..." action="..." method="...">...</form>
+	<form id="${1}" action="${2}" method="${3}">${4}</form>
+snippet <div    <div id="..." style="...">...</div>
+	<div id="${1}" style="${2}">${3}</div>
+snippet <span    <span id="..." style="...">...</span>
+	<span id='${1}' style="${2}">${3}</span>
+snippet <table    <table><tr><td>...</td></tr></table>
+	<table><tr><td>${1}</td></tr></table>
+snippet <tr    <tr><td>...</td></tr>
+	<tr><td>${1}</td></tr>
+snippet <td    <td>...</td>
+	<td>${1}</td>

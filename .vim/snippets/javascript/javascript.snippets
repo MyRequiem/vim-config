@@ -1,5 +1,4 @@
-# meta
-snippet meta
+snippet meta    meta info
 	// ==UserScript==
 	// @name            ${1}
 	// @namespace       https://github.com/MyRequiem/comfortablePlayingInGW
@@ -16,8 +15,7 @@ snippet meta
 
 
 
-# lint
-snippet lint
+snippet lint    lint settings
 	/*global unsafeWindow */
 	/*jslint browser: true, maxlen: 80 */
 
@@ -33,8 +31,7 @@ snippet lint
 
 
 
-# (f
-snippet (f
+snippet (f    (function () {
 	(function () {
 		'use strict';
 
@@ -43,8 +40,7 @@ snippet (f
 	}());
 
 
-# cls
-snippet cls
+snippet cls    class ...
 	/**
 	 * @class ${1:}
 	 * @constructor
@@ -53,8 +49,7 @@ snippet cls
 		${2:}
 	};
 
-# clsG
-snippet clsG
+snippet clsG    class General
 	/**
 	 * @class General
 	 * @constructor
@@ -63,80 +58,69 @@ snippet clsG
 		${1:}
 	};
 
-# prop
-snippet prop
+snippet prop    property ...
 	/**
 	 * @property ${1:}
 	 * @type {${2}}
 	 */
 	this.$1 = ${3};
-# proproot
-snippet proproot
+snippet proproot    property root
 	/**
 	 * @property root
 	 * @type {Object}
 	 */
 	this.root = this.getRoot();
-# propdoc
-snippet propdoc
+snippet propdoc    property doc
 	/**
 	 * @property doc
 	 * @type {Object}
 	 */
 	this.doc = this.root.document;
-# proploc
-snippet proploc
+snippet proploc    property loc
 	/**
 	 * @property loc
 	 * @type {String}
 	 */
 	this.loc = this.root.location.href;
-# propst
-snippet propst
+snippet propst    property st
 	/**
 	 * @property st
 	 * @type {Object}
 	 */
 	this.st = this.root.localStorage;
-# propstname
-snippet propstname
+snippet propstname    property STORAGENAME
 	/**
 	 * @property STORAGENAME
 	 * @type {String}
 	 */
 	this.STORAGENAME = '${1}';
-# propmyid
-snippet propmyid
+snippet propmyid    property myID
 	/**
 	 * @property myID
 	 * @type {String}
 	 */
 	this.myID = /(^|;) ?uid=([^;]*)(;|$)/.exec(this.doc.cookie)[2];
-# propdv
-snippet propdv
+snippet propdv    property DESIGN_VERSION
 	/**
 	 * @property DESIGN_VERSION
 	 * @type {RegExpExecArray}
 	 */
 	this.DESIGN_VERSION = /(^|;) ?version=([^;]*)(;|$)/.
 			exec(this.doc.cookie);
-# propimgpath
-snippet propimgpath
+snippet propimgpath    property imgPath
 	/**
 	 * @property imgPath
 	 * @type {String}
 	 */
 	this.imgPath = 'https://raw.githubusercontent.com/MyRequiem/' +
 		'comfortablePlayingInGW/master/imgs/';
-# propnojs
-snippet propnojs
+snippet propnojs    property nojs
 	/**
 	 * @property nojs
 	 * @type {Boolean}
 	 */
 	this.nojs = /\/b0\/b\.php/.test(this.loc);
-# prot
-snippet prot
+snippet prot    prototype
 	/**
 	 * @lends ${1:}.prototype
 	 */
@@ -144,8 +128,7 @@ snippet prot
 		${2}
 	};
 
-# protG
-snippet protG
+snippet protG    General.prototype
 	/**
 	 * @lends General.prototype
 	 */
@@ -153,8 +136,7 @@ snippet protG
 		${1}
 	};
 
-# meth
-snippet meth
+snippet meth    method
 	/**
 	 * @method  ${1:}
 	 * @param   {}
@@ -164,8 +146,7 @@ snippet meth
 		${2:}
 	};
 
-# methprot
-snippet methprot
+snippet methprot    method prototype
 	/**
 	 * @method  ${1:}
 	 * @param   {}
@@ -175,8 +156,7 @@ snippet methprot
 		${2:}
 	},
 
-# methprotgetroot
-snippet methprotgetroot
+snippet methprotgetroot    method prototype getRoot
 	/**
 	 * @method  getRoot
 	 * @return  {Object}
@@ -186,8 +166,7 @@ snippet methprotgetroot
 		return rt !== 'undefined' ? unsafeWindow : window;
 	},
 
-# methprotsetdata
-snippet methprotsetdata
+snippet methprotsetdata    method prototype setData
 	/**
 	 * @method  setData
 	 * @param   {Array} data
@@ -196,8 +175,7 @@ snippet methprotsetdata
 		this.st.setItem(this.STORAGENAME, data.join('|'));
 	},
 
-# methprotgetdata
-snippet methprotgetdata
+snippet methprotgetdata    method prototype getData
 	/**
 	 * @method  getData
 	 * @return  {Array}
@@ -213,8 +191,7 @@ snippet methprotgetdata
 		return stData;
 	},
 
-# methprot$
-snippet methprot$
+snippet methprot$    method prototype $
 	/**
 	 * @method  $
 	 * @param   {String}    id
@@ -224,29 +201,23 @@ snippet methprot$
 		return this.doc.querySelector('#' + id);
 	},
 
-# for
-snippet for
+snippet for    for (...) {...}
 	for (${1} = ${2}; ${1} < ${3}; ${1}++) {
 		${4}
 	}
 
-# if
-snippet if
+snippet if    if (...) {...}
 	if (${1:}) {
 		${2:}
 	}
 
-# regtest
-snippet regtest
+snippet regtest    /.../.test(...);
 	/${1:}/.test(${2:});
-# regexec
-snippet regexec
+snippet regexec    /.../.exec(...);
 	/${1:}/.exec(${2:});
-# al
-snippet al
+snippet al    alert('...');
 	alert('${1:}');
-# alertst
-snippet alertst
+snippet alertst    if (!general.st) {alert('...')}
 	if (!general.st) {
 		alert('Ваш браузер не поддерживает технологию localStorage.\n' +
 				'MyRequiеm рекомендует вам скачать и установить один из\n' +
@@ -256,8 +227,7 @@ snippet alertst
 		return;
 	}
 
-# ajax
-snippet ajax
+snippet ajax    class AjaxQuery
 	/**
 	 * @class AjaxQuery
 	 * @constructor
@@ -297,7 +267,6 @@ snippet ajax
 		};
 	};
 
-# vargen
-snippet vargen
+snippet vargen    var general = new General();
 	var general = new General();
 

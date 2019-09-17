@@ -1,19 +1,16 @@
-# for
-snippet for
+snippet for    for (...) {...}
 	for (${1} = ${2}; ${1} < ${3}; ${1}++) {
 		${4}
 	}
 
-# if
-snippet if
-	if (${1:}) {
-		${2:}
+snippet if    if (...) {...}
+	if (${1}) {
+		${2}
 	}
 
-# doc
-snippet doc
+snippet doc    doxygen docs
 	/**
-	 * @brief       ${1:} - краткое описание комментируемой сущности
+	 * @brief       ${1} - краткое описание комментируемой сущности
 	 * @detailed    подробное описание сущности
 	 * @param       name description
 	 * @tparam      name description (template parameters для C++ шаблонов)
@@ -29,21 +26,17 @@ snippet doc
 	 * URL: http://www.doxygen.nl/manual/docblocks.html
 	 */
 
-# def
-snippet def
+snippet def    #define
 	#define 
 
-# inclst
-snippet inclstd
-	#include <${1:}>
+snippet inclstd    #include <...>
+	#include <${1}>
 
-# inclpath
-snippet inclpath
-	#include "${1:}"
+snippet inclpath    #include "..."
+	#include "${1}"
 
-# func
-snippet func
-	${1:} ${2:}(${3:})
+snippet func    function
+	${1} ${2}(${3})
 	{
-
+		${4}
 	}
