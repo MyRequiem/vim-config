@@ -39,6 +39,7 @@ Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
 Plugin 'MyRequiem/sessions.vim'
 Plugin 'garbas/vim-snipmate',               {'name': 'snippets.vim'}
 Plugin 'vim-syntastic/syntastic',           {'name': 'syntastic.vim'}
+Plugin 'majutsushi/tagbar',                 {'name': 'tagbar.vim'}
 " deps for vim-snipmate
 Plugin 'tomtom/tlib_vim',                   {'name': 'tlib.vim'}
 Plugin 'MyRequiem/translator.vim'
@@ -47,10 +48,11 @@ Plugin 'MarcWeber/vim-addon-mw-utils',      {'name': 'vim-addon-mw-utils.vim'}
 
 call vundle#end()
 
+" https://github.com/sjl/gundo.vim
+" https://github.com/tpope?tab=repositories
+
 " " Vim binding to the autocompletion library Jedi
 " Plugin 'davidhalter/jedi-vim'
-" " allows to explore filesystem and to open files and directories
-" Plugin 'scrooloose/nerdtree'
 " " integrates the Python documentation view and search tool
 " Plugin 'fs111/pydoc.vim'
 " " create python code very quickly by utilizing libraries including
@@ -58,16 +60,7 @@ call vundle#end()
 " " for features like static analysis, refactoring, folding, completion,
 " " documentation, and more.
 " Plugin 'python-mode/python-mode'
-" " syntax checking
-" Plugin 'scrooloose/syntastic'
 " " provides an easy way to browse the tags
-" Plugin 'majutsushi/tagbar'
-" " universal comment plugin
-" Plugin 'tomtom/tcomment_vim'
-" " change status bar and tab line
-" Plugin 'vim-airline/vim-airline'
-" " close a buffer without closing the window
-" Plugin 'qpkorr/vim-bufkill'
 " " git wrapper (status, diff, etc)
 " Plugin 'tpope/vim-fugitive'
 " " extension for vim-fugitive plugin
