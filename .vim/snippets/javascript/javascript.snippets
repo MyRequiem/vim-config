@@ -2,7 +2,7 @@ snippet meta    meta info
 	// ==UserScript==
 	// @name            ${1}
 	// @namespace       https://github.com/MyRequiem/comfortablePlayingInGW
-	// @description
+	// @description     
 	// @id              comfortablePlayingInGW@MyRequiem
 	// @updateURL       https://raw.githubusercontent.com/MyRequiem/comfortablePlayingInGW/master/separatedScripts/${1}/${2}.meta.js
 	// @downloadURL     https://raw.githubusercontent.com/MyRequiem/comfortablePlayingInGW/master/separatedScripts/${1}/${2}.user.js
@@ -193,11 +193,11 @@ snippet methprotgetdata    method prototype getData
 
 snippet methprot$    method prototype $
 	/**
-	 * @method  $
+	 * @method  \$
 	 * @param   {String}    id
 	 * @return  {HTMLElement|null}
 	 */
-	$: function (id) {
+	\$: function (id) {
 		return this.doc.querySelector('#' + id);
 	},
 
