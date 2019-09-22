@@ -1,4 +1,6 @@
-let g:tagbar_ctags_bin        = '/usr/bin/ctags'
+" <F12> - open/close tagbar
+nnoremap <silent><F12> :TagbarToggle<CR>
+
 let g:tagbar_left             = 0
 let g:tagbar_vertical         = 0
 let g:tagbar_width            = 70
@@ -22,62 +24,59 @@ let g:tagbar_autopreview      = 0
 let g:tagbar_systemenc        = 'utf-8'
 let g:tagbar_silent           = 1
 
-highlight TagbarKind ctermfg=3
-highlight TagbarNestedKind ctermfg=3
-highlight TagbarScope ctermfg=14
-"     Tags that define a scope like classes, structs etc.
-"
-" TagbarType
-"     The type of a tag or scope if available.
-"
-" TagbarSignature
-"     Function signatures.
-"
-" TagbarPseudoID
-"     The asterisk (*) that signifies a pseudo-tag.
-"
-" TagbarFoldIcon
-"     The fold icon on the left of foldable tags.
-"
-" TagbarHighlight
-"     The colour that is used for automatically highlighting the current tag.
-"
-" TagbarVisibilityPublic
-"     The "public" visibility symbol.
-"
-" TagbarVisibilityProtected
-"     The "protected" visibility symbol.
-"
-" TagbarVisibilityPrivate
-"     The "private" visibility symbol.
-"
 " tool to create ctags-compatible tag information
 " for javascript files based on jsdoc comments
-"   $ cd ~/bin
-"   $ npm install jsdoc-tags
-"   $ ln -s node_modules/jsdoc-tags/bin/jsdoc-tags jsdoc-tags
+" required:
+"   jsdoc-tags_npm-x.x.x-noarch-myreq
+"
+" :help tagbar-extend
 let g:tagbar_type_javascript = {
     \ 'ctagstype' : 'javascript',
     \ 'ctagsbin': 'node',
-    \ 'ctagsargs': '/usr/bin/jsdoc-tags -aq',
+    \ 'ctagsargs': '/usr/bin/jsdoc-tags -aqp',
     \ 'kinds': [
-        \ 'c:classes',
-        \ 'p:properties:0:1',
-        \ 'f:functions:0:1',
-        \ 'v:variables:0:0',
+        \ 'o:object:1:1',
+        \ 'c:classes:1:1',
+        \ 'p:properties:1:1',
+        \ 'f:functions:1:1',
+        \ 'm:methods:1:1',
+        \ 'v:Global variables:1:1',
         \ 'n:namespaces',
-        \ 'e:event',
+        \ 'a:array:1:1',
+        \ 's:string:1:1'
     \ ],
+    \ 'sro': '.',
     \ 'kind2scope': {
-        \ 'n' : 'namespace',
-        \ 'c' : 'class'
+        \ 'c': 'class',
+        \ 'n': 'namespace'
     \ },
     \ 'scope2kind': {
         \ 'namespace': 'n',
         \ 'class': 'c'
     \ },
-    \ 'sro': '.',
-    \ 'replace': 1
-\ }
+    \ 'replace': 1,
+    \ 'sort': 0
+\}
 
-nnoremap <silent><F12> :TagbarToggle<CR>
+" functions, variables
+highlight! link TagbarKind Function
+" nested functions, variables
+highlight! link TagbarNestedKind Function
+" classes, structs, ...
+highlight! link TagbarScope String
+" return type
+highlight! link TagbarType Constant
+" function signatures
+highlight! link TagbarSignature Comment
+" символ '*' для обозначения псевдотэгов
+highlight! link TagbarPseudoID SignColumn
+" '▸', '▾'
+highlight! link TagbarFoldIcon DarkGrayOnBlack
+" highlighting the current tag
+highlight TagbarHighlight term=NONE cterm=bold ctermfg=1 ctermbg=NONE gui=NONE guisp=NONE guifg=#FF5555 guibg=NONE
+" 'public' visibility symbol ('+')
+highlight! link TagbarVisibilityPublic DarkGrayOnBlack
+" 'protected' visibility symbol
+highlight! link TagbarVisibilityProtected DarkGrayOnBlack
+" 'private' visibility symbol
+highlight! link TagbarVisibilityPrivate DarkGrayOnBlack
