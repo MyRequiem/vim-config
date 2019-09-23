@@ -103,7 +103,7 @@ set vdir=$HOME/.vim/view
 " viminfo, vi - что сохранять в ~/.viminfo (см. :h 'viminfo')
 " Type: string
 " Default: "'100,<50,s10,h"
-set vi='100,<50,s1024,h
+set vi='50,<1000000,s51200,h
 
 " viminfofile, vif - имя файла viminfo. Если не пустая, то переодпределяет
 " файл по умолчанию ~/.viminfo. Если установлено NONE, то viminfo не будет
