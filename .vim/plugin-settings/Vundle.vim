@@ -33,6 +33,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'MyRequiem/ag.vim'
 Plugin 'jlanzarotta/bufexplorer',           {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim'
+Plugin 'sjl/gundo.vim'
 Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'MyRequiem/man.vim'
 Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
