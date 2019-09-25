@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " <F12> - open/close tagbar
 nnoremap <silent><F12> :TagbarToggle<CR>
 
@@ -19,7 +21,7 @@ let g:tagbar_singleclick      = 1
 let g:tagbar_foldlevel        = 3
 let g:tagbar_iconchars        = ['▸', '▾']
 let g:tagbar_autoshowtag      = 0
-let g:tagbar_previewwin_pos   = "rightbelow"
+let g:tagbar_previewwin_pos   = 'rightbelow'
 let g:tagbar_autopreview      = 0
 let g:tagbar_systemenc        = 'utf-8'
 let g:tagbar_silent           = 1

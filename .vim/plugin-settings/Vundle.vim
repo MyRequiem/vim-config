@@ -48,21 +48,22 @@ Plugin 'tomtom/tlib_vim',                   {'name': 'tlib.vim'}
 Plugin 'MyRequiem/translator.vim'
 " deps for vim-snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils',      {'name': 'vim-addon-mw-utils.vim'}
+Plugin 'jimsei/winresizer',                 {'name': 'winresizer.vim'}
 
 call vundle#end()
 
-" https://github.com/sjl/gundo.vim
-" https://github.com/tpope?tab=repositories
-
-" " Vim binding to the autocompletion library Jedi
+" Vim binding to the autocompletion library Jedi
 " Plugin 'davidhalter/jedi-vim'
-" " integrates the Python documentation view and search tool
+
+" integrates the Python documentation view and search tool
 " Plugin 'fs111/pydoc.vim'
-" " create python code very quickly by utilizing libraries including
-" " pylint, rope, pydoc, pyflakes, pep8, autopep8, pep257 and mccabe
-" " for features like static analysis, refactoring, folding, completion,
-" " documentation, and more.
+
+" create python code very quickly by utilizing libraries including
+" pylint, rope, pydoc, pyflakes, pep8, autopep8, pep257 and mccabe
+" for features like static analysis, refactoring, folding, completion,
+" documentation, and more.
 " Plugin 'python-mode/python-mode'
+
 " " provides an easy way to browse the tags
 " " git wrapper (status, diff, etc)
 " Plugin 'tpope/vim-fugitive'
@@ -81,8 +82,6 @@ call vundle#end()
 " Plugin 'tpope/vim-repeat'
 " " place, toggle and display marks
 " Plugin 'vim-scripts/vim-signature'
-" " easy resizing of vim windows
-" Plugin 'jimsei/winresizer'
 " " view man pages in vim. Grep for the man pages
 " Plugin 'vim-utils/vim-man'
 " " accurately completing C and C++ code

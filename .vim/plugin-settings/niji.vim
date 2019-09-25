@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " отключаем загрузку плагина
 " let g:loaded_niji = 1
 
