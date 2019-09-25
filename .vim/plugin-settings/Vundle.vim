@@ -35,6 +35,7 @@ Plugin 'jlanzarotta/bufexplorer',           {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
+Plugin 'suan/vim-instant-markdown',         {'name': 'instant-markdown.vim'}
 Plugin 'MyRequiem/man.vim'
 Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
 Plugin 'MyRequiem/sessions.vim'
@@ -73,8 +74,6 @@ call vundle#end()
 " "   - quick jumping between hunks
 " "   - preview(view diff)/undo individual hunks
 " Plugin 'airblade/vim-gitgutter'
-" " view and edit markdown files (.md) in real time
-" Plugin 'suan/vim-instant-markdown'
 " " run a command and show its result quickly
 " Plugin 'thinca/vim-quickrun'
 " " using command '.' after a plugin map
@@ -88,7 +87,3 @@ call vundle#end()
 " Plugin 'vim-utils/vim-man'
 " " accurately completing C and C++ code
 " Plugin 'xavierd/clang_complete'
-" " translate text using 'trans'
-" Plugin 'MyRequiem/vim-translator'
-" " linting (syntax checking and semantic errors)
-" Plugin 'w0rp/ale'
