@@ -39,6 +39,7 @@ Plugin 'MyRequiem/man.vim'
 Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
 Plugin 'MyRequiem/sessions.vim'
 Plugin 'garbas/vim-snipmate',               {'name': 'snippets.vim'}
+Plugin 'tpope/vim-surround',                {'name': 'surround.vim'}
 Plugin 'vim-syntastic/syntastic',           {'name': 'syntastic.vim'}
 Plugin 'majutsushi/tagbar',                 {'name': 'tagbar.vim'}
 " deps for vim-snipmate
@@ -81,9 +82,6 @@ call vundle#end()
 " Plugin 'tpope/vim-repeat'
 " " place, toggle and display marks
 " Plugin 'vim-scripts/vim-signature'
-" " easily delete, change and add surroundings
-" " pairs parentheses, brackets, quotes etc.
-" Plugin 'tpope/vim-surround'
 " " easy resizing of vim windows
 " Plugin 'jimsei/winresizer'
 " " view man pages in vim. Grep for the man pages
