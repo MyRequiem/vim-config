@@ -37,7 +37,7 @@ nnoremap <silent><leader>tw :let &textwidth = &textwidth ># 0 ? 0 : 80<cr>
 " 1}}}
 
 " показать/скрыть скрытые символы {{{1
-nnoremap <silent><leader>h :setlocal list!<cr>
+nnoremap <silent><leader>hh :setlocal list!<cr>
 " 1}}}
 
 " редактировать/перечитать ~/vimrc {{{1

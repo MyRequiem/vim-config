@@ -33,6 +33,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'MyRequiem/ag.vim'
 Plugin 'jlanzarotta/bufexplorer',           {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim'
+Plugin 'airblade/vim-gitgutter',            {'name': 'gitgutter.vim'}
 Plugin 'sjl/gundo.vim'
 Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'suan/vim-instant-markdown',         {'name': 'instant-markdown.vim'}
@@ -64,22 +65,16 @@ call vundle#end()
 " documentation, and more.
 " Plugin 'python-mode/python-mode'
 
-" " provides an easy way to browse the tags
-" " git wrapper (status, diff, etc)
+
+" git wrapper (status, diff, etc)
 " Plugin 'tpope/vim-fugitive'
-" " extension for vim-fugitive plugin
+
+" extension for vim-fugitive plugin
 " Plugin 'tpope/vim-rhubarb'
-" " git:
-" "   - shows signs for added/modified/removed lines
-" "   - highlight changed line
-" "   - quick jumping between hunks
-" "   - preview(view diff)/undo individual hunks
-" Plugin 'airblade/vim-gitgutter'
+
+
 " " run a command and show its result quickly
 " Plugin 'thinca/vim-quickrun'
-" " using command '.' after a plugin map
-" " (remaps '.' in a way that plugins can tap into it)
-" Plugin 'tpope/vim-repeat'
 " " place, toggle and display marks
 " Plugin 'vim-scripts/vim-signature'
 " " view man pages in vim. Grep for the man pages
