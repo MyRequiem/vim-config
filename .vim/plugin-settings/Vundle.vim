@@ -30,26 +30,28 @@ call vundle#begin()
 " Plugin 'file:///path/from/root/to/plugin'
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'MyRequiem/ag.vim'
+Plugin 'MyRequiem/ag.vim',                  {'name': 'ag.vim'}
 Plugin 'jlanzarotta/bufexplorer',           {'name': 'bufexplorer.vim'}
-Plugin 'MyRequiem/comment.vim'
+Plugin 'MyRequiem/comment.vim',             {'name': 'comment.vim'}
 Plugin 'airblade/vim-gitgutter',            {'name': 'gitgutter.vim'}
-Plugin 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim',                     {'name': 'gundo.vim'}
 Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'suan/vim-instant-markdown',         {'name': 'instant-markdown.vim'}
-Plugin 'MyRequiem/man.vim'
+Plugin 'MyRequiem/man.vim',                 {'name': 'man.vim'}
 Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
-Plugin 'MyRequiem/sessions.vim'
+Plugin 'MyRequiem/sessions.vim',            {'name': 'sessions.vim'}
 Plugin 'garbas/vim-snipmate',               {'name': 'snippets.vim'}
 Plugin 'tpope/vim-surround',                {'name': 'surround.vim'}
 Plugin 'vim-syntastic/syntastic',           {'name': 'syntastic.vim'}
 Plugin 'majutsushi/tagbar',                 {'name': 'tagbar.vim'}
 " deps for vim-snipmate
 Plugin 'tomtom/tlib_vim',                   {'name': 'tlib.vim'}
-Plugin 'MyRequiem/translator.vim'
+Plugin 'MyRequiem/translator.vim',          {'name': 'translator.vim'}
 " deps for vim-snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils',      {'name': 'vim-addon-mw-utils.vim'}
 Plugin 'jimsei/winresizer',                 {'name': 'winresizer.vim'}
+
+Plugin 'thinca/vim-quickrun',               {'name': 'quickrun.vim'}
 
 call vundle#end()
 
@@ -65,16 +67,6 @@ call vundle#end()
 " documentation, and more.
 " Plugin 'python-mode/python-mode'
 
-
-" git wrapper (status, diff, etc)
-" Plugin 'tpope/vim-fugitive'
-
-" extension for vim-fugitive plugin
-" Plugin 'tpope/vim-rhubarb'
-
-
-" " run a command and show its result quickly
-" Plugin 'thinca/vim-quickrun'
 " " place, toggle and display marks
 " Plugin 'vim-scripts/vim-signature'
 " " view man pages in vim. Grep for the man pages
