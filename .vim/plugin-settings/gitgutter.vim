@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " выключить плагин
 " let g:gitgutter_enabled = 0
 

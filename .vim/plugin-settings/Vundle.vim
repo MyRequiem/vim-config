@@ -39,7 +39,9 @@ Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'suan/vim-instant-markdown',         {'name': 'instant-markdown.vim'}
 Plugin 'MyRequiem/man.vim',                 {'name': 'man.vim'}
 Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
+Plugin 'thinca/vim-quickrun',               {'name': 'quickrun.vim'}
 Plugin 'MyRequiem/sessions.vim',            {'name': 'sessions.vim'}
+Plugin 'vim-scripts/vim-signature',         {'name': 'signature.vim'}
 Plugin 'garbas/vim-snipmate',               {'name': 'snippets.vim'}
 Plugin 'tpope/vim-surround',                {'name': 'surround.vim'}
 Plugin 'vim-syntastic/syntastic',           {'name': 'syntastic.vim'}
@@ -50,8 +52,6 @@ Plugin 'MyRequiem/translator.vim',          {'name': 'translator.vim'}
 " deps for vim-snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils',      {'name': 'vim-addon-mw-utils.vim'}
 Plugin 'jimsei/winresizer',                 {'name': 'winresizer.vim'}
-
-Plugin 'thinca/vim-quickrun',               {'name': 'quickrun.vim'}
 
 call vundle#end()
 
@@ -67,8 +67,6 @@ call vundle#end()
 " documentation, and more.
 " Plugin 'python-mode/python-mode'
 
-" " place, toggle and display marks
-" Plugin 'vim-scripts/vim-signature'
 " " view man pages in vim. Grep for the man pages
 " Plugin 'vim-utils/vim-man'
 " " accurately completing C and C++ code
