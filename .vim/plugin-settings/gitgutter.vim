@@ -13,7 +13,7 @@ nnoremap <silent><leader>hg :GitGutter<cr>
 nnoremap <silent><leader>hn :GitGutterNextHunk<cr>
 nnoremap <silent><leader>hN :GitGutterPrevHunk<cr>
 " просмотр текущего изменения
-nnoremap <silent><leader>hp :GitGutterPreviewHunk<cr>
+nnoremap <silent><leader>hp :GitGutterPreviewHunk<cr><C-w><C-w>
 " отменить текущее изменение
 nnoremap <silent><leader>hu :GitGutterUndoHunk<cr>
 " индексировать текущее изменение
