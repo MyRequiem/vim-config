@@ -15,5 +15,6 @@ let g:comment_hotkey          = 'gc'
 let g:comment_default_chars   = '# %s'
 
 let g:comment_asm_chars       = '# %s'
+let g:comment_privoxy_chars   = '# %s'
 let g:comment_gas_chars       = '# %s'
 let g:comment_c_doxygen_chars = '/**< %s */'
