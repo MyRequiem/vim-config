@@ -1,6 +1,12 @@
 #!/bin/bash
 
 CWD="$(pwd)"
+SCRIPTNAME="$(basename "$0")"
+
+if ! [ -f "${CWD}/${SCRIPTNAME}" ]; then
+    echo "${SCRIPTNAME} not found in ${CWD}"
+    exit 1
+fi
 
 cd "${HOME}" || exit 1
 
