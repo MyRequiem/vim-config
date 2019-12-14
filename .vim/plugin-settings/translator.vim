@@ -16,10 +16,11 @@ let g:translator_param_reversed = 'ru:en -brief -no-warn -d -browser /dev/null'
 " (Vim должен быть собран с 'xterm_clipboard')
 let g:translator_copy_to_clipboard = 1
 
-" цвет переведенного текста (default: White)
+" цвет/фон переведенного текста (default: White/Black)
 " Black, DarkBlue, DarkGreen, DarkCyan, DarkRed, DarkMagenta, DarkYellow,
-" DarkGray, Gray, Blue, Green, Cyan, Red, Magenta, Yellow, White
-let g:translator_color_translated_text = 'DarkGreen'
+" DarkGray, Gray, Blue, Green, Cyan, Red, Magenta, Yellow, White, NONE
+let g:translator_color_translated_text   = 'DarkGreen'
+let g:translator_bgcolor_translated_text = 'Black'
 
 " сочетание клавиш для перевода выделенного текста (default: <leader>t)
 let g:translator_hotkey = 'tr'
