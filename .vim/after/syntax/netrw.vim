@@ -3,7 +3,7 @@ scriptencoding utf-8
 " /usr/share/vim/vim81/syntax/netrw.vim
 
 " обычный текст
-highlight netrwPlain term=NONE cterm=NONE ctermfg=7 ctermbg=NONE gui=NONE guisp=NONE guifg=#AAAAAA guibg=NONE
+highlight netrwPlain term=NONE cterm=NONE ctermfg=7 ctermbg=0 gui=NONE guisp=NONE guifg=#AAAAAA guibg=NONE
 " пробел между '|' и именем файлв в режиме дерева
 highlight netrwTreeBarSpace     NONE
 highlight netrwQuickHelp        NONE
