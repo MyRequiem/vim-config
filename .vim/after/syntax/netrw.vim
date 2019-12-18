@@ -115,16 +115,16 @@ highlight! link netrwHtml           String
 highlight! link netrwMedia          MoreMsg
 
 if g:term_256_color
-    highlight netrwData term=NONE cterm=NONE ctermfg=160 ctermbg=NONE gui=NONE guisp=NONE guifg=#D70000 guibg=NONE
+    highlight netrwData term=NONE cterm=NONE ctermfg=160 ctermbg=0    gui=NONE guisp=NONE guifg=#D70000 guibg=NONE
     " core.xxx (coredump)
-    highlight! link netrwCoreDump   netrwData
-    highlight netrwCssXml  term=NONE cterm=NONE ctermfg=167 ctermbg=NONE gui=NONE guisp=NONE guifg=#D75F5F guibg=NONE
-    highlight netrwIsoImg  term=NONE cterm=NONE ctermfg=38  ctermbg=NONE gui=NONE guisp=NONE guifg=#00AFD7 guibg=NONE
-    highlight netrwConfigs term=NONE cterm=NONE ctermfg=212 ctermbg=NONE gui=NONE guisp=NONE guifg=#FF87D7 guibg=NONE
+    highlight! link netrwCoreDump netrwData
+    highlight netrwCssXml  term=NONE cterm=NONE ctermfg=167 ctermbg=0    gui=NONE guisp=NONE guifg=#D75F5F guibg=NONE
+    highlight netrwIsoImg  term=NONE cterm=NONE ctermfg=38  ctermbg=0    gui=NONE guisp=NONE guifg=#00AFD7 guibg=NONE
+    highlight netrwConfigs term=NONE cterm=NONE ctermfg=212 ctermbg=0    gui=NONE guisp=NONE guifg=#FF87D7 guibg=NONE
 else
     highlight! link netrwData       Number
     highlight! link netrwCoreDump   Number
-    highlight netrwCssXml  term=NONE cterm=NONE ctermfg=5 ctermbg=NONE gui=NONE guisp=NONE guifg=NONE guibg=NONE
+    highlight netrwCssXml  term=NONE cterm=NONE ctermfg=5 ctermbg=0 gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight! link netrwIsoImg     netrwSource
     highlight! link netrwConfigs    String
 endif
