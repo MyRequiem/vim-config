@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " 'isort' в Python
-command! OptimizeImports :!isort
+command! OptimizeImports :!isort %
 
 " очистить ~/.vim/{backup,view}
 " ../autoload/viewandbackup.vim
