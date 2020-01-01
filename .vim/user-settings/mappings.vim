@@ -149,7 +149,7 @@ vnoremap <silent><C-j> <Esc>:call editing#MoveLines(visualmode(), 'down')<cr>
 " 1}}}
 
 " отключаем замену в режиме Visual {{{1
-    vnoremap r <Nop>
+vnoremap r <Nop>
 " 1}}}
 
 " Ex mode {{{1
@@ -263,9 +263,16 @@ nnoremap <silent>]e <Esc>:lnext<cr>
 nnoremap <silent>[e <Esc>:lprevious<cr>
 " 1}}}
 
-" quickfix list {{{ 1
+" quickfix list {{{1
 nnoremap <silent>]q <Esc>:cnext<cr>
 nnoremap <silent>[q <Esc>:cprevious<cr>
+" 1}}}
+
+" декодирование выделенного base64 текста {{{1
+" вывод результата в окне сообщений
+vnoremap <leader>64 y :echo system('base64 --decode', @")<cr>
+" замена кодированного текста на декодированный
+vnoremap <leader>6p :'<,'>!base64 --decode<cr>
 " 1}}}
 
 " командная строка {{{1
