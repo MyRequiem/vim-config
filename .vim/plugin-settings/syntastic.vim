@@ -34,7 +34,7 @@ highlight! link SyntasticStyleWarning   SyntasticWarning
 highlight! link SyntasticErrorSign      SpecialKey
 highlight! link SyntasticWarningSign    NonText
 highlight! link SyntasticStyleErrorSign Identifier
-highlight SyntasticStyleWarningSign term=NONE cterm=NONE ctermfg=215  ctermbg=NONE gui=NONE guisp=NONE guifg=#FFAF5F guibg=NONE
+highlight SyntasticStyleWarningSign term=NONE cterm=NONE ctermfg=215  ctermbg=0 gui=NONE guisp=NONE guifg=#FFAF5F guibg=NONE
 
 highlight SyntasticErrorLine        NONE
 highlight SyntasticWarningLine      NONE
