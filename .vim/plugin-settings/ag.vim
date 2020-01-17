@@ -31,9 +31,9 @@ let g:ag_quickfix_height = '15'
 let g:ag_highlight_matches = 1
 
 " цвет подсветки совпадений. Default:
-" let g:ag_highlight_color = 'highlight AgMatches ' .
-"     \ 'term=NONE cterm=NONE ctermfg=1 ' .
-"     \ 'ctermbg=NONE gui=NONE guisp=NONE guifg=#AA0000 guibg=NONE'
+let g:ag_highlight_color = 'highlight AgMatches ' .
+    \ 'term=NONE cterm=NONE ctermfg=1 ' .
+    \ 'ctermbg=0 gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000'
 
 " формат распознавания ошибок (default: '%f:%l:%m')
 " let g:ag_err_format = '%f:%l:%m'

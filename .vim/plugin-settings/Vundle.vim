@@ -38,7 +38,7 @@ Plugin 'sjl/gundo.vim',                     {'name': 'gundo.vim'}
 Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'suan/vim-instant-markdown',         {'name': 'instant-markdown.vim'}
 Plugin 'MyRequiem/man.vim',                 {'name': 'man.vim'}
-Plugin 'raymond-w-ko/vim-niji',             {'name': 'niji.vim'}
+Plugin 'MyRequiem/vim-niji',                {'name': 'niji.vim'}
 Plugin 'thinca/vim-quickrun',               {'name': 'quickrun.vim'}
 Plugin 'MyRequiem/sessions.vim',            {'name': 'sessions.vim'}
 Plugin 'vim-scripts/vim-signature',         {'name': 'signature.vim'}

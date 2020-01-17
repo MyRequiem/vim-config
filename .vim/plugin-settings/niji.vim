@@ -14,9 +14,9 @@ let g:niji_matching_characters = [
 \]
 
 let g:niji_dark_colours = [
-    \ ['red',      'springgreen1'],
-    \ ['green',    'slateblue1'],
-    \ ['yellow',   'cyan1'],
-    \ ['cyan',     'greenyellow'],
-    \ ['magenta',  'purple1'],
+    \ ['red',      'red'],
+    \ ['green',    'green'],
+    \ ['yellow',   'yellow'],
+    \ ['cyan',     'cyan'],
+    \ ['magenta',  'magenta'],
 \]
