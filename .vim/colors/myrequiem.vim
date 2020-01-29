@@ -144,7 +144,7 @@ if g:term_256_color " {{{2
         " в vimdiff не подсвечиваем текущую строку
         highlight CursorLine    NONE
     else
-        highlight! link CursorLine CursorColumn
+        highlight CursorLine    term=NONE cterm=NONE ctermfg=NONE ctermbg=235  gui=NONE guisp=NONE guifg=NONE    guibg=#3A3A3A
     endif
 
     if g:issuperuser
