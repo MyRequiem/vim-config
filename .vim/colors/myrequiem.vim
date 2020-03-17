@@ -156,6 +156,7 @@ if g:term_256_color " {{{2
 
     " скроллбар всплывающего меню
     highlight! link PmenuSbar ColorColumn
+    highlight Ignore            term=NONE cterm=NONE ctermfg=233  ctermbg=0 gui=NONE guisp=NONE guifg=#121212 guibg=#000000
     " 2}}}
 else " {{{2
     highlight NonText           term=NONE cterm=bold         ctermfg=4    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
@@ -175,6 +176,7 @@ else " {{{2
     highlight StatusFPos        term=NONE cterm=bold         ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight Keyword           term=NONE cterm=NONE         ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight Todo              term=NONE cterm=NONE         ctermfg=1    ctermbg=4    gui=NONE guisp=NONE guifg=NONE guibg=NONE
+    highlight Ignore            term=NONE cterm=NONE         ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight CursorLine        NONE
 
     highlight! link Directory           Identifier
