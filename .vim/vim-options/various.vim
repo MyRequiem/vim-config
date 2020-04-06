@@ -27,7 +27,7 @@ set ve=block
 " exrc, ex - включить чтение .vimrc, .exrc и .gvimrc в текущей директории
 " Type: boolean
 " Default: off
-set ex
+set noex
 
 " secure - запрещает .vimrc (.exrc, .gvimrc) из текущего каталога что-то
 " записывать в файлы, выполнять команды оболочки и т.д. Т.е. команды 'autocmd',
