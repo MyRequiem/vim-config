@@ -59,7 +59,7 @@ set sol
 " текущий рабочий каталог будет изменяться на директорию открытого файла
 " Type: boolean
 " Default: off
-" set noacd
+set acd
 
 " wrapscan, wc - поиск начинается сначала при достижении конца буфера
 " Type: boolean
