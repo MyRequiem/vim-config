@@ -57,7 +57,7 @@ highlight ModeMsg           term=NONE cterm=bold ctermfg=2    ctermbg=0    gui=N
 " номер строки
 highlight LineNr            term=NONE cterm=bold ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=#55FFFF guibg=#000000
 " окно терминала (:term)
-highlight Terminal          NONE
+highlight Terminal          term=NONE cterm=NONE ctermfg=NONE ctermbg=0    gui=NONE guisp=NONE guifg=NONE    guibg=#000000
 " текущий пункт меню автодополнения команд
 highlight WildMenu          term=NONE cterm=bold ctermfg=3    ctermbg=NONE gui=NONE guisp=NONE guifg=#FFFF55 guibg=NONE
 " курсор (для GUI)
