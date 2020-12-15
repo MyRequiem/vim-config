@@ -33,10 +33,10 @@ function tabs#ShortTabLine()
 
         " нет имени файла (пустой буфер)
         if empty(l:filename)
-            let l:filename = '[noname]'
+            let l:filename = 'noname'
         endif
 
-        let l:ret .= ' ' . l:filename . ' '
+        let l:ret .= '[' . l:tabnum . ' ' . l:filename . '] '
     endfor
 
     " заполняем лишнее пространство
