@@ -98,3 +98,5 @@ let g:syntastic_javascript_jscs_args    = ''
 let g:syntastic_javascript_jsl_args     = ''
 " css
 let g:syntastic_css_checkers            = ['csslint']
+" java
+let g:syntastic_java_checkers           = ['javac']
