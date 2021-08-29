@@ -144,8 +144,8 @@ vnoremap T g_
 " в visual mode (только visual line) передвигает выделенные строки {{{1
 " вниз/вверх
 " ../autoload/editing.vim
-vnoremap <silent><C-k> <Esc>:call editing#MoveLines(visualmode(), 'up')<cr>
-vnoremap <silent><C-j> <Esc>:call editing#MoveLines(visualmode(), 'down')<cr>
+" vnoremap <silent><C-k> <Esc>:call editing#MoveLines(visualmode(), 'up')<cr>
+" vnoremap <silent><C-j> <Esc>:call editing#MoveLines(visualmode(), 'down')<cr>
 " 1}}}
 
 " отключаем замену в режиме Visual {{{1
@@ -236,7 +236,7 @@ nnoremap <silent><F4> :call locationlist#LocationListToggle()<cr>
 " 1}}}
 
 " перерисовать экран {{{1
-nnoremap <C-l> :redraw!<cr>
+" nnoremap <C-l> :redraw!<cr>
 " 1}}}
 
 " в insert mode установить все символы слова перед курсором в upper case {{{1
