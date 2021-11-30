@@ -7,5 +7,10 @@ function! viewandbackup#ClearViewAndBackup()
     call delete(fnameescape(l:view), 'rf')
     call mkdir(l:view, 'p', 0755)
 
+    if g:issuperuser
+        call system('chown myrequiem:users ' . l:backup)
+        call system('chown myrequiem:users ' . l:view)
+    endif
+
     execute 'normal! :<Esc>'
 endfunction
