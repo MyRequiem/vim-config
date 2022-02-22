@@ -5,6 +5,8 @@ set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 " использовать протокол git вместо https при создании абсолютных URI
 let g:vundle_default_git_proto = 'git'
 
+" обновить vimrc :so $MYVIMRC
+
 " Установка/удаление:
 "   :PluginInstall [tpope/vim-surround] [tpope/vim-fugitive]
 "   :PluginClean
@@ -34,7 +36,6 @@ Plugin 'MyRequiem/ag.vim',                  {'name': 'ag.vim'}
 Plugin 'jlanzarotta/bufexplorer',           {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim',             {'name': 'comment.vim'}
 Plugin 'airblade/vim-gitgutter',            {'name': 'gitgutter.vim'}
-Plugin 'sjl/gundo.vim',                     {'name': 'gundo.vim'}
 Plugin 'Yggdroot/indentLine',               {'name': 'indent-line.vim'}
 Plugin 'suan/vim-instant-markdown',         {'name': 'instant-markdown.vim'}
 Plugin 'MyRequiem/man.vim',                 {'name': 'man.vim'}

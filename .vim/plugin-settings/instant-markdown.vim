@@ -15,7 +15,7 @@ scriptencoding utf-8
 let g:instant_markdown_autostart              = 0
 
 " браузер
-let g:instant_markdown_browser                = 'chromium'
+let g:instant_markdown_browser                = 'google-chrome-stable'
 " порт на localhost
 let g:instant_markdown_port                   = 8090
 " лог сервера
