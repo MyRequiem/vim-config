@@ -89,8 +89,8 @@ let g:netrw_special_syntax     = 1
 let g:netrw_timefmt            = '[%d.%m.%y %H:%M:%S]'
 " использовать swap
 let g:netrw_use_noswf          = 0
-" не изменять текущий каталог Vim (pwd) при переходе
-let g:netrw_keepdir            = 1
+" изменять текущий каталог Vim (pwd) при переходе
+let g:netrw_keepdir            = 0
 " архиватор для 'mz'
 let g:netrw_compress           = 'xz'
 let g:netrw_decompress         = {
