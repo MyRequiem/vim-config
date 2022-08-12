@@ -231,6 +231,10 @@ inoremap <silent><C-y> <C-r><C-r>=editing#LookUpwards()<CR>
 nnoremap <silent><leader>= :call editing#AlignAssignments()<CR>
 " 1}}}
 
+" открыть выделенную ссылку в браузере {{{1
+vmap <F11> "9y: !google-chrome-stable <C-r>9<CR>
+" 1}}}
+
 " открытие/закрытие окна Location List {{{1
 nnoremap <silent><F4> :call locationlist#LocationListToggle()<cr>
 " 1}}}
