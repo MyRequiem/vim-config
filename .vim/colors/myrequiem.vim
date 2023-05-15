@@ -72,9 +72,9 @@ highlight SignColumn        term=NONE cterm=NONE ctermfg=6    ctermbg=0    gui=N
 highlight Number            term=NONE cterm=NONE ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000
 if g:issuperuser
     " комментарии
-    highlight Comment       term=NONE cterm=NONE ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000
+    highlight Comment       term=NONE cterm=NONE ctermfg=9    ctermbg=0    gui=NONE guisp=NONE guifg=#FF5555 guibg=#000000
 else
-    highlight Comment       term=NONE cterm=NONE ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#00AA00 guibg=#000000
+    highlight Comment       term=NONE cterm=NONE ctermfg=10   ctermbg=0    gui=NONE guisp=NONE guifg=#55FF55 guibg=#000000
 endif
 
 if g:term_256_color " {{{2
