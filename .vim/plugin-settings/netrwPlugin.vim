@@ -20,11 +20,11 @@ scriptencoding utf-8
 " ../autoload/myNetrw.vim
 nnoremap <silent><F2>   :call myNetrw#ToggleNetrw()<cr>
 
-" если Vim запускается без файлов, то открываем браузер Netrw
-" augroup VimStartup
-"     autocmd!
-"     autocmd VimEnter * if expand('%') == '' | edit ./ | endif
-" augroup END
+" если Vim запускается без пути к файлу/директории, то открываем браузер Netrw
+augroup VimStartup
+    autocmd!
+    autocmd VimEnter * if expand('%') == '' | edit ./ | endif
+augroup END
 
 " настройки буфера
 let g:netrw_bufsettings = 'nomodifiable nomodified nonumber nobuflisted ' .
