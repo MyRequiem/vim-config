@@ -12,7 +12,7 @@ let g:comment_hotkey          = 'gc'
 " let g:comment_blank_lines     = 1
 
 " default value: /* %s */
-let g:comment_default_chars   = '# %s'
+let g:comment_default_chars    = '# %s'
 
 let g:comment_asm_chars        = '# %s'
 let g:comment_privoxy_chars    = '# %s'

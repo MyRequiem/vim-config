@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 function! viewandbackup#ClearViewAndBackup()
     let l:backup = $HOME . '/.vim/backup'
     call delete(fnameescape(l:backup), 'rf')
