@@ -75,6 +75,6 @@ Plugin 'https://github.com/MarcWeber/vim-addon-mw-utils.git',          {'name': 
 " Plugin 'jimsei/winresizer',                 {'name': 'winresizer.vim'}
 Plugin 'https://github.com/simeji/winresizer.git',                     {'name': 'winresizer.vim'}
 " Plugin vim-open-url
-Plugin 'https://github.com/dhruvasagar/vim-open-url',                  {'name': 'open-url'}
+Plugin 'https://github.com/dhruvasagar/vim-open-url.git',              {'name': 'open-url.vim'}
 
 call vundle#end()
