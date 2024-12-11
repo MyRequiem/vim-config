@@ -4,7 +4,11 @@ scriptencoding utf-8
 " let g:loaded_niji = 1
 
 let g:niji_matching_filetypes = [
-    \ 'javascript'
+    \ 'javascript',
+    \ 'python',
+    \ 'c',
+    \ 'cpp',
+    \ 'sh'
 \]
 
 let g:niji_matching_characters = [
