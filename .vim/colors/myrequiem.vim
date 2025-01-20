@@ -47,7 +47,7 @@ highlight Normal            term=NONE cterm=bold ctermfg=7    ctermbg=0    gui=N
 " темносерый на черном
 highlight DarkGrayOnBlack   term=NONE cterm=bold ctermfg=0    ctermbg=0    gui=NONE guisp=NONE guifg=#555555 guibg=#000000
 " сообщение '-- More --'
-highlight MoreMsg           term=NONE cterm=NONE ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#00AA00 guibg=#000000
+highlight MoreMsg           term=NONE cterm=bold ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#00AA00 guibg=#000000
 " специальные символы: ^H, ^M, ^F, ^I, ...
 highlight SpecialKey        term=NONE cterm=bold ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#FF5555 guibg=#000000
 " идентификаторы: var, this и т.д.
@@ -69,7 +69,7 @@ highlight String            term=NONE cterm=bold ctermfg=5    ctermbg=0    gui=N
 " колонка с левой стороны окна для меток: ошибки, предупреждения, метки git и т.д.
 highlight SignColumn        term=NONE cterm=NONE ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=#00AAAA guibg=#000000
 " целые числа
-highlight Number            term=NONE cterm=NONE ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000
+highlight Number            term=NONE cterm=bold ctermfg=1   ctermbg=0    gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000
 if g:issuperuser
     " комментарии
     highlight Comment       term=NONE cterm=NONE ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=#FF5555 guibg=#000000
