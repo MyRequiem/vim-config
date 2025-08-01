@@ -53,3 +53,13 @@ highlight! link bufExplorerModBuf       Function
 highlight! link bufExplorerInactBuf     Function
 
 nnoremap <silent><leader>bb :BufExplorerHorizontalSplit<CR>
+
+" открыть буфер в списке по <Enter>
+augroup UserPrefix_BufExplorerGroup
+    autocmd!
+    autocmd User BufExplorer_Started call UserPrefix_setupBufExplorer()
+augroup END
+
+function! UserPrefix_setupBufExplorer()
+    nmap <nowait><buffer><CR> <Plug>(BufExplorer_OpenBufferOriginalWindow)
+endfunction
