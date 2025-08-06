@@ -4,7 +4,6 @@
 
 .vim/backup
 .vim/bundle
-.vim/sessions
 .vim/spell
 .vim/swap
 .vim/view
