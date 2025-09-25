@@ -52,7 +52,8 @@ endfunction
 """ Checkers
 " sh
 let g:syntastic_sh_checkers        = ['shellcheck', 'sh']
-let g:syntastic_sh_shellcheck_args = '-x -e SC2039,SC1090,SC2139,SC2016,SC1083,SC2268,S3030,S3010'
+" exclude types of warnings: -e CODE1,CODE2..
+let g:syntastic_sh_shellcheck_args = '-x'
 " vim
 let g:syntastic_vim_checkers       = ['vint']
 " C, C++

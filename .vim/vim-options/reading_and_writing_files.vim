@@ -7,7 +7,7 @@ scriptencoding utf-8
 "   vim:ts=4:tw=30:mls=1
 " Type: boolean
 " Default: on, но для root - off
-" set ml
+set ml
 
 " modelineexpr, mle - разрешить параметры modeline, которые являются выражениями
 " Type: boolean
