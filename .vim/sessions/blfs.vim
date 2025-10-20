@@ -125,8 +125,8 @@ nmap <silent> `] :call signature#GotoMark( "next", "spot", "alpha" )
 nmap cS <Plug>CSurround
 nmap cs <Plug>Csurround
 nmap ds <Plug>Dsurround
-xmap gx <Plug>NetrwBrowseXVis
-nmap gx <Plug>NetrwBrowseX
+xmap gx <Plug>(open-word-under-cursor)
+nmap gx <Plug>(open-word-under-cursor)
 vnoremap <silent> gC :call comment#CommentLines(1)
 nnoremap <silent> gC :call comment#CommentLines(1)
 vnoremap <silent> gc :call comment#CommentLines(0)
@@ -155,8 +155,8 @@ nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
 nnoremap yY vg_"+yvg_"*y
 smap <S-Tab> <Plug>snipMateBack
-xnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
+xnoremap <Plug>(open-word-under-cursor) <ScriptCmd>vim9.Open(getregion(getpos('v'), getpos('.'), { type: mode() })->join())
+nnoremap <Plug>(open-word-under-cursor) <ScriptCmd>vim9.Open(GetWordUnderCursor())
 xnoremap <Plug>(open-url-search-wikipedia) :OpenSearchURL wikipedia =open_url#get_selection()
 nnoremap <Plug>(open-url-search-wikipedia) :OpenSearchURL wikipedia <cword>
 xnoremap <Plug>(open-url-search-google) :OpenSearchURL google =open_url#get_selection()
@@ -263,7 +263,6 @@ unlet s:cpo_save
 set autochdir
 set autoread
 set background=dark
-set backspace=indent,eol,start
 set backup
 set backupdir=~/.vim/backup
 set backupext=.back
@@ -304,7 +303,7 @@ set previewheight=20
 set pumheight=17
 set report=0
 set rulerformat=%23(%06l:%02c/%06L[%03p%%]%)
-set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/bufexplorer.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/indent-line.vim,~/.vim/bundle/quickrun.vim,~/.vim/bundle/signature.vim,~/.vim/bundle/surround.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/tlib.vim,~/.vim/bundle/vim-addon-mw-utils.vim,~/.vim/bundle/snippets.vim,~/.vim/bundle/winresizer.vim,~/.vim/bundle/open-url.vim,~/.vim/bundle/man.vim,~/.vim/bundle/niji.vim,~/.vim/bundle/sessions.vim,~/.vim/bundle/translator.vim,~/.vim/bundle/comment.vim,~/.vim/bundle/ag.vim,/usr/share/vim/vim90,/usr/share/vim/vimfiles,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/Vundle.vim,~/.vim/bundle/Vundle.vim/after,~/.vim/bundle/syntastic.vim/after,~/.vim/bundle/bufexplorer.vim/after,~/.vim/bundle/gitgutter.vim/after,~/.vim/bundle/indent-line.vim/after,~/.vim/bundle/quickrun.vim/after,~/.vim/bundle/signature.vim/after,~/.vim/bundle/surround.vim/after,~/.vim/bundle/tagbar.vim/after,~/.vim/bundle/tlib.vim/after,~/.vim/bundle/vim-addon-mw-utils.vim/after,~/.vim/bundle/snippets.vim/after,~/.vim/bundle/winresizer.vim/after,~/.vim/bundle/open-url.vim/after,~/.vim/bundle/man.vim/after,~/.vim/bundle/niji.vim/after,~/.vim/bundle/sessions.vim/after,~/.vim/bundle/translator.vim/after,~/.vim/bundle/comment.vim/after,~/.vim/bundle/ag.vim/after
+set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/bufexplorer.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/indent-line.vim,~/.vim/bundle/quickrun.vim,~/.vim/bundle/signature.vim,~/.vim/bundle/surround.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/tlib.vim,~/.vim/bundle/vim-addon-mw-utils.vim,~/.vim/bundle/snippets.vim,~/.vim/bundle/winresizer.vim,~/.vim/bundle/open-url.vim,~/.vim/bundle/man.vim,~/.vim/bundle/niji.vim,~/.vim/bundle/sessions.vim,~/.vim/bundle/translator.vim,~/.vim/bundle/comment.vim,~/.vim/bundle/ag.vim,/usr/share/vim/vim91,/usr/share/vim/vim91/pack/dist/opt/netrw,/usr/share/vim/vimfiles,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/Vundle.vim,~/.vim/bundle/Vundle.vim/after,~/.vim/bundle/syntastic.vim/after,~/.vim/bundle/bufexplorer.vim/after,~/.vim/bundle/gitgutter.vim/after,~/.vim/bundle/indent-line.vim/after,~/.vim/bundle/quickrun.vim/after,~/.vim/bundle/signature.vim/after,~/.vim/bundle/surround.vim/after,~/.vim/bundle/tagbar.vim/after,~/.vim/bundle/tlib.vim/after,~/.vim/bundle/vim-addon-mw-utils.vim/after,~/.vim/bundle/snippets.vim/after,~/.vim/bundle/winresizer.vim/after,~/.vim/bundle/open-url.vim/after,~/.vim/bundle/man.vim/after,~/.vim/bundle/niji.vim/after,~/.vim/bundle/sessions.vim/after,~/.vim/bundle/translator.vim/after,~/.vim/bundle/comment.vim/after,~/.vim/bundle/ag.vim/after
 set scrolloff=3
 set secure
 set sessionoptions=buffers,curdir,folds,help,options,tabpages,terminal,unix
@@ -312,7 +311,6 @@ set shiftround
 set shiftwidth=4
 set shortmess=filnrxsIcF
 set showbreak=>>\ 
-set showcmd
 set noshowmode
 set showtabline=2
 set sidescroll=1
@@ -341,7 +339,6 @@ set virtualedit=block
 set whichwrap=
 set wildcharm=<Tab>
 set wildignore=*.o,*.obj
-set wildmenu
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -350,13 +347,9 @@ cd ~/projects/git/LFS/stage-2-blfs-stable-x86_64
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
-if &shortmess =~ 'A'
-  set shortmess=aoOA
-else
-  set shortmess=aoO
-endif
-badd +0 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
-badd +0 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/wget-list
+set shortmess+=aoO
+badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
+badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/wget-list
 badd +0 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/deps
 badd +0 ~/tmp/TODO
 argglobal
@@ -368,6 +361,7 @@ tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 argglobal
+balt ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 let s:cpo_save=&cpo
 set cpo&vim
 nnoremap <buffer> <nowait> <silent>  <Nop>
@@ -376,20 +370,20 @@ nmap <buffer> <nowait> <silent>  <Plug>NetrwLocalBrowseCheck
 nmap <buffer> <nowait> <silent>  <Plug>NetrwRefresh
 nmap <buffer> <nowait> <silent>   mfj
 nnoremap <buffer> <nowait> <silent> % <Nop>
-xmap <buffer> -hs <Plug>(GitGutterStageHunk)
 nnoremap <buffer> <nowait> <silent> -ch :nohlsearch
 nnoremap <buffer> <nowait> <silent> -bp :bprevious
 nnoremap <buffer> <nowait> <silent> -bn :bnext
 nnoremap <buffer> <nowait> <silent> - <Nop>
+xmap <buffer> -hs <Plug>(GitGutterStageHunk)
 nmap <buffer> <nowait> <silent> C :call myNetrw#GoToRootDir()
 nnoremap <buffer> <nowait> <silent> S <Nop>
 nnoremap <buffer> <nowait> <silent> Th <Nop>
 nnoremap <buffer> <nowait> <silent> Tb <Nop>
 nmap <buffer> [c <Plug>(GitGutterPrevHunk)
 nmap <buffer> ]c <Plug>(GitGutterNextHunk)
+nnoremap <buffer> <nowait> <silent> a <Nop>
 xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
 omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
-nnoremap <buffer> <nowait> <silent> a <Nop>
 nmap <buffer> <nowait> <silent> cf <Plug>NetrwOpenFile
 nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
 nnoremap <buffer> <nowait> <silent> cB <Nop>
@@ -399,12 +393,12 @@ nmap <buffer> <nowait> <silent> h <Plug>NetrwBrowseUpDir
 xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
 omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 nmap <buffer> <nowait> <silent> l <Plug>NetrwLocalBrowseCheck
+nnoremap <buffer> <nowait> <silent> mp <Nop>
 nnoremap <buffer> <nowait> <silent> mX <Nop>
 nnoremap <buffer> <nowait> <silent> mv <Nop>
 nnoremap <buffer> <nowait> <silent> mu <Nop>
 nnoremap <buffer> <nowait> <silent> mT <Nop>
 nnoremap <buffer> <nowait> <silent> mr <Nop>
-nnoremap <buffer> <nowait> <silent> mp <Nop>
 nnoremap <buffer> <nowait> <silent> mh <Nop>
 nnoremap <buffer> <nowait> <silent> mg <Nop>
 nnoremap <buffer> <nowait> <silent> mA <Nop>
@@ -422,6 +416,7 @@ nnoremap <buffer> <nowait> <silent> <C-L> <Nop>
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
+setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -441,13 +436,14 @@ setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=81
 setlocal colorcolumn=0
 setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
+setlocal commentstring=/*\ %s\ */
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal completeopt=
 set concealcursor=nic
 setlocal concealcursor=nic
 set conceallevel=3
 setlocal conceallevel=3
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -458,13 +454,16 @@ setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
+setlocal diffanchors=
 setlocal equalprg=
 setlocal errorformat=
+setlocal eventignorewin=
 setlocal expandtab
 if &filetype != 'netrw'
 setlocal filetype=netrw
 endif
 setlocal fillchars=
+setlocal findfunc=
 setlocal fixendofline
 set foldcolumn=4
 setlocal foldcolumn=4
@@ -478,9 +477,10 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcq
 setlocal formatprg=
+setlocal grepformat=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
@@ -489,8 +489,10 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
+setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
+setlocal lhistory=10
 set linebreak
 setlocal linebreak
 setlocal nolisp
@@ -515,6 +517,8 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal readonly
 setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -554,22 +558,24 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal virtualedit=
 setlocal wincolor=
+setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 21) / 42)
+let s:l = 9 - ((8 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
+keepjumps 9
 normal! 0
 lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 tabnext
 edit ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 argglobal
+balt ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 let s:cpo_save=&cpo
 set cpo&vim
 xmap <buffer> -hs <Plug>(GitGutterStageHunk)
@@ -582,6 +588,7 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
+setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -603,11 +610,12 @@ setlocal colorcolumn=81
 setlocal comments=:#
 setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal completeopt=
 set concealcursor=nic
 setlocal concealcursor=inc
 set conceallevel=3
 setlocal conceallevel=2
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -618,13 +626,16 @@ setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
+setlocal diffanchors=
 setlocal equalprg=
 setlocal errorformat=
+setlocal eventignorewin=
 setlocal expandtab
 if &filetype != 'conf'
 setlocal filetype=conf
 endif
 setlocal fillchars=
+setlocal findfunc=
 setlocal fixendofline
 set foldcolumn=4
 setlocal foldcolumn=4
@@ -638,9 +649,10 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
+setlocal grepformat=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
@@ -649,8 +661,10 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
+setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
+setlocal lhistory=10
 set linebreak
 setlocal linebreak
 setlocal nolisp
@@ -675,6 +689,8 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -714,6 +730,7 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal virtualedit=
 setlocal wincolor=
+setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
@@ -743,6 +760,7 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
+setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -764,11 +782,12 @@ setlocal colorcolumn=81
 setlocal comments=:#
 setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal completeopt=
 set concealcursor=nic
 setlocal concealcursor=inc
 set conceallevel=3
 setlocal conceallevel=2
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -779,13 +798,16 @@ setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
+setlocal diffanchors=
 setlocal equalprg=
 setlocal errorformat=
+setlocal eventignorewin=
 setlocal expandtab
 if &filetype != 'conf'
 setlocal filetype=conf
 endif
 setlocal fillchars=
+setlocal findfunc=
 setlocal fixendofline
 set foldcolumn=4
 setlocal foldcolumn=4
@@ -799,9 +821,10 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
+setlocal grepformat=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
@@ -810,8 +833,10 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
+setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
+setlocal lhistory=10
 set linebreak
 setlocal linebreak
 setlocal nolisp
@@ -836,6 +861,8 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -875,6 +902,7 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal virtualedit=
 setlocal wincolor=
+setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal nowrap
@@ -904,6 +932,7 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
+setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -925,11 +954,12 @@ setlocal colorcolumn=81
 setlocal comments=:#
 setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal completeopt=
 set concealcursor=nic
 setlocal concealcursor=inc
 set conceallevel=3
 setlocal conceallevel=2
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -940,13 +970,16 @@ setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
+setlocal diffanchors=
 setlocal equalprg=
 setlocal errorformat=
+setlocal eventignorewin=
 setlocal expandtab
 if &filetype != 'conf'
 setlocal filetype=conf
 endif
 setlocal fillchars=
+setlocal findfunc=
 setlocal fixendofline
 set foldcolumn=4
 setlocal foldcolumn=4
@@ -960,9 +993,10 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=croql
 setlocal formatprg=
+setlocal grepformat=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
@@ -971,8 +1005,10 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
+setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
+setlocal lhistory=10
 set linebreak
 setlocal linebreak
 setlocal nolisp
@@ -997,6 +1033,8 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -1036,6 +1074,7 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal virtualedit=
 setlocal wincolor=
+setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal nowrap
@@ -1065,6 +1104,7 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
+setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -1084,13 +1124,14 @@ setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=81
 setlocal colorcolumn=81
 setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
+setlocal commentstring=/*\ %s\ */
 setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal completeopt=
 set concealcursor=nic
 setlocal concealcursor=inc
 set conceallevel=3
 setlocal conceallevel=2
-setlocal completefunc=
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -1101,13 +1142,16 @@ setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
+setlocal diffanchors=
 setlocal equalprg=
 setlocal errorformat=
+setlocal eventignorewin=
 setlocal expandtab
 if &filetype != ''
 setlocal filetype=
 endif
 setlocal fillchars=
+setlocal findfunc=
 setlocal fixendofline
 set foldcolumn=4
 setlocal foldcolumn=4
@@ -1121,9 +1165,10 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatoptions=tcq
 setlocal formatprg=
+setlocal grepformat=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=-1
@@ -1132,8 +1177,10 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
+setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
+setlocal lhistory=10
 set linebreak
 setlocal linebreak
 setlocal nolisp
@@ -1158,6 +1205,8 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -1197,6 +1246,7 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal virtualedit=
 setlocal wincolor=
+setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
