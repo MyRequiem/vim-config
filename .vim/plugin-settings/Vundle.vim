@@ -40,5 +40,7 @@ Plugin 'MyRequiem/sessions.vim.git',                {'name': 'sessions.vim'}
 Plugin 'MyRequiem/translator.vim.git',              {'name': 'translator.vim'}         " selected text, tr
 Plugin 'MyRequiem/comment.vim.git',                 {'name': 'comment.vim'}
 Plugin 'MyRequiem/ag.vim.git',                      {'name': 'ag.vim'}
+Plugin 'instant-markdown/instant-markdown-d',       {'name': 'markdown-d'}             " deps for vim-instant-markdown
+Plugin 'instant-markdown/vim-instant-markdown',     {'name': 'markdown'}
 
 call vundle#end()
