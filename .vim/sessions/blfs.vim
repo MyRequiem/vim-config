@@ -489,7 +489,6 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
-setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -661,7 +660,6 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
-setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -833,7 +831,6 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
-setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -1005,7 +1002,6 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
-setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -1177,7 +1173,6 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal infercase
-setlocal isexpand=
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
