@@ -303,7 +303,7 @@ set previewheight=20
 set pumheight=17
 set report=0
 set rulerformat=%23(%06l:%02c/%06L[%03p%%]%)
-set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/bufexplorer.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/indent-line.vim,~/.vim/bundle/quickrun.vim,~/.vim/bundle/signature.vim,~/.vim/bundle/surround.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/tlib.vim,~/.vim/bundle/vim-addon-mw-utils.vim,~/.vim/bundle/snippets.vim,~/.vim/bundle/winresizer.vim,~/.vim/bundle/open-url.vim,~/.vim/bundle/man.vim,~/.vim/bundle/niji.vim,~/.vim/bundle/sessions.vim,~/.vim/bundle/translator.vim,~/.vim/bundle/comment.vim,~/.vim/bundle/ag.vim,/usr/share/vim/vim91,/usr/share/vim/vim91/pack/dist/opt/netrw,/usr/share/vim/vimfiles,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/Vundle.vim,~/.vim/bundle/Vundle.vim/after,~/.vim/bundle/syntastic.vim/after,~/.vim/bundle/bufexplorer.vim/after,~/.vim/bundle/gitgutter.vim/after,~/.vim/bundle/indent-line.vim/after,~/.vim/bundle/quickrun.vim/after,~/.vim/bundle/signature.vim/after,~/.vim/bundle/surround.vim/after,~/.vim/bundle/tagbar.vim/after,~/.vim/bundle/tlib.vim/after,~/.vim/bundle/vim-addon-mw-utils.vim/after,~/.vim/bundle/snippets.vim/after,~/.vim/bundle/winresizer.vim/after,~/.vim/bundle/open-url.vim/after,~/.vim/bundle/man.vim/after,~/.vim/bundle/niji.vim/after,~/.vim/bundle/sessions.vim/after,~/.vim/bundle/translator.vim/after,~/.vim/bundle/comment.vim/after,~/.vim/bundle/ag.vim/after
+set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/bufexplorer.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/indent-line.vim,~/.vim/bundle/quickrun.vim,~/.vim/bundle/signature.vim,~/.vim/bundle/surround.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/tlib.vim,~/.vim/bundle/vim-addon-mw-utils.vim,~/.vim/bundle/snippets.vim,~/.vim/bundle/winresizer.vim,~/.vim/bundle/open-url.vim,~/.vim/bundle/man.vim,~/.vim/bundle/niji.vim,~/.vim/bundle/sessions.vim,~/.vim/bundle/translator.vim,~/.vim/bundle/comment.vim,~/.vim/bundle/ag.vim,~/.vim/bundle/markdown-d,~/.vim/bundle/markdown,/usr/share/vim/vim92,/usr/share/vim/vim92/pack/dist/opt/netrw,/usr/share/vim/vimfiles,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/Vundle.vim,~/.vim/bundle/Vundle.vim/after,~/.vim/bundle/syntastic.vim/after,~/.vim/bundle/bufexplorer.vim/after,~/.vim/bundle/gitgutter.vim/after,~/.vim/bundle/indent-line.vim/after,~/.vim/bundle/quickrun.vim/after,~/.vim/bundle/signature.vim/after,~/.vim/bundle/surround.vim/after,~/.vim/bundle/tagbar.vim/after,~/.vim/bundle/tlib.vim/after,~/.vim/bundle/vim-addon-mw-utils.vim/after,~/.vim/bundle/snippets.vim/after,~/.vim/bundle/winresizer.vim/after,~/.vim/bundle/open-url.vim/after,~/.vim/bundle/man.vim/after,~/.vim/bundle/niji.vim/after,~/.vim/bundle/sessions.vim/after,~/.vim/bundle/translator.vim/after,~/.vim/bundle/comment.vim/after,~/.vim/bundle/ag.vim/after,~/.vim/bundle/markdown-d/after,~/.vim/bundle/markdown/after
 set scrolloff=3
 set secure
 set sessionoptions=buffers,curdir,folds,help,options,tabpages,terminal,unix
@@ -341,6 +341,7 @@ set wildcharm=<Tab>
 set wildignore=*.o,*.obj
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
+doautoall SessionLoadPre
 silent only
 silent tabonly
 cd ~/projects/git/LFS/stage-2-blfs-stable-x86_64
@@ -348,8 +349,8 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess+=aoO
-badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
-badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/wget-list
+badd +0 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
+badd +0 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/wget-list
 badd +0 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/deps
 badd +0 ~/tmp/TODO
 argglobal
@@ -361,7 +362,6 @@ tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 argglobal
-balt ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 let s:cpo_save=&cpo
 set cpo&vim
 nnoremap <buffer> <nowait> <silent>  <Nop>
@@ -374,24 +374,17 @@ nnoremap <buffer> <nowait> <silent> -ch :nohlsearch
 nnoremap <buffer> <nowait> <silent> -bp :bprevious
 nnoremap <buffer> <nowait> <silent> -bn :bnext
 nnoremap <buffer> <nowait> <silent> - <Nop>
-xmap <buffer> -hs <Plug>(GitGutterStageHunk)
 nmap <buffer> <nowait> <silent> C :call myNetrw#GoToRootDir()
 nnoremap <buffer> <nowait> <silent> S <Nop>
 nnoremap <buffer> <nowait> <silent> Th <Nop>
 nnoremap <buffer> <nowait> <silent> Tb <Nop>
-nmap <buffer> [c <Plug>(GitGutterPrevHunk)
-nmap <buffer> ]c <Plug>(GitGutterNextHunk)
 nnoremap <buffer> <nowait> <silent> a <Nop>
-xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
-omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
 nmap <buffer> <nowait> <silent> cf <Plug>NetrwOpenFile
 nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
 nnoremap <buffer> <nowait> <silent> cB <Nop>
 nnoremap <buffer> <nowait> <silent> cb <Nop>
 nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
 nmap <buffer> <nowait> <silent> h <Plug>NetrwBrowseUpDir
-xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
-omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 nmap <buffer> <nowait> <silent> l <Plug>NetrwLocalBrowseCheck
 nnoremap <buffer> <nowait> <silent> mp <Nop>
 nnoremap <buffer> <nowait> <silent> mX <Nop>
@@ -416,7 +409,6 @@ nnoremap <buffer> <nowait> <silent> <C-L> <Nop>
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
-setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -516,8 +508,6 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal readonly
 setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -535,6 +525,7 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
+setlocal statuslineopt=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=500
@@ -560,21 +551,21 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
+setlocal winhighlight=
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 9 - ((8 * winheight(0) + 21) / 42)
+let s:l = 8 - ((7 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 9
+keepjumps 8
 normal! 0
-lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
+lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64
 tabnext
 edit ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 argglobal
-balt ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 let s:cpo_save=&cpo
 set cpo&vim
 xmap <buffer> -hs <Plug>(GitGutterStageHunk)
@@ -587,7 +578,6 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
-setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -687,8 +677,6 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -706,6 +694,7 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
+setlocal statuslineopt=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=500
@@ -731,6 +720,7 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
+setlocal winhighlight=
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
@@ -758,7 +748,6 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
-setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -858,8 +847,6 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -877,6 +864,7 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
+setlocal statuslineopt=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=500
@@ -902,6 +890,7 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
+setlocal winhighlight=
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
@@ -929,7 +918,6 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
-setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -1029,8 +1017,6 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -1048,6 +1034,7 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
+setlocal statuslineopt=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=500
@@ -1073,6 +1060,7 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
+setlocal winhighlight=
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
@@ -1100,7 +1088,6 @@ omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
-setlocal noarabic
 setlocal noautoindent
 setlocal backupcopy=
 setlocal balloonexpr=
@@ -1200,8 +1187,6 @@ setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
 setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
 setlocal shiftwidth=4
@@ -1219,6 +1204,7 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
+setlocal statuslineopt=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=500
@@ -1244,6 +1230,7 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
+setlocal winhighlight=
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
