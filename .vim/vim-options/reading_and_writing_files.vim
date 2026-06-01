@@ -96,7 +96,7 @@ set bk
 " не будут
 " Type: string
 " Default: "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*"
-set bsk=/tmp/*,/var/spool/cron/*
+set bsk=/tmp/*,/var/spool/cron/*,/run/cron/*
 
 " backupcopy, bkc - делать резервную копию как копию или переименовывать
 " существующий файл
