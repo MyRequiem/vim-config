@@ -146,8 +146,8 @@ nnoremap q <Nop>
 vnoremap r <Nop>
 vnoremap tr :call translator#Translate_selected()
 nnoremap v vlh
-nnoremap <silent> yf :call myNetrw#SaveFileName(0)
 nnoremap <silent> yF :call myNetrw#SaveFileName(1)
+nnoremap <silent> yf :call myNetrw#SaveFileName(0)
 nmap ySS <Plug>YSsurround
 nmap ySs <Plug>YSsurround
 nmap yss <Plug>Yssurround
@@ -353,10 +353,9 @@ badd +7 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 badd +6 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/wget-list
 badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/deps
 badd +1 ~/tmp/TODO
-badd +0 ~/tmp/ii-desc
+badd +18 ~/tmp/ii-desc
 argglobal
 %argdel
-tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -372,7 +371,6 @@ nmap <buffer> <nowait> <silent>  <Plug>NetrwLocalBrowseCheck
 nmap <buffer> <nowait> <silent>  <Plug>NetrwRefresh
 nmap <buffer> <nowait> <silent>   mfj
 nnoremap <buffer> <nowait> <silent> % <Nop>
-xmap <buffer> -hs <Plug>(GitGutterStageHunk)
 nnoremap <buffer> <nowait> <silent> -ch :nohlsearch
 nnoremap <buffer> <nowait> <silent> -bp :bprevious
 nnoremap <buffer> <nowait> <silent> -bn :bnext
@@ -381,10 +379,6 @@ nmap <buffer> <nowait> <silent> C :call myNetrw#GoToRootDir()
 nnoremap <buffer> <nowait> <silent> S <Nop>
 nnoremap <buffer> <nowait> <silent> Th <Nop>
 nnoremap <buffer> <nowait> <silent> Tb <Nop>
-nmap <buffer> [c <Plug>(GitGutterPrevHunk)
-nmap <buffer> ]c <Plug>(GitGutterNextHunk)
-xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
-omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
 nnoremap <buffer> <nowait> <silent> a <Nop>
 nmap <buffer> <nowait> <silent> cf <Plug>NetrwOpenFile
 nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
@@ -392,8 +386,6 @@ nnoremap <buffer> <nowait> <silent> cB <Nop>
 nnoremap <buffer> <nowait> <silent> cb <Nop>
 nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
 nmap <buffer> <nowait> <silent> h <Plug>NetrwBrowseUpDir
-xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
-omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 nmap <buffer> <nowait> <silent> l <Plug>NetrwLocalBrowseCheck
 nnoremap <buffer> <nowait> <silent> mp <Nop>
 nnoremap <buffer> <nowait> <silent> mX <Nop>
@@ -442,9 +434,9 @@ setlocal complete=.,w,b,u,t,i
 setlocal completefunc=
 setlocal completeopt=
 set concealcursor=nic
-setlocal concealcursor=inc
+setlocal concealcursor=nic
 set conceallevel=3
-setlocal conceallevel=2
+setlocal conceallevel=3
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -519,6 +511,7 @@ setlocal readonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
+setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -565,17 +558,16 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 10 - ((9 * winheight(0) + 21) / 42)
+let s:l = 8 - ((7 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 10
+keepjumps 8
 normal! 0
-lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
+lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64
 tabnext
 edit ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 argglobal
-balt ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 let s:cpo_save=&cpo
 set cpo&vim
 xmap <buffer> -hs <Plug>(GitGutterStageHunk)
@@ -689,6 +681,7 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
+setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -740,176 +733,6 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
-normal! 0
-lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
-tabnext
-edit ~/tmp/ii-desc
-argglobal
-balt ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
-let s:cpo_save=&cpo
-set cpo&vim
-xmap <buffer> -hs <Plug>(GitGutterStageHunk)
-nmap <buffer> [c <Plug>(GitGutterPrevHunk)
-nmap <buffer> ]c <Plug>(GitGutterNextHunk)
-xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
-omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
-xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
-omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noautoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-set breakindent
-setlocal breakindent
-set breakindentopt=min:1,shift:2
-setlocal breakindentopt=min:1,shift:2
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinscopedecls=public,protected,private
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=81
-setlocal colorcolumn=81
-setlocal comments=:#
-setlocal commentstring=#\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal completefunc=
-setlocal completeopt=
-set concealcursor=nic
-setlocal concealcursor=inc
-set conceallevel=3
-setlocal conceallevel=2
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal diffanchors=
-setlocal equalprg=
-setlocal errorformat=
-setlocal eventignorewin=
-setlocal expandtab
-if &filetype != 'conf'
-setlocal filetype=conf
-endif
-setlocal fillchars=
-setlocal findfunc=
-setlocal fixendofline
-set foldcolumn=4
-setlocal foldcolumn=4
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatoptions=croql
-setlocal formatprg=
-setlocal grepformat=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=-1
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal infercase
-setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
-setlocal keywordprg=
-setlocal lhistory=10
-set linebreak
-setlocal linebreak
-setlocal nolisp
-setlocal lispoptions=
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:],<:>
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex,bin
-set number
-setlocal number
-set numberwidth=7
-setlocal numberwidth=7
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-set signcolumn=yes
-setlocal signcolumn=yes
-setlocal nosmartindent
-setlocal nosmoothscroll
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
-setlocal spelllang=en_us,ru_ru
-setlocal spelloptions=
-setlocal statusline=
-setlocal statuslineopt=
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=500
-if &syntax != 'conf'
-setlocal syntax=conf
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixbuf
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal winhighlight=
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 18 - ((17 * winheight(0) + 21) / 42)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 18
 normal! 0
 lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 tabnext
@@ -1029,6 +852,7 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
+setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -1075,11 +899,11 @@ setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 21) / 42)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
+keepjumps 1
 normal! 0
 lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 tabnext
@@ -1199,6 +1023,7 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
+setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -1369,6 +1194,7 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
+setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
