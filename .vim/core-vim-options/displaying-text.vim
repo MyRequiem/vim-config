@@ -1,23 +1,10 @@
 vim9script
 
-# vint: -ProhibitAbbreviationOption
-
-# scroll, scr - количество строк для прокрутки клавишами Ctrl-u и Ctrl-d
-# Type: number
-# Default: автоматически устанавливается на половину окна (если значение
-#           изменено, то сбросить на default можно установив 'set scr=0')
-# set scr=25
-
-# scrolloff, so - количество строк, которые будут всегда видны сверху и снизу
-# экрана
+# Количество строк, которые будут всегда видны сверху и снизу экрана:
+# scrolloff, so
 # Type: number
 # Default: 0
 set so=3
-
-# wrap - перенос строк, которые не умещаются на экране
-# Type: boolean
-# Default: on
-# set wrap
 
 # linebreak, lbr - перенос строки без разрыва слов
 # (учитываются символы опции 'breakat')

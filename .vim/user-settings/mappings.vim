@@ -181,10 +181,10 @@ nnoremap <silent>;; :call editing#ToggleSemicolonOnEndOfLine()<cr>
 nnoremap <Space> viwlh
 " 1}}}
 
-" для команд, которые начинаются с 'q' {{{1
+" для команд, которые начинаются с 'q', отключаем нахрен {{{1
 "   q{symb} - запись макросов
 "   q:      - открыть окно истории команд
-nnoremap <leader>q q
+nnoremap <leader>q q <Nop>
 nnoremap q <Nop>
 " 1}}}
 

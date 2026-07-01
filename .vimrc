@@ -1,42 +1,33 @@
 vim9script
 
-# не evim {{{1
+# Не evim?
 if v:progname =~? 'evim'
     finish
-endif # 1}}}
+endif
 
-# запущен gvim? {{{1
+# Запущен gvim?
 g:isgvim = false
 if has('gui_running')
     g:isgvim = true
-endif # 1}}}
+endif
 
-# пользователь root? {{{1
+# Пользователь root?
 g:issuperuser = false
 if $USER ==# 'root'
     g:issuperuser = true
-endif # 1}}}
+endif
 
-# терминал поддерживает 256 цветов? {{{1
+# Терминал поддерживает 256 цветов?
 g:term_256_color = false
 if &term =~? '-256color'
     g:term_256_color = true
-    # количество цветов
+    # Количество цветов
     &t_Co = '256'
-endif # 1}}}
+endif
 
-const rc_dir = $HOME .. '/.vim'
-
-# читаем файлы настроек {{{1
-var file_list = globpath(rc_dir .. '/vim-options', '*.vim', 1, 1)
-for file in file_list
-    execute 'source ' .. file
-endfor # 1}}}
-
-# читаем пользовательские настройки и настройки плагинов {{{1
-for directory in ['user-settings', 'plugin-settings']
-    file_list = globpath(rc_dir .. '/' .. directory, '*.vim', 1, 1)
-    for file in file_list
+# Читаем конфиги настроек и плагинов:
+for settings_dir in ['core-vim-options', 'user-settings', 'plugin-settings']
+    for file in globpath('~/.vim/' .. settings_dir, '*.vim', 1, 1)
         execute 'source ' .. file
     endfor
-endfor # 1}}}
+endfor
