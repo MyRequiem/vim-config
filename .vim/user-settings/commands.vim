@@ -2,7 +2,7 @@ scriptencoding utf-8
 
 " очистить ~/.vim/{backup,view}
 " ../autoload/viewandbackup.vim
-command ClearViewAndBackup  call viewandbackup#ClearViewAndBackup()
+command ClearVim  call clearvim#ClearVim()
 
 command Vimdoc      edit /home/myrequiem/docs/linux/vim/
 command Gitdoc      edit /home/myrequiem/docs/linux/git/

@@ -1,15 +1,8 @@
-scriptencoding utf-8
+vim9script
 
-language en_US
+language messages en_US.UTF-8
 
 syntax on
-filetype on
-filetype plugin on
 filetype plugin indent on
 
 colorscheme myrequiem
-
-" позиция окна для GUI
-if has('gui_running')
-    winpos 48 28
-endif

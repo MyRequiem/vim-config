@@ -79,7 +79,7 @@ vnoremap -64 y :echo system('base64 --decode', @")
 nnoremap -de /^\n\{2}
 nnoremap <silent> -= :call editing#AlignAssignments()
 nmap <silent> -pa :call editing#GoToParentBrace()
-nnoremap -q q
+nnoremap -q q <Nop>
 nnoremap -ex Q
 nnoremap -wp h
 nnoremap -wn l
@@ -266,44 +266,38 @@ set background=dark
 set backup
 set backupdir=~/.vim/backup
 set backupext=.back
-set backupskip=/tmp/*,/var/spool/cron/*
+set backupskip=/tmp/*,/var/spool/cron/*,/run/cron/*
 set belloff=all
 set casemap=internal
-set cedit=
-set completeopt=menuone
 set confirm
-set diffopt=filler,context:3,vertical,foldcolumn:4,internal
-set directory=~/.vim/swap
+set diffopt=internal,filler,vertical,context:2
+set directory=~/.vim/swap//
 set display=truncate
 set expandtab
 set fileencodings=utf-8,cp1251,koi8-r,cp866,ucs-2
-set fillchars=fold:-,stl:\ ,stlnc:\ ,vert:|,diff:-
-set foldlevelstart=0
 set grepprg=grep\ --line-number\ --binary-files=without-match\ $*
 set guicursor=a:hor1-Cursor/lCursor,a:blinkon500,a:blinkoff500,a:blinkwait100
 set guifont=Liberation\ Mono\ 10
-set guioptions=agt
+set guioptions=
 set helplang=en
 set hidden
-set history=300
+set history=100
 set hlsearch
 set incsearch
-set infercase
 set iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 set nojoinspaces
 set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,��h,оj,лk,дl,ж\\;,э',яz,чx,сc,мv,иb,тn,ю.,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,��K,ДL,Ж:,Э',ЯZ,ЧX,СC,МV,ИB,ТN,Б<,Ю>
 set laststatus=2
-set listchars=eol:¬,tab:T-,extends:»,precedes:«,conceal:*
+set listchars=eol:↵,space:·,nbsp:⍽,trail:���,tab:T���,extends:»,precedes:«
 set matchpairs=(:),{:},[:],<:>
 set maxmempattern=512
 set modelines=1
 set mousemodel=popup
-set nrformats=octal,hex,bin
 set previewheight=20
 set pumheight=17
 set report=0
 set rulerformat=%23(%06l:%02c/%06L[%03p%%]%)
-set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/bufexplorer.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/indent-line.vim,~/.vim/bundle/quickrun.vim,~/.vim/bundle/signature.vim,~/.vim/bundle/surround.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/tlib.vim,~/.vim/bundle/vim-addon-mw-utils.vim,~/.vim/bundle/snippets.vim,~/.vim/bundle/winresizer.vim,~/.vim/bundle/open-url.vim,~/.vim/bundle/man.vim,~/.vim/bundle/niji.vim,~/.vim/bundle/sessions.vim,~/.vim/bundle/translator.vim,~/.vim/bundle/comment.vim,~/.vim/bundle/ag.vim,~/.vim/bundle/markdown-d,~/.vim/bundle/markdown,/usr/share/vim/vim92,/usr/share/vim/vim92/pack/dist/opt/netrw,/usr/share/vim/vimfiles,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/Vundle.vim,~/.vim/bundle/Vundle.vim/after,~/.vim/bundle/syntastic.vim/after,~/.vim/bundle/bufexplorer.vim/after,~/.vim/bundle/gitgutter.vim/after,~/.vim/bundle/indent-line.vim/after,~/.vim/bundle/quickrun.vim/after,~/.vim/bundle/signature.vim/after,~/.vim/bundle/surround.vim/after,~/.vim/bundle/tagbar.vim/after,~/.vim/bundle/tlib.vim/after,~/.vim/bundle/vim-addon-mw-utils.vim/after,~/.vim/bundle/snippets.vim/after,~/.vim/bundle/winresizer.vim/after,~/.vim/bundle/open-url.vim/after,~/.vim/bundle/man.vim/after,~/.vim/bundle/niji.vim/after,~/.vim/bundle/sessions.vim/after,~/.vim/bundle/translator.vim/after,~/.vim/bundle/comment.vim/after,~/.vim/bundle/ag.vim/after,~/.vim/bundle/markdown-d/after,~/.vim/bundle/markdown/after
+set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/syntastic.vim,~/.vim/bundle/bufexplorer.vim,~/.vim/bundle/gitgutter.vim,~/.vim/bundle/indent-line.vim,~/.vim/bundle/quickrun.vim,~/.vim/bundle/signature.vim,~/.vim/bundle/surround.vim,~/.vim/bundle/tagbar.vim,~/.vim/bundle/tlib.vim,~/.vim/bundle/vim-addon-mw-utils.vim,~/.vim/bundle/snippets.vim,~/.vim/bundle/winresizer.vim,~/.vim/bundle/open-url.vim,~/.vim/bundle/man.vim,~/.vim/bundle/niji.vim,~/.vim/bundle/sessions.vim,~/.vim/bundle/translator.vim,~/.vim/bundle/comment.vim,~/.vim/bundle/ag.vim,~/.vim/bundle/markdown-d,~/.vim/bundle/markdown,/usr/share/vim/vim91,/usr/share/vim/vim91/pack/dist/opt/netrw,/usr/share/vim/vimfiles,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/Vundle.vim,~/.vim/bundle/Vundle.vim/after,~/.vim/bundle/syntastic.vim/after,~/.vim/bundle/bufexplorer.vim/after,~/.vim/bundle/gitgutter.vim/after,~/.vim/bundle/indent-line.vim/after,~/.vim/bundle/quickrun.vim/after,~/.vim/bundle/signature.vim/after,~/.vim/bundle/surround.vim/after,~/.vim/bundle/tagbar.vim/after,~/.vim/bundle/tlib.vim/after,~/.vim/bundle/vim-addon-mw-utils.vim/after,~/.vim/bundle/snippets.vim/after,~/.vim/bundle/winresizer.vim/after,~/.vim/bundle/open-url.vim/after,~/.vim/bundle/man.vim/after,~/.vim/bundle/niji.vim/after,~/.vim/bundle/sessions.vim/after,~/.vim/bundle/translator.vim/after,~/.vim/bundle/comment.vim/after,~/.vim/bundle/ag.vim/after,~/.vim/bundle/markdown-d/after,~/.vim/bundle/markdown/after
 set scrolloff=3
 set secure
 set sessionoptions=buffers,curdir,folds,help,options,tabpages,terminal,unix
@@ -314,7 +308,7 @@ set showbreak=>>\
 set noshowmode
 set showtabline=2
 set sidescroll=1
-set sidescrolloff=7
+set sidescrolloff=20
 set smarttab
 set softtabstop=4
 set spellfile=~/.vim/spell/added-by-user.utf-8.add
@@ -323,25 +317,22 @@ set spellsuggest=fast
 set splitbelow
 set splitright
 set statusline=\ %.80F\ %r\ %h\ %w%=%#StatusFType#\ %{&filetype}\ %#StatusFFormat#%{&fileencoding}\ [%{&fileformat}]\ %#StatusFPos#[%06l:%02c/%06L][%03p%%]\ %#SyntasticStatusLine#%{SyntasticStatuslineFlag()}%*
-set noswapfile
 set switchbuf=useopen
-set synmaxcol=500
+set synmaxcol=0
 set tabline=%!tabs#ShortTabLine()
 set tabstop=4
-set tags=./tags,~/.vim/tags
+set tags=./tags
 set termencoding=utf-8
-set toolbar=
-set undoreload=-1
-set updatetime=0
+set undodir=~/.vim/undo//
+set undofile
+set updatetime=10000
 set viewoptions=cursor,folds,unix,curdir
 set viminfo='50,<1000000,s51200,h
 set virtualedit=block
 set whichwrap=
 set wildcharm=<Tab>
-set wildignore=*.o,*.obj
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
-doautoall SessionLoadPre
 silent only
 silent tabonly
 cd ~/tmp
@@ -349,13 +340,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess+=aoO
-badd +7 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
-badd +6 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/wget-list
+badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
+badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/wget-list
 badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/deps
 badd +1 ~/tmp/TODO
-badd +18 ~/tmp/ii-desc
+badd +1 ~/projects/git/LFS/stage-2-blfs-stable-x86_64/queue
 argglobal
 %argdel
+$argadd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
@@ -363,6 +355,7 @@ tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 argglobal
+balt ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 let s:cpo_save=&cpo
 set cpo&vim
 nnoremap <buffer> <nowait> <silent>  <Nop>
@@ -375,17 +368,24 @@ nnoremap <buffer> <nowait> <silent> -ch :nohlsearch
 nnoremap <buffer> <nowait> <silent> -bp :bprevious
 nnoremap <buffer> <nowait> <silent> -bn :bnext
 nnoremap <buffer> <nowait> <silent> - <Nop>
+xmap <buffer> -hs <Plug>(GitGutterStageHunk)
 nmap <buffer> <nowait> <silent> C :call myNetrw#GoToRootDir()
 nnoremap <buffer> <nowait> <silent> S <Nop>
 nnoremap <buffer> <nowait> <silent> Th <Nop>
 nnoremap <buffer> <nowait> <silent> Tb <Nop>
+nmap <buffer> [c <Plug>(GitGutterPrevHunk)
+nmap <buffer> ]c <Plug>(GitGutterNextHunk)
 nnoremap <buffer> <nowait> <silent> a <Nop>
+xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
+omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
 nmap <buffer> <nowait> <silent> cf <Plug>NetrwOpenFile
 nmap <buffer> <nowait> <silent> cd <Plug>NetrwLcd
 nnoremap <buffer> <nowait> <silent> cB <Nop>
 nnoremap <buffer> <nowait> <silent> cb <Nop>
 nmap <buffer> <nowait> <silent> gb <Plug>NetrwBookHistHandler_gb
 nmap <buffer> <nowait> <silent> h <Plug>NetrwBrowseUpDir
+xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
+omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
 nmap <buffer> <nowait> <silent> l <Plug>NetrwLocalBrowseCheck
 nnoremap <buffer> <nowait> <silent> mp <Nop>
 nnoremap <buffer> <nowait> <silent> mX <Nop>
@@ -416,8 +416,7 @@ setlocal balloonexpr=
 setlocal nobinary
 set breakindent
 setlocal breakindent
-set breakindentopt=min:1,shift:2
-setlocal breakindentopt=min:1,shift:2
+setlocal breakindentopt=
 setlocal bufhidden=delete
 setlocal nobuflisted
 setlocal buftype=
@@ -433,10 +432,8 @@ setlocal commentstring=/*\ %s\ */
 setlocal complete=.,w,b,u,t,i
 setlocal completefunc=
 setlocal completeopt=
-set concealcursor=nic
-setlocal concealcursor=nic
-set conceallevel=3
-setlocal conceallevel=3
+setlocal concealcursor=inc
+setlocal conceallevel=2
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
@@ -458,8 +455,8 @@ endif
 setlocal fillchars=
 setlocal findfunc=
 setlocal fixendofline
-set foldcolumn=4
-setlocal foldcolumn=4
+set foldcolumn=2
+setlocal foldcolumn=2
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -481,7 +478,7 @@ setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal infercase
+setlocal noinfercase
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -497,7 +494,7 @@ setlocal makeprg=
 setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
 setlocal nomodifiable
-setlocal nrformats=octal,hex,bin
+setlocal nrformats=bin,octal,hex
 set number
 setlocal nonumber
 set numberwidth=7
@@ -511,7 +508,6 @@ setlocal readonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -527,10 +523,9 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
-setlocal statuslineopt=
 setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=500
+setlocal swapfile
+setlocal synmaxcol=0
 if &syntax != 'netrw'
 setlocal syntax=netrw
 endif
@@ -544,7 +539,7 @@ setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
-setlocal noundofile
+setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
@@ -553,18 +548,17 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal winhighlight=
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 21) / 42)
+let s:l = 8 - ((7 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 8
 normal! 0
-lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64
+lcd ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build
 tabnext
 edit ~/projects/git/LFS/stage-2-blfs-stable-x86_64/build/queue
 argglobal
@@ -586,8 +580,7 @@ setlocal balloonexpr=
 setlocal nobinary
 set breakindent
 setlocal breakindent
-set breakindentopt=min:1,shift:2
-setlocal breakindentopt=min:1,shift:2
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -603,9 +596,7 @@ setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
 setlocal completefunc=
 setlocal completeopt=
-set concealcursor=nic
 setlocal concealcursor=inc
-set conceallevel=3
 setlocal conceallevel=2
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -628,8 +619,8 @@ endif
 setlocal fillchars=
 setlocal findfunc=
 setlocal fixendofline
-set foldcolumn=4
-setlocal foldcolumn=4
+set foldcolumn=2
+setlocal foldcolumn=2
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -651,7 +642,7 @@ setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal infercase
+setlocal noinfercase
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -667,7 +658,7 @@ setlocal makeprg=
 setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
 setlocal modifiable
-setlocal nrformats=octal,hex,bin
+setlocal nrformats=bin,octal,hex
 set number
 setlocal number
 set numberwidth=7
@@ -681,7 +672,6 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -697,10 +687,9 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
-setlocal statuslineopt=
 setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=500
+setlocal swapfile
+setlocal synmaxcol=0
 if &syntax != 'conf'
 setlocal syntax=conf
 endif
@@ -714,7 +703,7 @@ setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
-setlocal noundofile
+setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
@@ -723,12 +712,11 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal winhighlight=
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -757,8 +745,7 @@ setlocal balloonexpr=
 setlocal nobinary
 set breakindent
 setlocal breakindent
-set breakindentopt=min:1,shift:2
-setlocal breakindentopt=min:1,shift:2
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -774,9 +761,7 @@ setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
 setlocal completefunc=
 setlocal completeopt=
-set concealcursor=nic
 setlocal concealcursor=inc
-set conceallevel=3
 setlocal conceallevel=2
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -799,8 +784,8 @@ endif
 setlocal fillchars=
 setlocal findfunc=
 setlocal fixendofline
-set foldcolumn=4
-setlocal foldcolumn=4
+set foldcolumn=2
+setlocal foldcolumn=2
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -822,7 +807,7 @@ setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal infercase
+setlocal noinfercase
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -838,7 +823,7 @@ setlocal makeprg=
 setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
 setlocal modifiable
-setlocal nrformats=octal,hex,bin
+setlocal nrformats=bin,octal,hex
 set number
 setlocal number
 set numberwidth=7
@@ -852,7 +837,6 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -868,10 +852,9 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
-setlocal statuslineopt=
 setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=500
+setlocal swapfile
+setlocal synmaxcol=0
 if &syntax != 'conf'
 setlocal syntax=conf
 endif
@@ -885,7 +868,7 @@ setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
-setlocal noundofile
+setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
@@ -894,12 +877,11 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal winhighlight=
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -928,8 +910,7 @@ setlocal balloonexpr=
 setlocal nobinary
 set breakindent
 setlocal breakindent
-set breakindentopt=min:1,shift:2
-setlocal breakindentopt=min:1,shift:2
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -945,9 +926,7 @@ setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
 setlocal completefunc=
 setlocal completeopt=
-set concealcursor=nic
 setlocal concealcursor=inc
-set conceallevel=3
 setlocal conceallevel=2
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -970,8 +949,8 @@ endif
 setlocal fillchars=
 setlocal findfunc=
 setlocal fixendofline
-set foldcolumn=4
-setlocal foldcolumn=4
+set foldcolumn=2
+setlocal foldcolumn=2
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -993,7 +972,7 @@ setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal infercase
+setlocal noinfercase
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -1009,7 +988,7 @@ setlocal makeprg=
 setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
 setlocal modifiable
-setlocal nrformats=octal,hex,bin
+setlocal nrformats=bin,octal,hex
 set number
 setlocal number
 set numberwidth=7
@@ -1023,7 +1002,6 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -1039,10 +1017,9 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
-setlocal statuslineopt=
 setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=500
+setlocal swapfile
+setlocal synmaxcol=0
 if &syntax != 'conf'
 setlocal syntax=conf
 endif
@@ -1056,7 +1033,7 @@ setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
-setlocal noundofile
+setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
@@ -1065,12 +1042,11 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal winhighlight=
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -1099,8 +1075,7 @@ setlocal balloonexpr=
 setlocal nobinary
 set breakindent
 setlocal breakindent
-set breakindentopt=min:1,shift:2
-setlocal breakindentopt=min:1,shift:2
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -1116,9 +1091,7 @@ setlocal commentstring=/*\ %s\ */
 setlocal complete=.,w,b,u,t,i
 setlocal completefunc=
 setlocal completeopt=
-set concealcursor=nic
 setlocal concealcursor=inc
-set conceallevel=3
 setlocal conceallevel=2
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -1141,8 +1114,8 @@ endif
 setlocal fillchars=
 setlocal findfunc=
 setlocal fixendofline
-set foldcolumn=4
-setlocal foldcolumn=4
+set foldcolumn=2
+setlocal foldcolumn=2
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -1164,7 +1137,7 @@ setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal infercase
+setlocal noinfercase
 setlocal iskeyword=@,a-z,A-Z,48-57,_,-,128-175,192-255
 setlocal keywordprg=
 setlocal lhistory=10
@@ -1180,7 +1153,7 @@ setlocal makeprg=
 setlocal matchpairs=(:),{:},[:],<:>
 setlocal modeline
 setlocal modifiable
-setlocal nrformats=octal,hex,bin
+setlocal nrformats=bin,octal,hex
 set number
 setlocal number
 set numberwidth=7
@@ -1194,7 +1167,6 @@ setlocal noreadonly
 setlocal norelativenumber
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal scrolloffpad=-1
 setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
@@ -1210,10 +1182,9 @@ setlocal spellfile=~/.vim/spell/added-by-user.utf-8.add
 setlocal spelllang=en_us,ru_ru
 setlocal spelloptions=
 setlocal statusline=
-setlocal statuslineopt=
 setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=500
+setlocal swapfile
+setlocal synmaxcol=0
 if &syntax != ''
 setlocal syntax=
 endif
@@ -1227,7 +1198,7 @@ setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal thesaurusfunc=
-setlocal noundofile
+setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
@@ -1236,12 +1207,11 @@ setlocal wincolor=
 setlocal nowinfixbuf
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal winhighlight=
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt

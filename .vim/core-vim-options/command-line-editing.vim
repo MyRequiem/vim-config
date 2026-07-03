@@ -1,15 +1,19 @@
 vim9script
 
-# Количество команд и шаблонов поиска, которые будут сохранятся в истории:
-# history, hi
-# Type: number
-# Default: 50
-set hi=100
+###
+# Настройки редактирования и поведения командной строки.
+# Name: command-line-editing
+#
+# :options
+# 21 command line editing
+###
 
-# Символ для автодополнения команд, перехода по пунктам меню:
-# wildcharm, wcm
+# Клавиша для автодополнения команд из скриптов, макросов и маппингов.
+# Если опция 'wildchar' (по умолчанию <Tab>) реагирует только на физическое
+# нажатие, то 'wildcharm' позволяет симулировать автодополнение программно.
+# Name: wildcharm (wcm)
 # Type: number
-# Default: 0
+# Default: 0 (none)
 #
 # :echo char2nr("\<Tab>") -> 9
-set wcm=9
+&wildcharm = 9

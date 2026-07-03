@@ -7,5 +7,6 @@
 .vim/spell
 .vim/swap
 .vim/view
+.vim/undo
 
 .vim/.netrwhist

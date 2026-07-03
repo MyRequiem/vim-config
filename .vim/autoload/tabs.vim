@@ -1,6 +1,7 @@
 scriptencoding utf-8
 
-" для параметра 'tabline':  показываем во вкладках только имя файла {{{1
+" Для параметра 'tabline' (core-vim-options/multiple-tab-pages.vim):
+" показываем во вкладках только имя файла.
 function tabs#ShortTabLine()
     " range(num)        -> список [0..num-1]
     " tabpagenr('$')    -> число открытых вкладок
@@ -43,4 +44,4 @@ function tabs#ShortTabLine()
     let l:ret .= '%#TabLineFill#'
 
     return l:ret
-endfunction " 1}}}
+endfunction " 1

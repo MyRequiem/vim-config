@@ -1,34 +1,29 @@
 vim9script
 
-# vint: -ProhibitAbbreviationOption
+###
+# Настройки отображения и поведения многовкладочного режима (Tab pages).
+# Определяет внешний вид верхней панели вкладок и правила её отрисовки.
+# Name: multiple-tab-pages
+#
+# :options
+# 7 multiple tab pages
+###
 
-# showtabline, stal - когда показывать строку вкладок
-#   0 - никогда
-#   1 - только если открыто более одной вкладки
-#   2 - всегда
+# Правило отображения верхней строки вкладок.
+# Name: showtabline (stal)
 # Type: number
 # Default: 1
-set stal=2
+#
+# 0 - не показывать
+# 1 - только если открыто более одной вкладки
+# 2 - всегда показывать
+&showtabline = 2
 
-# tabpagemax, tpm - максимальное количество вкладок, которое можно будет
-# создать с параметром командной строки '-p' или командой ':tab ball'
-# Type: number
-# Default: 10
-# set tpm=10
-
-# tabline, tal - определяет содержимое строки вкладок (если пустой, то строка
-# вкладок по умолчанию). См. 'help setting-tabline'
+# Кастомный шаблон для отрисовки содержимого строки вкладок.
+# Name: tabline (tal)
 # Type: string
-# Default: ""
-set tabline=%!tabs#ShortTabLine()
-
-# guitablabel, gtl - содержимое GUI-вкладок
-# Type: string
-# Default: ""
-# set gtl=
-
-# guitabtooltip - содержимое GUI-тултипов (всплавающие подсказки при наведении
-# мышкой на вкладку)
-# Type:
-# Default:
-# set gtt=
+# Default: "" (использовать стандартный системный вид)
+#
+# Конструкция '%!' заставляет Vim динамически вычислять строку, вызывая
+# функцию 'ShortTabLine()' из файла автозагрузки 'autoload/tabs.vim'.
+&tabline = '%!tabs#ShortTabLine()'

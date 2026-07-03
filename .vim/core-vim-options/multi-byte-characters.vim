@@ -1,57 +1,49 @@
 vim9script
 
-# vint: -ProhibitAbbreviationOption -ProhibitEncodingOptionAfterScriptEncoding
+###
+# Настройки обработки многобайтовых символов и кодировок (UTF-8). Корректное
+# чтение кириллицы, автоопределение кодировок файлов и терминала.
+# Name: multi-byte-characters
+#
+# :options
+# 25 multi-byte characters
+###
 
-# encoding, enc - кодировка символов: 'latin1', 'utf-8', 'euc-jp', 'big5' и т.д.
+# Внутренняя кодировка Vim для работы с символами и буферами. Установка UTF-8
+# необходима для поддержки Unicode и корректного рендеринга иконок.
+# Name: encoding (enc)
 # Type: string
-# Default: "latin1" или $LANG
-set enc=utf-8
+# Default: значение переменной окружения $LANG или "latin1"
+&encoding = 'utf-8'
 
-# fileencoding, fenc
-# character encoding for the current file
+# Кодировка по умолчанию для новых создаваемых файлов.
+# Name: fileencoding (fenc)
 # Type: string
 # Default: ""
-set fenc=utf-8
+&fileencoding = 'utf-8'
 
-# fileencodings, fencs - автоматически определять кодировку из списка
+# Список кодировок, которые Vim по очереди перебирает при открытии
+# существующего файла. Позволяет автоматически и без багов читать старый код
+# (Windows/DOS) и логи.
+# Name: fileencodings (fencs)
 # Type: string
 # Default: "ucs-bom,utf-8,default,latin1"
-set fencs=utf-8,cp1251,koi8-r,cp866,ucs-2
+&fileencodings = 'utf-8,'
+              .. 'cp1251,' # Windows (часто встречается в старом коде C++)
+              .. 'koi8-r,' # старая кодировка Unix/Linux
+              .. 'cp866,'  # кодировка DOS (для логов старого оборудования)
+              .. 'ucs-2'   # двухбайтовый Unicode
 
-# termencoding, tenc - кодировка терминала
+# Кодировка, в которой Vim общается с терминалом (эмулятором терминала).
+# Name: termencoding (tenc)
 # Type: string
 # Default: ""
-set tenc=utf-8
+&termencoding = 'utf-8'
 
-# charconver, ccv - выражение, используемое для преобразования кодировки
-# символов
+# Использовать встроенный внутренний движок Vim для изменения регистра букв
+# (gu, gU, ~). Исключает баги системных библиотек Linux (towupper/towlower)
+# при работе с кириллицей в UTF-8.
+# Name: casemap (cmp)
 # Type: string
-# Default: ""
-# set ccv=
-
-# delcombine, deco - метод удаления символов командой 'x' в normal mode. Полезен
-# для арабского, иврита и многих других языков, где одна буква может иметь
-# комбинацию символов поверх базовых символов
-# Type: boolean
-# Default: off
-# set nodeco
-
-# maxcombine, mco - максимальное количество комбинируемых символов, которые
-# будут отображаться (только для unicode. Иврит может потребовать значения 4,
-# максимальное значение 6)
-# Type: number
-# Default: 2
-# set mco=2
-
-# ambiwidth, ambw - ширина символов, имеющих неоднозначную ширину (символы евро,
-# зарегистрированный товарный знак, знак авторского права и т.д.)
-#   single  - использовать ту же ширину, что и символы в US-ASCII
-#   double  - использовать удвоенную ширину символов ASCII
-# Type: string
-# Default: "single"
-# set ambw=single
-
-# emoji, emo - не уменьшать ширину юникодных смайликов
-# Type: boolean
-# Default: on
-# set emo
+# Default: "internal,keepascii"
+&casemap = 'internal'

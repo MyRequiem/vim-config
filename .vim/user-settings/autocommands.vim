@@ -1,20 +1,20 @@
 scriptencoding utf-8
 
-" убираем в командной строке таймаут ввода маппингов {{{1
+" убираем в командной строке таймаут ввода маппингов
 augroup cmdlinetimeout
     autocmd!
     autocmd CmdlineEnter * setlocal timeoutlen=0
     autocmd CmdlineLeave * setlocal timeoutlen=1000
-augroup end " 1}}}
+augroup end
 
-" не подсвечивать текущую строку в insert mode {{{1
+" не подсвечивать текущую строку в insert mode
 augroup icursorline
     autocmd!
     autocmd InsertEnter * setlocal nocursorline
     autocmd InsertLeave * setlocal cursorline
-augroup end " 1}}}
+augroup end
 
-" подсветка пробелов в конце строк, комбинаций Tab+Space, Space+Tab {{{1
+" подсветка пробелов в конце строк, комбинаций Tab+Space, Space+Tab
 augroup trailing_spases
     autocmd!
     " в read-only буферах (help, man, quickfix и т.д.) ничего не подсвечиваем
@@ -34,9 +34,9 @@ augroup trailing_spases
                         \ '\v(\s|\t)+$|\t+\s+(\t+)?|\s+\t+(\s+)?',
                         \ -1)
         \ | endif
-augroup end " 1}}}
+augroup end
 
-" изменяем цвет status bar в зависимости от текущего режима Vim {{{1
+" изменяем цвет status bar в зависимости от текущего режима Vim
 augroup statusbarcolor
     autocmd!
     " нет никаких событий для autocmd при входе/выходе из режима visual,
@@ -56,4 +56,4 @@ augroup statusbarcolor
     " устанавливаем цвет status bar в normal mode
     autocmd BufEnter,InsertLeave,BufWritePost,TextChanged *
         \ call statusbar#SetStatusBarColorNormal()
-augroup end " 1}}}
+augroup end
