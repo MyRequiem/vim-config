@@ -7,7 +7,7 @@ endif
 
 let g:colors_name = 'myrequiem'
 
-" Info {{{1
+" Info
 "-------------------------------------------------------------------------------
 " :help syntax                          - справка
 " :source $VIMRUNTIME/syntax/hitest.vim - все параметры (скрипт выводит ошибку
@@ -39,9 +39,9 @@ let g:colors_name = 'myrequiem'
 " 12  Red, LightRed
 " 13  Magenta, LightMagenta
 " 14  Yellow, LightYellow
-" 15  White 1}}}
+" 15  White
 
-" Highlights {{{1
+" Highlights
 " обычный текст
 highlight Normal            term=NONE cterm=bold ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=#FFFFFF guibg=#000000
 " темносерый на черном
@@ -77,7 +77,7 @@ else
     highlight Comment       term=NONE cterm=NONE ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#55FF55 guibg=#000000
 endif
 
-if g:term_256_color " {{{2
+if g:term_256_color
     " сиволы, которые отображаются в буфере но не присутствуют в тексте('»', '«', '¬', '@@@' и т.д.)
     highlight NonText           term=NONE cterm=NONE ctermfg=27   ctermbg=0    gui=NONE guisp=NONE guifg=#005FFF guibg=#000000
     " директории
@@ -157,8 +157,7 @@ if g:term_256_color " {{{2
     " скроллбар всплывающего меню
     highlight! link PmenuSbar ColorColumn
     highlight Ignore            term=NONE cterm=NONE ctermfg=233  ctermbg=0 gui=NONE guisp=NONE guifg=#121212 guibg=#000000
-    " 2}}}
-else " {{{2
+else
     highlight NonText           term=NONE cterm=bold         ctermfg=4    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight Search            term=NONE cterm=bold         ctermfg=7    ctermbg=4    gui=NONE guisp=NONE guifg=NONE guibg=NONE
     highlight Visual            term=NONE cterm=bold,inverse ctermfg=4    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
@@ -195,10 +194,9 @@ else " {{{2
     highlight! link MatchParen          CursorColumn
     highlight! link StatusFType         LineNr
     highlight! link Type                Keyword
-endif " 2}}}
-" 1}}}
+endif
 
-" Links {{{1
+" Links
 " подсветка ошибок синтаксиса в тексте
 highlight! link Error           SpecialKey
 " сообщения об ошибке в командной строке
@@ -266,4 +264,3 @@ highlight! link Include         Keyword
 highlight! link Define          Keyword
 highlight! link Macro           Keyword
 highlight! link PreCondit       Keyword
-" 1}}}
