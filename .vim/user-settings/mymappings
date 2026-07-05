@@ -1,9 +1,10 @@
 :MyMappings             открыть этот файл
+:MyPlugHotkeys          ~/.vim/plugin-settings/my-plug-hotkeys
 :Docs                   ~/docs/linux/
-:Gitdoc                 ~/docs/linux/git/
 :Vimdoc                 ~/docs/linux/vim/
+:Gitdoc                 ~/docs/linux/git/
 
-<C-v><Tab>              в режиме Insert Mode вставить реальный пробел
+<C-v><Tab>              в режиме Insert Mode вставить реальную табуляцию
 kj                      сброс режимов input и op в normal
 <C-m>                   сброс режима visual в normal
 <C-k>                   снять подсветку найденного
@@ -46,3 +47,5 @@ Y/T                     на первый символ строки, в коне
 --- Location List/Quickfix List ---
 <F4>                    открытие/закрытие
 ]e, [e, ]q, [q          следующая/предыдущая ошибка
+
+# vim:ft=conf

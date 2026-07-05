@@ -7,7 +7,8 @@ import autoload 'clearvim.vim'
 command ClearVim clearvim.ClearVim()
 
 # Открыть документацию.
-command Docs       edit $HOME/docs/linux/
-command Gitdoc     edit $HOME/docs/linux/git/
-command Vimdoc     edit $HOME/docs/linux/vim/
-command MyMappings edit $HOME/.vim/user-settings/mymappings
+command Docs          edit $HOME/docs/linux/
+command Gitdoc        edit $HOME/docs/linux/git/
+command Vimdoc        edit $HOME/docs/linux/vim/
+command MyMappings    edit $HOME/.vim/user-settings/mymappings
+command MyPlugHotkeys edit $HOME/.vim/plugin-settings/my-plug-hotkeys

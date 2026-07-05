@@ -1,40 +1,43 @@
-scriptencoding utf-8
+vim9script
 
-" ../plugin-settings/netrwPlugin.vim
+# ../plugin-settings/netrwPlugin.vim
+# ../ftplugin/netrw/netrw.vim
 
-" Показать/скрыть браузер файлов (filemanager).
-function! myNetrw#ToggleNetrw() abort
+export def ToggleNetrw()
     if exists(':Rexplore') == 2
         execute 'Rexplore'
     else
         execute 'Explore'
     endif
-endfunction
+enddef
 
-" Сохранить имя текущего файла в CLIPBOARD
-function! myNetrw#SaveFileName(mode) abort
-    " mode == 0   - только имя файла
-    " mode == 1   - полный путь к файлу
+export def SaveFileName(mode: number)
+    # mode == 0 - только имя файла
+    # mode == 1 - полный путь к файлу
 
-    " снимаем отметки со всех файлов
+    # Снимаем отметки со всех файлов.
     execute 'normal mF'
-    " очищаем список отмеченных файлов
-    " :h netrw-modify
-    call netrw#Modify('netrwmarkfilelist', [])
-    " отмечаем текущий файл
+
+    # Очищаем список отмеченных файлов (:h netrw-modify).
+    netrw#Modify('netrwmarkfilelist', [])
+
+    # Отмечаем текущий файл.
     execute 'normal mf'
-    " :h netrw-expose
-    " список отмеченных файлов содержит один текущий файл,
-    " убираем последний слеш (если это директория)
-    let l:marked_file = substitute(netrw#Expose('netrwmarkfilelist')[0],
-                                 \ '\v\/$', '', '')
-    " сохраняем в регистре '+' полный путь к файлу или только имя файла
-    let @+ = a:mode ? l:marked_file : fnamemodify(l:marked_file, ':t')
-    " снимаем все отметки
-    execute 'normal mF'
-endfunction
 
-" перейти в текущую для Vim директорию (cd {pwd})
-function! myNetrw#GoToRootDir() abort
-    execute 'edit ' . getcwd()
-endfunction
+    # Список отмеченных файлов содержит один текущий файл, убираем последний
+    # слеш (если это директория).
+    var marked_file =
+            \ substitute(netrw#Expose('netrwmarkfilelist')[0], '\v\/$', '', '')
+
+    # Сохраняем в регистр '+' полный путь к файлу или только имя файла
+    marked_file = mode ? marked_file : fnamemodify(marked_file, ':t')
+    @+ = marked_file
+    echo $"Yanked: {marked_file}"
+
+    # Снимаем все отметки
+    execute 'normal mF'
+enddef
+
+export def ToggleMarkItem()
+    execute 'normal mfj'
+enddef
