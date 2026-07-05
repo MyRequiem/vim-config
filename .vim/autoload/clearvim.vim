@@ -1,23 +1,22 @@
-scriptencoding utf-8
+vim9script
 
-function! clearvim#ClearVim()
-    let l:backup = $HOME . '/.vim/backup'
-    call delete(fnameescape(l:backup), 'rf')
-    call mkdir(l:backup, 'p', 0o755)
+### Очищает ~/.vim/{backup,view,undo}
+export def ClearVim()
+    var targets = ['backup', 'view', 'undo']
 
-    let l:view = $HOME . '/.vim/view'
-    call delete(fnameescape(l:view), 'rf')
-    call mkdir(l:view, 'p', 0o755)
+    for dir in targets
+        var full_path = $"{$HOME}/.vim/{dir}"
 
-    let l:undo = $HOME . '/.vim/undo'
-    call delete(fnameescape(l:undo), 'rf')
-    call mkdir(l:undo, 'p', 0o755)
+        # Удаляем директорию со всем содержимым.
+        delete(full_path, 'rf')
+        # Создаем обратно с правами 0o755.
+        mkdir(full_path, 'p', 0o755)
+        # Если запускали от root, вернем права обычного пользователя.
+        if get(g:, 'issuperuser', false)
+            system($"chown myrequiem:users {full_path}")
+        endif
+    endfor
 
-    if g:issuperuser
-        call system('chown myrequiem:users ' . l:backup)
-        call system('chown myrequiem:users ' . l:view)
-        call system('chown myrequiem:users ' . l:undo)
-    endif
-
-    execute 'normal! :<Esc>'
-endfunction
+    # Подавляем лишний мусор (redraw), выводим сообщение.
+    redraw | echo "Vim: backup, view и undo успешно очищены!"
+enddef

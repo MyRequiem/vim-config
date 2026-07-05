@@ -1,289 +1,185 @@
-scriptencoding utf-8
+vim9script
 
-" <leader> {{{1
-let g:mapleader = '-'
-" <localleader>
-let g:maplocalleader = '\\'
-" 1}}}
+# ../autoload/toggleTextWidth80.vim
+import autoload 'toggleTextWidth80.vim'
+# ../autoload/encodings.vim
+import autoload 'encodings.vim'
+# ../autoload/editing.vim
+import autoload 'editing.vim'
+# ../autoload/locationlist.vim
+import autoload 'locationlist.vim'
 
-" стрелки и <Backspace> не используем {{{1
-for s:prefix in ['', 'i', 'n', 'v', 'c', 'o']
-    execute s:prefix . 'map <BS> <Nop>'
-    for s:key in ['<Up>', '<Down>', '<Left>', '<Right>']
-        execute s:prefix . 'map ' . s:key . ' <Nop>'
+
+# <leader>
+g:mapleader = '-'
+# <localleader>
+g:maplocalleader = '\\'
+
+### Стрелки и <Backspace> не используем.
+var prefixes = ['', 'i', 'n', 'v', 'c', 'o']
+var keys = ['<Up>', '<Down>', '<Left>', '<Right>']
+
+for prefix in prefixes
+    # Напрямую выполняем команду map через интерполяцию строки.
+    execute $"{prefix}map <BS> <Nop>"
+
+    for key in keys
+        execute $"{prefix}map {key} <Nop>"
     endfor
 endfor
-" 1}}}
 
-" использовать режим синтаксического анализа регулярных {{{1
-" выражений, приближенный к другим языках программирования
+# Использовать режим синтаксического анализа регулярных выражений,
+# приближенный к другим языкам программирования.
 nnoremap / /\v
 nnoremap ? ?\v
-" 1}}}
 
-" сброс режимов input, visual и op в normal {{{1
-inoremap kj <Esc>
+# Сброс режимов input, op и visual в normal.
+# op - operator: например нажали 'd', Vim замирает и ждет, что именно удалить.
+inoremap kj    <Esc>
+onoremap kj    <Esc>
 vnoremap <C-m> <Esc>
-onoremap kj <Esc>
-" 1}}}
 
-" снять подсветку найденного {{{1
-nnoremap <silent><C-k> :nohlsearch<cr>
-" 1}}}
+# Снять подсветку найденного.
+nnoremap <silent><C-k> :nohlsearch<CR>
 
-" установить/снять ширину вводимого текста в 80 символов {{{1
-nnoremap <silent><leader>tw :let &textwidth = &textwidth ># 0 ? 0 : 80<cr>
-    \ :echo 'textwidth: ' . &textwidth<cr>
-" 1}}}
+# Установить/снять ширину вводимого текста в 80 символов.
+nnoremap <silent><leader>tw <ScriptCmd>toggleTextWidth80.ToggleTextWidth80()<CR>
 
-" показать/скрыть скрытые символы {{{1
-nnoremap <silent><leader>hh :setlocal list!<cr>
-" 1}}}
+# Показать/скрыть скрытые символы.
+nnoremap <silent><leader>hh :setlocal list!<CR>
 
-" редактировать/перечитать ~/vimrc {{{1
-nnoremap <silent><leader>ev :vsplit $HOME/.vimrc<cr>
-nnoremap <silent><leader>sv :source $HOME/.vimrc<cr>:nohlsearch<cr>
-" 1}}}
+# следующий/предыдущий буфер.
+nnoremap <silent><leader>bn :bnext<CR>
+nnoremap <silent><leader>bp :bprevious<CR>
+# Закрыть буфер.
+nnoremap <silent><leader>bd :bdelete<CR>
 
-" следующий/предыдущий буфер, закрыть буфер {{{1
-nnoremap <silent><leader>bn :bnext<cr>
-nnoremap <silent><leader>bp :bprevious<cr>
-nnoremap <silent><leader>bd :bdelete<cr>
-" 1}}}
-
-" отключаем просмотр man для слова под курсором по 'K'. Функционал {{{1
-" предоставляет плагин man.vim: <leader>K, :Man
+# Отключаем просмотр man для слова под курсором по 'K'. Функционал
+# предоставляет плагин man.vim: <leader>K, :Man
 nnoremap K <Nop>
-" 1}}}
 
-" системный буфер обмена: копирование/вставка (регистр "+) {{{1
-" (Vim должен быть собран с 'xterm_clipboard', опции --enable-gui=auto --with-x)
+# Копировать выделенное в CLIPBOARD
 vnoremap <silent><F7> "+y
+# Вставить из CLIPBOARD
 nnoremap <silent><F8> "+p
-" 1}}}
 
-" меню смены кодировок файлов для чтения и записи {{{1
-" ../autoload/encodings.vim
-call encodings#SetMenuEncoding('Read', ':edit ++encoding=')
+# Меню смены кодировок файлов для чтения и записи.
+encodings.SetMenuEncoding('Read', ':edit ++encoding=')
 nnoremap <leader>er :emenu Encoding.Read.<Tab>
-call encodings#SetMenuEncoding('Write', ':set fileencoding=')
+encodings.SetMenuEncoding('Write', ':set fileencoding=')
 nnoremap <leader>ew :emenu Encoding.Write.<Tab>
-" 1}}}
 
-" меню проверки правописания {{{1
-nmenu SpellLang.nospell  :set nospell<cr>
-nmenu SpellLang.ru-en    :set spell spelllang=ru_ru,en_us<cr>
-nmenu SpellLang.ru       :set spell spelllang=ru_ru<cr>
-nmenu SpellLang.en       :set spell spelllang=en_us<cr>
+# Меню проверки правописания.
+nmenu SpellLang.nospell :setlocal nospell<CR>
+nmenu SpellLang.ru-en   :setlocal spell spelllang=ru_ru,en_us<CR>
+nmenu SpellLang.ru      :setlocal spell spelllang=ru_ru<CR>
+nmenu SpellLang.en      :setlocal spell spelllang=en_us<CR>
 nnoremap <leader>sp :emenu SpellLang.<Tab>
-" 1}}}
 
-" меню выбора метода фолдинга {{{1
-nmenu Folding.show_current   :set foldmethod?<cr>
-nmenu Folding.manual         :set foldmethod=manual<cr>
-nmenu Folding.syntax         :set foldmethod=syntax<cr>
-nmenu Folding.indent         :set foldmethod=indent<cr>
-nmenu Folding.marker         :set foldmethod=marker<cr>
-nmenu Folding.expr           :set foldmethod=expr<cr>
-nmenu Folding.diff           :set foldmethod=diff<cr>
+# Меню выбора метода фолдинга.
+nmenu Folding.show_current :setlocal foldmethod?<CR>
+nmenu Folding.manual       :setlocal foldmethod=manual<CR>
+nmenu Folding.syntax       :setlocal foldmethod=syntax<CR>
+nmenu Folding.indent       :setlocal foldmethod=indent<CR>
+nmenu Folding.marker       :setlocal foldmethod=marker<CR>
+nmenu Folding.expr         :setlocal foldmethod=expr<CR>
+nmenu Folding.diff         :setlocal foldmethod=diff<CR>
 nnoremap <leader>fd :emenu Folding.<Tab>
-" 1}}}
 
-" новая вкладка/закрыть вкладку/следующая/предыдущая {{{1
-nnoremap <silent><C-t>      :tabnew<cr>
-nnoremap <silent><C-c>      :tabclose<cr>
-nnoremap <silent><leader>tn :tabnext<cr>
-nnoremap <silent><leader>tp :tabprevious<cr>
-" 1}}}
+# Новая вкладка/закрыть вкладку.
+nnoremap <silent><C-t> :tabnew<CR>
+nnoremap <silent><C-c> :tabclose<CR>
 
-" удаление конечных пробелов и табуляций во всем буфере {{{1
-" ../autoload/editing.vim
-nnoremap <silent><leader>ss :call editing#RemoveTrailingSpaces()<cr>
-" 1}}}
+# Удаление конечных пробелов и табуляций во всем буфере.
+nnoremap <silent><leader>ss <ScriptCmd>editing.RemoveTrailingSpaces()<CR>
+# Замена табуляций на пробелы во всем буфере.
+nnoremap <silent><leader>ts <ScriptCmd>editing.ReplaceTabsWithSpaces()<CR>
 
-" замена табуляций на пробелы во всем буфере {{{1
-nnoremap <silent><leader>ts :call editing#ReplaceTabsWithSpaces()<cr>
-" 1}}}
-
-" удалить строку без входа в insert mode {{{1
+# Удалить строку без входа в insert mode.
 nnoremap 'dd S<Esc>
-" 1}}}
-
-" следующее/предыдушее окно {{{1
-nnoremap <leader>wn <C-w>l
-nnoremap <leader>wp <C-w>h
+# Переход по окнам по <Tab>.
 nnoremap <Tab> <C-w><C-w>
-" 1}}}
 
-" omni autocomplit {{{1
-inoremap <C-k> <C-x><C-o>
-" 1}}}
-
-" ввод диграфов {{{1
+# Ввод диграфов (©, «, », Ψ, ...)
+# Insert mode: <leader><Ctrl+k> и затем код символа.
+# Список диграфов с кодами можно получить по команде :digraphs
+# Узнать код символа под курсором (normal mode): ga
+#    <Ψ> 936, Hex 03a8, Oct 1650, Digr Q*
+#                                      |
+#                                      это и есть вводимый код
 inoremap <leader><C-k> <C-k>
-" 1}}}
 
-" команда '*' в normal mode не переходит на следующее совпадение, {{{1
-" в visual mode подсвечивает выделенный текст во всем буфере
+# Команда '*'
+# Normal mode: поиск слова под курсором без перехода на следующее совпадение.
 nnoremap * *N
-vnoremap * y :execute ":let @/=@\""<cr>:set hlsearch<cr>
-" 1}}}
+# Visual mode: поиск выделенного текста.
+vnoremap * y :execute ":let @/=@\""<CR>:set hlsearch<CR>
 
-" копировать в локальный и системный буфер обмена (регистры @* и @+) {{{1
-" от позиции курсора и до конца строки
+# Копировать в локальный буфер и CLIPBOARD (регистры @* и @+) от позиции
+# курсора и до конца строки.
 nnoremap yY vg_"+yvg_"*y
-" 1}}}
 
-" на первый символ строки, в конец строки {{{1
+# На первый символ строки, в конец строки.
 nnoremap Y ^
 nnoremap T g_
 vnoremap Y ^
 vnoremap T g_
-" 1}}}
 
-" в visual mode (только visual line) передвигает выделенные строки {{{1
-" вниз/вверх
-" ../autoload/editing.vim
-" vnoremap <silent><C-k> <Esc>:call editing#MoveLines(visualmode(), 'up')<cr>
-" vnoremap <silent><C-j> <Esc>:call editing#MoveLines(visualmode(), 'down')<cr>
-" 1}}}
-
-" отключаем замену в режиме Visual {{{1
-vnoremap r <Nop>
-" 1}}}
-
-" Ex mode {{{1
-nnoremap <leader>ex Q
+# Ex mode (древний консольный режим Vi). Отключaем.
 nnoremap Q <Nop>
-" 1}}}
 
-" отключаем перевод Vim'a в background {{{1
+# Отключаем перевод Vim в Background.
 noremap <C-z> <Nop>
-" 1}}}
 
-" автозакрытие скобок {{{1
+# Автозакрытие кавычек, скобок.
 inoremap 'd ''<Esc>i
 inoremap "d ""<Esc>i
 inoremap (d ()<Esc>i
 inoremap [d []<Esc>i
 inoremap {d {}<Esc>i
 inoremap <d <><Esc>i
-" 1}}}
 
-" добавление/удаление ';' в конце строки {{{1
-" ../autoload/editing.vim
-nnoremap <silent>;; :call editing#ToggleSemicolonOnEndOfLine()<cr>
-" 1}}}
+# Добавление/удаление ';' в конце строки.
+nnoremap <silent>;; <ScriptCmd>editing.ToggleSemicolonOnEndOfLine()<CR>
 
-" выделение слова пробелом {{{1
-" в конце добавляем движение курсора вперед-назад 'lh' для инициации события
-" CursorHold (./autocommands.vim)
-nnoremap <Space> viwlh
-" 1}}}
+# Выделение слова пробелом.
+nnoremap <Space> viw
 
-" для команд, которые начинаются с 'q', отключаем нахрен {{{1
-"   q{symb} - запись макросов
-"   q:      - открыть окно истории команд
-nnoremap <leader>q q <Nop>
+# Отключаем команды, которые начинаются с 'q'.
+#   q{symb} - запись макросов
+#   q:      - открыть окно истории команд
 nnoremap q <Nop>
-" 1}}}
 
-" на конец/начало синтаксического блока по '{}' {{{1
-" ../autoload/editing.vim
-nmap <silent><leader>pa :call editing#GoToParentBrace()<cr>
-" 1}}}
+### Location List
+# Открытие/закрытие окна.
+nnoremap <silent><F4> <ScriptCmd>locationlist.LocationListToggle()<CR>
+# Следующая/предыдущая ошибка.
+nnoremap <silent>]e <Esc>:lnext<CR>
+nnoremap <silent>[e <Esc>:lprevious<CR>
+# Quickfix List
+nnoremap <silent>]q <Esc>:cnext<CR>
+nnoremap <silent>[q <Esc>:cprevious<CR>
 
-" нет никаких событий для autocmd при входе/выходе из режима visual, {{{1
-" поэтому для смены цвета statusbar переопределяем привязки клавиш для вызова
-" visual mode с движением курсора. Затем определяем событие CursorMoved в
-" котором проверяется режим Vim (./autocommands.vim)
-nnoremap v vlh
-nnoremap V Vlh
-nnoremap <C-v> <C-v>lh
-" 1}}}
-
-" '@@@' в insert mode вставляет email адрес, <C-c> - калькулятор {{{1
-" Для вставки в буфер между <C-r>= и <cr> можно вставлять
-" любое выражение или функцию
-" ../autoload/editing.vim
-inoremap <silent>@@@ <C-r>=editing#GetEmailAddress()<cr>
-" калькулятор
-" input('Calculate: ') - предлагает ввести выражение и его возвращает как строку
-" eval() - вычисляет строковое выражение
-inoremap <C-C> <C-R>=eval(input('Calculate: '))<CR>
-" 1}}}
-
-" изменение поведения <C-y> в insert mode {{{1
-" Обычно это сочетание копирует символ стоящий на предыдущей строке. Изменим
-" поведение таким образом, чтобы копировался символ на первой НЕ ПУСТОЙ строке
-" над текущей.
-" В случае формы с одиночным <C-r> (см. предыдущий маппинг) результат
-" последующего выражения вставляется так, как будто бы он был набран
-" непосредственно с клавиатуры, а значит, все содержащиеся в результате
-" специальные символы сохраняют значение и поведение. В случае же формы с
-" двойным <C-r> текст результата вставляется с точностью до символа, без
-" какой-либо интерпретации и последующей обработки
-" ../autoload/editing.vim
-inoremap <silent><C-y> <C-r><C-r>=editing#LookUpwards()<CR>
-" 1}}}
-
-" выравниваение операторов присваивания {{{1
-nnoremap <silent><leader>= :call editing#AlignAssignments()<CR>
-" 1}}}
-
-" открыть выделенную ссылку в браузере {{{1
-vmap <F11> "9y: !google-chrome-stable <C-r>9<CR>
-" 1}}}
-
-" открытие/закрытие окна Location List {{{1
-nnoremap <silent><F4> :call locationlist#LocationListToggle()<cr>
-" 1}}}
-
-" перерисовать экран {{{1
-" nnoremap <C-l> :redraw!<cr>
-" 1}}}
-
-" в insert mode установить все символы слова перед курсором в upper case {{{1
+# В Insert Mode установить все символы слова перед курсором в UPPER CASE
 inoremap <C-u> <Esc>bveUea
-" 1}}}
 
-" автодополнение в insert mode {{{1
-" тэгов
-inoremap <C-]> <C-X><C-]>
-" файлов
+# Автодополнение путей, файлов в Insert Mode
 inoremap <C-f> <C-X><C-f>
-" определений и макросов
-inoremap <C-d> <C-X><C-d>
-" строк целиком
-inoremap <C-l> <C-X><C-l>
-" 1}}}
 
-" поиск двух пустых строк подряд (double empty) {{{1
-nnoremap <leader>de /^\n\{2}<cr>
-" 1}}}
+# Поиск двух пустых строк подряд.
+nnoremap <leader>de /^\n\{2}<CR>
 
-" location list {{{1
-nnoremap <silent>]e <Esc>:lnext<cr>
-nnoremap <silent>[e <Esc>:lprevious<cr>
-" 1}}}
+# декодирование выделенного base64 текста
+# вывод результата в окне сообщений
+vnoremap <leader>64 y :echo system('base64 --decode', @")<CR>
+# замена кодированного текста на декодированный
+vnoremap <leader>6p :'<,'>!base64 --decode<CR>
 
-" quickfix list {{{1
-nnoremap <silent>]q <Esc>:cnext<cr>
-nnoremap <silent>[q <Esc>:cprevious<cr>
-" 1}}}
-
-" декодирование выделенного base64 текста {{{1
-" вывод результата в окне сообщений
-vnoremap <leader>64 y :echo system('base64 --decode', @")<cr>
-" замена кодированного текста на декодированный
-vnoremap <leader>6p :'<,'>!base64 --decode<cr>
-" 1}}}
-
-" командная строка {{{1
-" автодополение по совпадению уже набранного
+# ---  командная строка ---
+# автодополнение по истории
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-" перемещение
+# перемещение
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
@@ -291,12 +187,11 @@ cnoremap <C-b> <Left>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <C-d> <Del>
-" очистить всю строку
+# очистить всю строку
 cnoremap <C-u> <End><C-u>
-" отключаем не нужное
+# отключаем не нужное
 cnoremap <C-q> <Nop>
 cnoremap <C-k> <Nop>
 cnoremap <C-y> <Nop>
 cnoremap <C-l> <Nop>
 cnoremap <C-^> <Nop>
-" 1}}}

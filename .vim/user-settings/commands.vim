@@ -1,22 +1,13 @@
-scriptencoding utf-8
+vim9script
 
-" очистить ~/.vim/{backup,view}
-" ../autoload/viewandbackup.vim
-command ClearVim  call clearvim#ClearVim()
+# ../autoload/clearvim.vim
+import autoload 'clearvim.vim'
 
-command Vimdoc      edit /home/myrequiem/docs/linux/vim/
-command Gitdoc      edit /home/myrequiem/docs/linux/git/
-command Docs        edit /home/myrequiem/docs/linux/
-command Git         edit /home/myrequiem/projects/git/
-command Vimconfig   edit /home/myrequiem/.vim/
-command Gitdistr    edit
-\ /home/myrequiem/projects/git/system-config/home/myrequiem/distr/unix/
-command Gitmyreq    edit
-\ /home/myrequiem/projects/git/system-config/home/myrequiem/
-command Config      edit $HOME/.config/
+### Очистить ~/.vim/{backup,view,undo}
+command ClearVim clearvim.ClearVim()
 
-""" FTP
-command FTPVim              edit ftp://ftp.home.vim.org/pub/vim/
-command FTPSlackware        edit ftp://ftp.osuosl.org/pub/slackware/
-command FTPSlackbuilds      edit ftp://slackbuilds.org/pub/slackbuilds/
-command FTPGnu              edit ftp://ftp.gnu.org/gnu/
+# Открыть документацию.
+command Docs       edit $HOME/docs/linux/
+command Gitdoc     edit $HOME/docs/linux/git/
+command Vimdoc     edit $HOME/docs/linux/vim/
+command MyMappings edit $HOME/.vim/user-settings/mymappings

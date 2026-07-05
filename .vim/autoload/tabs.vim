@@ -1,47 +1,46 @@
-scriptencoding utf-8
+vim9script
 
-" Для параметра 'tabline' (core-vim-options/multiple-tab-pages.vim):
-" показываем во вкладках только имя файла.
-function tabs#ShortTabLine()
-    " range(num)        -> список [0..num-1]
-    " tabpagenr('$')    -> число открытых вкладок
+### Форматируем заголовки вкладок: [N filename.ext]
+# Для параметра 'tabline':
+# ../core-vim-options/multiple-tab-pages.vim
+export def ShortTabLine(): string
+    var ret = ''
+    # Номер активной вкладки (отсчет с 1).
+    var tabpageactivenr = tabpagenr()
 
-    let l:ret = ''
-    " номер активной вкладки (отсчет с 1)
-    let l:tabpageactivenr = tabpagenr()
-
+    # tabpagenr('$')       -> общее количество вкладок
+    # range(tabpagenr('$') -> [0, 1, 2]
     for i in range(tabpagenr('$'))
-        " номер вкладки
-        let l:tabnum = i + 1
-        " если вкладка активная
-        if l:tabnum == l:tabpageactivenr
-            " установим группу для подсветки активной вкладки
-            let l:ret .= '%#TabLineSel#'
+        # Номер вкладки.
+        var tabnum = i + 1
+        # Если вкладка активная.
+        if tabnum == tabpageactivenr
+            # Установим группу для подсветки активной вкладки.
+            ret ..= '%#TabLineSel#'
         else
-            " установим группу для подсветки НЕ активной вкладки
-            let l:ret .= '%#TabLine#'
+            # Установим группу для подсветки НЕ активной вкладки.
+            ret ..= '%#TabLine#'
         endif
 
-        " список номеров активных буферов для окна 1, 2, 3... во вкладке
-        " [buf_num_for_win_1, buf_num_for_win_2, ...]
-        let l:buflist = tabpagebuflist(l:tabnum)
-        " номер текущего окна во вкладке (нумерация с 1)
-        let l:winnr = tabpagewinnr(l:tabnum)
-        " имя текущего буфера
-        let l:buffername = bufname(l:buflist[l:winnr - 1])
-        " оставляем только имя файла
-        let l:filename = fnamemodify(l:buffername, ':t')
+        # Список номеров активных буферов для окон во вкладке.
+        var buflist = tabpagebuflist(tabnum)
+        # Номер текущего окна во вкладке (нумерация с 1).
+        var winnr = tabpagewinnr(tabnum)
+        # Имя текущего буфера.
+        var buffername = bufname(buflist[winnr - 1])
+        # Оставляем только имя файла.
+        var filename = fnamemodify(buffername, ':t')
 
-        " нет имени файла (пустой буфер)
-        if empty(l:filename)
-            let l:filename = 'noname'
+        # Нет имени файла (пустой буфер).
+        if empty(filename)
+            filename = 'NoName'
         endif
 
-        let l:ret .= '[' . l:tabnum . ' ' . l:filename . '] '
+        ret ..= $'[{tabnum} {filename}] '
     endfor
 
-    " заполняем лишнее пространство
-    let l:ret .= '%#TabLineFill#'
+    # Заполняем лишнее пространство.
+    ret ..= '%#TabLineFill#'
 
-    return l:ret
-endfunction " 1
+    return ret
+enddef

@@ -39,7 +39,7 @@ scriptencoding utf-8
 " R             - переименовать файл
 
 " ../autoload/myNetrw.vim
-" копировать имя файла/полный путь к файлу
+" Копировать имя файла/полный путь к файлу.
 nnoremap <silent>yf     :call myNetrw#SaveFileName(0)<cr>
 nnoremap <silent>yF     :call myNetrw#SaveFileName(1)<cr>
 

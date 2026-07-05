@@ -1,20 +1,27 @@
-scriptencoding utf-8
+vim9script
 
-" открытие/закрытие Location List {{{1
-function! locationlist#LocationListToggle()
-    let g:locationlist_is_open = get(g:, 'locationlist_is_open', 0)
-    if g:locationlist_is_open || &filetype ==# 'qf'
+### Переключение окна Location List (по <F4> ../user-settings/mappings.vim ).
+
+# Экспортируем переменную наружу (для чтения другими файлами).
+export var locationlist_is_open = false
+
+# Экспортируем функцию сброса состояния при закрытии через :q
+export def ResetState()
+    locationlist_is_open = false
+enddef
+
+export def LocationListToggle()
+    if locationlist_is_open || &l:filetype == 'qf'
         lclose
-        let g:locationlist_is_open = 0
+        locationlist_is_open = false
     else
-        try
-            lopen
-        catch
+        if empty(getloclist(0))
+            echo "Vim: Список локаций пуст"
             return
-        endtry
+        endif
 
-        " переместим окно вниз на всю ширину
-        execute "normal! \<C-w>J"
-        let g:locationlist_is_open = 1
+        lopen
+        wincmd J
+        locationlist_is_open = true
     endif
-endfunction " 1}}}
+enddef

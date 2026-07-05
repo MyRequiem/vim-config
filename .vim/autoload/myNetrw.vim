@@ -1,15 +1,17 @@
 scriptencoding utf-8
 
-" показать/убрать браузер файлов {{{1
+" ../plugin-settings/netrwPlugin.vim
+
+" Показать/скрыть браузер файлов (filemanager).
 function! myNetrw#ToggleNetrw() abort
     if exists(':Rexplore') == 2
         execute 'Rexplore'
     else
         execute 'Explore'
     endif
-endfunction " 1}}}
+endfunction
 
-" сохранить имя текущего файла в system clipboard {{{1
+" Сохранить имя текущего файла в CLIPBOARD
 function! myNetrw#SaveFileName(mode) abort
     " mode == 0   - только имя файла
     " mode == 1   - полный путь к файлу
@@ -32,7 +34,7 @@ function! myNetrw#SaveFileName(mode) abort
     execute 'normal mF'
 endfunction
 
-" перейти в текущую для Vim директорию (cd {pwd}) {{{1
+" перейти в текущую для Vim директорию (cd {pwd})
 function! myNetrw#GoToRootDir() abort
     execute 'edit ' . getcwd()
-endfunction " 1}}}
+endfunction

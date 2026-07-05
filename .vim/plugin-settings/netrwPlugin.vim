@@ -1,22 +1,18 @@
 scriptencoding utf-8
 
-" /usr/share/vim/vim81/plugin/netrwPlugin.vim
 " :h pi_netrw.txt
 
-" Все настройки:
-"   :NetrwSettings
-
-" цветовая схема:
+" Цветовая схема.
 " ~/.vim/after/syntax/netrw.vim
 
-" переопределение клавиш
+" Переопределение клавиш.
 " ~/.vim/ftplugin/netrw/netrw.vim
 
-" отключаем загрузку плагина
+" Отключаем загрузку плагина.
 " let g:loaded_netrw       = 1
 " let g:loaded_netrwPlugin = 1
 
-" показать/скрыть Netrw
+" Показать/скрыть Netrw
 " ../autoload/myNetrw.vim
 nnoremap <silent><F2>   :call myNetrw#ToggleNetrw()<cr>
 

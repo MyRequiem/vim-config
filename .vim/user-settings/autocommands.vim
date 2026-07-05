@@ -1,59 +1,63 @@
-scriptencoding utf-8
+vim9script
 
-" убираем в командной строке таймаут ввода маппингов
+# ../autoload/statusbar.vim
+import autoload 'statusbar.vim'
+# ../autoload/locationlist.vim
+import autoload 'locationlist.vim'
+
+# Раздражает задержка параметра timeoutlen (ожидает ввода маппинга) при выходе
+# из командной строки.
 augroup cmdlinetimeout
     autocmd!
-    autocmd CmdlineEnter * setlocal timeoutlen=0
-    autocmd CmdlineLeave * setlocal timeoutlen=1000
-augroup end
+    autocmd CmdlineEnter * &l:timeoutlen = 0
+    autocmd CmdlineLeave * &l:timeoutlen = 800
+augroup END
 
-" не подсвечивать текущую строку в insert mode
+# Не подсвечивать текущую строку в Insert Mode.
 augroup icursorline
     autocmd!
-    autocmd InsertEnter * setlocal nocursorline
-    autocmd InsertLeave * setlocal cursorline
-augroup end
+    autocmd InsertEnter * &l:cursorline = false
+    autocmd InsertLeave * &l:cursorline = true
+augroup END
 
-" подсветка пробелов в конце строк, комбинаций Tab+Space, Space+Tab
+# Подсветка пробелов в конце строк, комбинаций Tab+Space, Space+Tab.
 augroup trailing_spases
     autocmd!
-    " в read-only буферах (help, man, quickfix и т.д.) ничего не подсвечиваем
+    # В read-only буферах ничего не подсвечиваем (проверяем &modifiable).
     autocmd BufReadPost * if &modifiable
         \ | if empty(execute('hi TrailingSpases', 'silent!'))
-        \ |     if g:term_256_color
-        \ |         highlight TrailingSpases term=NONE cterm=NONE ctermfg=4
-                        \ ctermbg=244  gui=NONE guisp=NONE guifg=#FFFFFF
-                        \ guibg=#808080
+        \ |     if get(g:, 'term_256_color', false)
+        \ |         highlight TrailingSpases term=NONE cterm=NONE ctermfg=4 ctermbg=244 gui=NONE guisp=NONE guifg=#FFFFFF guibg=#808080
         \ |     else
-        \ |         highlight TrailingSpases term=NONE cterm=bold,reverse
-                        \ ctermfg=0 ctermbg=4 gui=NONE guisp=NONE guifg=NONE
-                        \ guibg=NONE
+        \ |         highlight TrailingSpases term=NONE cterm=bold,reverse ctermfg=0 ctermbg=4 gui=NONE guisp=NONE guifg=NONE guibg=NONE
         \ |     endif
         \ | endif
-        \ | call matchadd('TrailingSpases',
-                        \ '\v(\s|\t)+$|\t+\s+(\t+)?|\s+\t+(\s+)?',
-                        \ -1)
+        \ | matchadd('TrailingSpases', '\v(\s|\t)+$|\t+\s+(\t+)?|\s+\t+(\s+)?', -1)
         \ | endif
-augroup end
+augroup END
 
-" изменяем цвет status bar в зависимости от текущего режима Vim
+# Изменяем цвет status bar в зависимости от текущего режима Vim.
 augroup statusbarcolor
     autocmd!
-    " нет никаких событий для autocmd при входе/выходе из режима visual,
-    " поэтому для смены цвета statusbar переопределяем привязки клавиш для
-    " вызова visual mode с движением курсора (./mappings.vim). Затем определяем
-    " событие CursorMoved в котором проверяется режим Vim
-    " ../autoload/statusbar.vim
-    autocmd CursorMoved * call statusbar#SetStatusBarColorVisual()
-    " при входе в insert mode меняем цвет status bar
-    " ../autoload/statusbar.vim
-    autocmd InsertEnter * call statusbar#SetStatusBarColorInsert()
-    " событие CursorHold инициируется только в режиме normal mode, если
-    " пользователь не нажимает клавишу в течение времени указанного в параметре
-    " 'updatetime'
-    " ../autoload/statusbar.vim
-    autocmd CursorHold  * call statusbar#SetStatusBarColorNormal()
-    " устанавливаем цвет status bar в normal mode
-    autocmd BufEnter,InsertLeave,BufWritePost,TextChanged *
-        \ call statusbar#SetStatusBarColorNormal()
-augroup end
+
+    # Смена цвета строго при переключении режимов.
+    autocmd ModeChanged *:[vV\x16]* statusbar.SetStatusBarColorVisual()
+    autocmd ModeChanged *:[iR]*     statusbar.SetStatusBarColorInsert()
+
+    # При выходе в Normal-режим из любого другого - сразу обновляем цвет.
+    autocmd ModeChanged *:n         statusbar.SetStatusBarColorNormal()
+
+    # Обновление цвета при изменении текста, НО только в Normal-режиме.
+    autocmd BufEnter,BufWritePost,TextChanged * {
+        statusbar.SetStatusBarColorNormal()
+        :redrawtabline
+    }
+augroup END
+
+augroup locationlist_sync
+    autocmd!
+    # Перед закрытием любого окна проверяем: если это было окно
+    # quickfix/locationlist, сбрасываем переменную locationlist_is_open внутри
+    # модуля locationlist в false
+    autocmd QuitPre * if &l:filetype == 'qf' | locationlist.ResetState() | endif
+augroup END

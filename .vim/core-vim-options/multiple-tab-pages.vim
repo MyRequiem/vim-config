@@ -25,5 +25,5 @@ vim9script
 # Default: "" (использовать стандартный системный вид)
 #
 # Конструкция '%!' заставляет Vim динамически вычислять строку, вызывая
-# функцию 'ShortTabLine()' из файла автозагрузки 'autoload/tabs.vim'.
+# функцию 'ShortTabLine()' из файла автозагрузки ../autoload/tabs.vim
 &tabline = '%!tabs#ShortTabLine()'
