@@ -30,8 +30,8 @@ augroup END
 # настройки буфера
 g:netrw_bufsettings = 'nomodifiable nomodified nonumber nobuflisted '
                  \ .. 'nowrap readonly norelativenumber colorcolumn=0'
-# вид списка файлов: размер, дата, время
-g:netrw_liststyle      = 1
+# вид списка файлов (простой список)
+g:netrw_liststyle      = 0
 # каталог для сохранения .netrwbook и .netrwhist
 g:netrw_home           = $HOME .. '/.vim/'
 # отключить мышь

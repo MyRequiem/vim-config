@@ -18,7 +18,7 @@ nnoremap <buffer><silent><nowait> <C-r> <Plug>NetrwRefresh
 # открыть новый файл для редактирования, создать директорию
 nnoremap <buffer><silent><nowait> cf    <Plug>NetrwOpenFile
 
-nnoremap <buffer><silent><nowait> -     <Nop>
+nnoremap <buffer><silent>         -     <Nop>
 nnoremap <buffer><silent><nowait> p     <Nop>
 nnoremap <buffer><silent><nowait> P     <Nop>
 nnoremap <buffer><silent><nowait> C     <Nop>
@@ -26,7 +26,6 @@ nnoremap <buffer><silent><nowait> v     <Nop>
 nnoremap <buffer><silent><nowait> o     <Nop>
 nnoremap <buffer><silent><nowait> u     <Nop>
 nnoremap <buffer><silent><nowait> U     <Nop>
-nnoremap <buffer><silent><nowait> i     <Nop>
 nnoremap <buffer><silent><nowait> I     <Nop>
 nnoremap <buffer><silent><nowait> a     <Nop>
 nnoremap <buffer><silent><nowait> x     <Nop>

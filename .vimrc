@@ -13,7 +13,7 @@ endif
 
 # Читаем конфиги настроек и плагинов.
 for settings_dir in ['core-vim-options', 'user-settings', 'plugin-settings']
-    var files = globpath('~/.vim/' .. settings_dir, '*.vim', true, true)
+    var files = globpath($'~/.vim/{settings_dir}', '*.vim', true, true)
     for file in files
         execute 'source ' .. file
     endfor
