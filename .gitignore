@@ -1,13 +1,10 @@
-!.vim/plugin/
-.vim/plugin/*
-!.vim/plugin/__plugin__
-
 .vim/backup
 .vim/bundle
+.vim/sessions
 .vim/spell
 .vim/swap
-.vim/view
 .vim/undo
+.vim/view
 
 .vim/.netrwhist
 .vim/.netrwbook

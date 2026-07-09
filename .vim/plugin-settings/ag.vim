@@ -1,7 +1,7 @@
 vim9script
 
 ###
-# :h ag-configuration
+# :h ag.txt
 ###
 
 # Отключаем загрузку плагина.
