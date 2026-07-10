@@ -1,10 +1,14 @@
-scriptencoding utf-8
+vim9script
 
-" отключаем загрузку плагина
-" let g:loaded_man = 1
+###
+# :h man.txt
+###
 
-" комбинация клавиш для запуска (default: '<leader>K')
-" let g:man_hotkey = '<leader>K'
+# Отключаем загрузку плагина.
+# g:loaded_man = 1
 
-" окрывать man-страницу в вертикальном разделении (default: 0)
-let g:man_open_vert = 1
+# Комбинация клавиш для запуска (Default: '<leader>K').
+# g:man_hotkey = '<leader>K'
+
+# Окрывать man-страницу в вертикальном разделении (Default: 0).
+g:man_open_vert = 1

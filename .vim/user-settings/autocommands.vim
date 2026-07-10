@@ -58,6 +58,6 @@ augroup locationlist_sync
     autocmd!
     # Перед закрытием любого окна проверяем: если это было окно
     # quickfix/locationlist, сбрасываем переменную locationlist_is_open внутри
-    # модуля locationlist в false
+    # модуля locationlist в false.
     autocmd QuitPre * if &l:filetype == 'qf' | locationlist.ResetState() | endif
 augroup END
