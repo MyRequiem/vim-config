@@ -29,7 +29,6 @@ Plugin 'Yggdroot/indentLine.git',               {'name': 'indent-line.vim'}
 Plugin 'MyRequiem/man.vim.git',                 {'name': 'man.vim'}
 Plugin 'instant-markdown/vim-instant-markdown', {'name': 'markdown'}
 Plugin 'instant-markdown/instant-markdown-d',   {'name': 'markdown-d'}             " deps for vim-instant-markdown
-Plugin 'MyRequiem/vim-niji.git',                {'name': 'niji.vim'}
 Plugin 'dhruvasagar/vim-open-url.git',          {'name': 'open-url.vim'}
 Plugin 'thinca/vim-quickrun.git',               {'name': 'quickrun.vim'}
 Plugin 'MyRequiem/sessions.vim.git',            {'name': 'sessions.vim'}
