@@ -2,6 +2,8 @@ vim9script
 
 # ../autoload/toggleTextWidth80.vim
 import autoload 'toggleTextWidth80.vim'
+# ../autoload/toggleColumn81.vim
+import autoload 'toggleColumn81.vim'
 # ../autoload/encodings.vim
 import autoload 'encodings.vim'
 # ../autoload/editing.vim
@@ -44,6 +46,9 @@ nnoremap <silent><C-k> :nohlsearch<CR>
 
 # Установить/снять ширину вводимого текста в 80 символов.
 nnoremap <silent><leader>tw <ScriptCmd>toggleTextWidth80.ToggleTextWidth80()<CR>
+
+# Показать/спрятать 81 столбец.
+nnoremap <silent><leader>cc <ScriptCmd>toggleColumn81.ToggleColumn81()<CR>
 
 # Показать/скрыть скрытые символы.
 nnoremap <silent><leader>hh :setlocal list!<CR>
@@ -125,9 +130,6 @@ nnoremap T g_
 vnoremap Y ^
 vnoremap T g_
 
-# Ex mode (древний консольный режим Vi). Отключaем.
-nnoremap Q <Nop>
-
 # Отключаем перевод Vim в Background.
 noremap <C-z> <Nop>
 
@@ -149,6 +151,10 @@ nnoremap <Space> viw
 #   q{symb} - запись макросов
 #   q:      - открыть окно истории команд
 nnoremap q <Nop>
+vnoremap q <Nop>
+
+# Ex mode (древний консольный режим Vi). Отключaем.
+nnoremap Q <Nop>
 
 ### Location List
 # Открытие/закрытие окна.

@@ -29,12 +29,12 @@ export def SaveFileName(mode: number)
     var marked_file =
             \ substitute(netrw#Expose('netrwmarkfilelist')[0], '\v\/$', '', '')
 
-    # Сохраняем в регистр '+' полный путь к файлу или только имя файла
+    # Сохраняем в регистр '+' полный путь к файлу или только имя файла.
     marked_file = mode ? marked_file : fnamemodify(marked_file, ':t')
     @+ = marked_file
     echo $"Yanked: {marked_file}"
 
-    # Снимаем все отметки
+    # Снимаем все отметки.
     execute 'normal mF'
 enddef
 

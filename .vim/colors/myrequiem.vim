@@ -1,266 +1,275 @@
-scriptencoding utf-8
+vim9script
 
+g:colors_name = 'myrequiem'
+
+# Info
+#-------------------------------------------------------------------------------
+# :help syntax                          - справка
+# :source $VIMRUNTIME/syntax/hitest.vim - все параметры (скрипт выводит ошибку
+#                                           если установлен параметр
+#                                           wildcharm, wcm
+# :highlight                            - показать все текущие группы
+# :[verbose] highlight <group_name>     - показать текущие параметры для группы
+#-------------------------------------------------------------------------------
+
+# ==============================================================================
+# КОМАНДА ДЛЯ ОТЛАДКИ ЦВЕТОВ (Инспектор синтаксиса под курсором).
+# Наведи курсор на любое слово и выполни :ColorSpy
+# Выведет: имя текущей группы -> к какой базовой группе она привязана (линк)
+# Например окраска слова struct:
+#    Текст: 'struct' | Группа: cStructure -> Линк на: Type
+# ==============================================================================
+command! ColorSpy echo "Текст: '" .. expand("<cword>") .. "' | Группа: " .. synIDattr(synID(line('.'), col('.'), 1), 'name') .. " -> Линк на: " .. synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
+
+# term, termfg, termbg     - для старых черно-белых терминалов
+# cterm, ctermfg, ctermbg  - для цветных терминалов
+# gui, guifg, guibg        - для графического режима (gvim)
+#
+# Значения cterm и gui:
+#    reverse, bold, underline, undercurl, inverse, italic, standout,
+#    nocombine, strikethrough, NONE
+#
+# 0  Black       #000000
+# 1  DarkRed     #AA0000
+# 2  DarkGreen   #00AA00
+# 3  DarkYellow  #AA5500
+# 4  DarkBlue    #0000AA
+# 5  DarkMagenta #AA00AA
+# 6  DarkCyan    #00AAAA
+# 7  LightGray   #AAAAAA
+# 8  DarkGray    #555555
+# 9  Red         #FF5555
+# 10 Green       #55FF55
+# 11 Yellow      #FFFF55
+# 12 Blue        #5555FF
+# 13 Magenta     #FF55FF
+# 14 Cyan        #55FFFF
+# 15 White       #FFFFFF
+
+# Сбрасываем цвета всех установленных из коробки цветовых групп Vim в значения
+# по умолчанию. Новые группы, которые неизвестны Vim (например, добавленные
+# пользователем вручную или плагинами) останутся, но будут сброшены:
+# MyGroup xxx ctermfg=14 ctermbg=7 => MyGroup xxx cleared"
 highlight clear
 if exists('syntax_on')
+    # Перезапускаем движок синтаксиса, чтобы плагины и языки заново применили
+    # свои правила разметки.
     syntax reset
 endif
 
-let g:colors_name = 'myrequiem'
-
-" Info
-"-------------------------------------------------------------------------------
-" :help syntax                          - справка
-" :source $VIMRUNTIME/syntax/hitest.vim - все параметры (скрипт выводит ошибку
-"                                           если установлен параметр
-"                                           wildcharm, wcm
-" :hi                                   - показать все текущие группы
-" :[verbose] hi <group_name>            - показать текущие параметры для группы
-"-------------------------------------------------------------------------------
-" foreground/background:
-"   ctermfg/ctermbg - color terminal
-"   guifg/guibg     - color GUI
-" attributes:
-"   term/cterm/gui  - reverse, bold, underline, undercurl, inverse, italic,
-"                       standout, nocombine, strikethrough, NONE
-" NR-16
-" -----
-" 0   Black
-" 1   DarkBlue
-" 2   DarkGreen
-" 3   DarkCyan
-" 4   DarkRed
-" 5   DarkMagenta
-" 6   Brown, DarkYellow
-" 7   LightGray, Gray
-" 8   DarkGray
-" 9   Blue, LightBlue
-" 10  Green, LightGreen
-" 11  Cyan, LightCyan
-" 12  Red, LightRed
-" 13  Magenta, LightMagenta
-" 14  Yellow, LightYellow
-" 15  White
-
-" Highlights
-" обычный текст
-highlight Normal            term=NONE cterm=bold ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=#FFFFFF guibg=#000000
-" темносерый на черном
-highlight DarkGrayOnBlack   term=NONE cterm=bold ctermfg=0    ctermbg=0    gui=NONE guisp=NONE guifg=#555555 guibg=#000000
-" сообщение '-- More --'
-highlight MoreMsg           term=NONE cterm=bold ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#00AA00 guibg=#000000
-" специальные символы: ^H, ^M, ^F, ^I, ...
-highlight SpecialKey        term=NONE cterm=bold ctermfg=1    ctermbg=0    gui=NONE guisp=NONE guifg=#FF5555 guibg=#000000
-" идентификаторы: var, this и т.д.
-highlight Identifier        term=NONE cterm=NONE ctermfg=3    ctermbg=0    gui=NONE guisp=NONE guifg=#AA5500 guibg=#000000
-" отображние текущего режима в командной строке '-- INSERT --', '-- VISUAL --', '-- REPLACE --' и т.д.
-highlight ModeMsg           term=NONE cterm=bold ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#55FF55 guibg=#000000
-" номер строки
-highlight LineNr            term=NONE cterm=bold ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=#55FFFF guibg=#000000
-" окно терминала (:term)
-highlight Terminal          term=NONE cterm=NONE ctermfg=NONE ctermbg=0    gui=NONE guisp=NONE guifg=NONE    guibg=#000000
-" текущий пункт меню автодополнения команд
-highlight WildMenu          term=NONE cterm=bold ctermfg=3    ctermbg=NONE gui=NONE guisp=NONE guifg=#FFFF55 guibg=NONE
-" курсор (для GUI)
-highlight Cursor            term=NONE cterm=NONE ctermfg=0    ctermbg=0    gui=NONE guisp=NONE guifg=#000000 guibg=#FFFFFF
-" константы
-highlight Constant          term=NONE cterm=bold ctermfg=4    ctermbg=0    gui=NONE guisp=NONE guifg=#5555FF guibg=#000000
-" строки
-highlight String            term=NONE cterm=bold ctermfg=5    ctermbg=0    gui=NONE guisp=NONE guifg=#FF55FF guibg=#000000
-" колонка с левой стороны окна для меток: ошибки, предупреждения, метки git и т.д.
-highlight SignColumn        term=NONE cterm=NONE ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=#00AAAA guibg=#000000
-" целые числа
-highlight Number            term=NONE cterm=bold ctermfg=1   ctermbg=0    gui=NONE guisp=NONE guifg=#AA0000 guibg=#000000
-if g:issuperuser
-    " комментарии
-    highlight Comment       term=NONE cterm=NONE ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=#FF5555 guibg=#000000
-else
-    highlight Comment       term=NONE cterm=NONE ctermfg=2    ctermbg=0    gui=NONE guisp=NONE guifg=#55FF55 guibg=#000000
-endif
-
+# Тотальная зачистка эффектов (bold, underline, reverse) только для реальных
+# групп. Ссылки (links) этот цикл не трогает.
+for group in getcompletion('', 'highlight')
+    # hlID(group)  - внутренний уникальный ID текущей проверяемой группы
+    # synIDtrans() - пытается разрешить ссылку. Если группа Character ссылается
+    #    на String, то для Character функция вернет ID группы String. В итоге
+    #    ID группы Character != ID группы String -> значит ссылка
+    if hlID(group) == synIDtrans(hlID(group))
+        execute($'highlight {group} term=NONE cterm=NONE gui=NONE')
+    endif
+endfor
+# ------------------------------------------------------------------------------
+highlight Normal ctermfg=15 ctermbg=0 guifg=#FFFFFF guibg=#000000
+# ------------------------------------------------------------------------------
 if g:term_256_color
-    " сиволы, которые отображаются в буфере но не присутствуют в тексте('»', '«', '¬', '@@@' и т.д.)
-    highlight NonText           term=NONE cterm=NONE ctermfg=27   ctermbg=0    gui=NONE guisp=NONE guifg=#005FFF guibg=#000000
-    " директории
-    highlight Directory         term=NONE cterm=NONE ctermfg=172  ctermbg=0    gui=NONE guisp=NONE guifg=#D78700 guibg=#000000
-    " предупреждения в командной строке
-    highlight WarningMsg        term=NONE cterm=NONE ctermfg=51   ctermbg=0    gui=NONE guisp=NONE guifg=#00FFFF guibg=#000000
-    " подсветка найденного шаблона
-    highlight Search            term=NONE cterm=NONE ctermfg=15   ctermbg=20   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#0000D7
-    " выделение в режиме 'visual'
-    highlight Visual            term=NONE cterm=NONE ctermfg=15   ctermbg=12   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#5555FF
-    " строка статуса активного/не активного окна
-    highlight StatusLine        term=NONE cterm=NONE ctermfg=14   ctermbg=236  gui=NONE guisp=NONE guifg=#55FFFF guibg=#303030
-    highlight StatusLineNC      term=NONE cterm=NONE ctermfg=8    ctermbg=236  gui=NONE guisp=NONE guifg=#555555 guibg=#303030
-    " строка статуса активного/не активного окна терминала ':term'
-    highlight StatusLineTerm    term=NONE cterm=NONE ctermfg=13   ctermbg=233  gui=NONE guisp=NONE guifg=#FF55FF guibg=#121212
-    highlight StatusLineTermNC  term=NONE cterm=NONE ctermfg=8    ctermbg=233  gui=NONE guisp=NONE guifg=#555555 guibg=#121212
-    " добавленная строка в vimdiff
-    highlight DiffAdd           term=NONE cterm=NONE ctermfg=NONE ctermbg=22   gui=NONE guisp=NONE guifg=NONE    guibg=#005F00
-    " измененная строка в vimdiff
-    highlight DiffChange        term=NONE cterm=NONE ctermfg=NONE ctermbg=32   gui=NONE guisp=NONE guifg=NONE    guibg=#0087D7
-    " удаленная строка в vimdiff
-    highlight DiffDelete        term=NONE cterm=NONE ctermfg=7    ctermbg=88   gui=NONE guisp=NONE guifg=#AAAAAA guibg=#870000
-    " измененный текст в vimdiff
-    highlight DiffText          term=NONE cterm=NONE ctermfg=NONE ctermbg=19   gui=NONE guisp=NONE guifg=NONE    guibg=#0000AF
-    " не распознанное слово при проверке орфографии
-    highlight SpellBad          term=NONE cterm=NONE ctermfg=15   ctermbg=89   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#87005F
-    " слово, которое должно начинаться с заглавной буквы
-    highlight SpellCap          term=NONE cterm=NONE ctermfg=15   ctermbg=33   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#0087FF
-    " слово на другом языке
-    highlight SpellLocal        term=NONE cterm=NONE ctermfg=15   ctermbg=22   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#005F00
-    " цвет колонки, указанной в параметре 'colorcolumn'
-    highlight ColorColumn       term=NONE cterm=NONE ctermfg=NONE ctermbg=236  gui=NONE guisp=NONE guifg=NONE    guibg=#303030
-    " колонка где находится курсор (см. 'cursorcolumn')
-    highlight CursorColumn      term=NONE cterm=NONE ctermfg=NONE ctermbg=237  gui=NONE guisp=NONE guifg=NONE    guibg=#3A3A3A
-    " всплывающее меню
-    highlight Pmenu             term=NONE cterm=NONE ctermfg=244  ctermbg=235  gui=NONE guisp=NONE guifg=#808080 guibg=#262626
-    " текущий пункт во всплывающем меню
-    highlight PmenuSel          term=NONE cterm=NONE ctermfg=15   ctermbg=60   gui=NONE guisp=NONE guifg=#FFFFFF guibg=#5F5F87
-    " бегунок в скроллбаре всплывающего меню
-    highlight PmenuThumb        term=NONE cterm=NONE ctermfg=NONE ctermbg=240  gui=NONE guisp=NONE guifg=NONE    guibg=#585858
-    " не активная вкладка
-    highlight TabLine           term=NONE cterm=NONE ctermfg=15   ctermbg=242  gui=NONE guisp=NONE guifg=#FFFFFF guibg=#6C6C6C
-    " свободное место строки вкладок
-    highlight TabLineFill       term=NONE cterm=NONE ctermfg=NONE ctermbg=238  gui=NONE guisp=NONE guifg=NONE    guibg=#444444
-    " строка со свернутым текстом (folding)
-    highlight Folded            term=NONE cterm=NONE ctermfg=94   ctermbg=0    gui=NONE guisp=NONE guifg=#875F00 guibg=#000000
-    " парные скобки: (), [], {}
-    highlight MatchParen        term=NONE cterm=NONE ctermfg=NONE ctermbg=241  gui=NONE guisp=NONE guifg=NONE    guibg=#626262
-    " тип файла в status bar
-    highlight StatusFType       term=NONE cterm=NONE ctermfg=14   ctermbg=236  gui=NONE guisp=NONE guifg=#00AAAA guibg=#303030
-    " формат файла в status bar: utf-8 [unix]
-    highlight StatusFFormat     term=NONE cterm=NONE ctermfg=7    ctermbg=236  gui=NONE guisp=NONE guifg=#AAAAAA guibg=#303030
-    " позиция курсора в status bar
-    highlight StatusFPos        term=NONE cterm=NONE ctermfg=15   ctermbg=236  gui=NONE guisp=NONE guifg=#FFFFFF guibg=#303030
-    " атрибуты html тэгов
-    highlight Type              term=NONE cterm=NONE ctermfg=121  ctermbg=0    gui=NONE guisp=NONE guifg=#87FFAF guibg=#000000
-    " ключевые слова
-    highlight Keyword           term=NONE cterm=NONE ctermfg=81   ctermbg=0    gui=NONE guisp=NONE guifg=#5FD7FF guibg=#000000
-    " TODO, FIXME, XXX
-    highlight Todo              term=NONE cterm=NONE ctermfg=9    ctermbg=19   gui=NONE guisp=NONE guifg=#FF5555 guibg=#0000AF
+    # Base:
+    highlight LineNr            ctermfg=14   ctermbg=0    guifg=#55FFFF guibg=#000000 # номера строк
+    highlight CursorLineNr      ctermfg=9    ctermbg=0    guifg=#FF5555 guibg=#000000 # номер текущей строки
+    highlight ColorColumn       ctermfg=NONE ctermbg=236  guifg=NONE    guibg=#303030 # колонка, указанные в параметре &colorcolumn
+    highlight MatchParen        ctermfg=NONE ctermbg=241  guifg=NONE    guibg=#626262 # парные скобки: (), [], {}
+    highlight Search            ctermfg=15   ctermbg=4    guifg=#FFFFFF guibg=#0000AA # подсветка найденного шаблона поиска
+    highlight WildMenu          ctermfg=11   ctermbg=NONE guifg=#FFFF55 guibg=NONE    # подсветка выбранного элемента в меню автодополнения в командной строке
+    highlight Directory         ctermfg=172  ctermbg=0    guifg=#D78700 guibg=#000000 # директория
+    highlight Visual            ctermfg=15   ctermbg=12   guifg=#FFFFFF guibg=#005FFF # выделение в режиме Visual
+    highlight NonText           ctermfg=27   ctermbg=0    guifg=#5555FF guibg=#000000 # '»', '«', '¬', '@@@'
+    highlight MoreMsg           ctermfg=10   ctermbg=0    guifg=#55FF55 guibg=#000000 # сообщение '-- More --'
+    highlight WarningMsg        ctermfg=51   ctermbg=0    guifg=#00FFFF guibg=#000000 # предупреждения в командной строке
+    highlight Todo              ctermfg=9    ctermbg=19   guifg=#FF5555 guibg=#0000AF # TODO, FIXME, XXX
+    # TabBar
+    highlight TabLineSel        ctermfg=14   ctermbg=236  guifg=#55FFFF guibg=#303030 # активная вкладка
+    highlight TabLine           ctermfg=15   ctermbg=242  guifg=#FFFFFF guibg=#6C6C6C # НЕ активная вкладка
+    highlight TabLineFill       ctermfg=238  ctermbg=238  guifg=#444444 guibg=#444444 # свободное место строки вкладок
+    # StatusBar
+    highlight StatusLineNC      ctermfg=7    ctermbg=236  guifg=#AAAAAA guibg=#303030 # строка статуса НЕ активного активного окна
+    highlight StatusLineTerm    ctermfg=13   ctermbg=233  guifg=#FF55FF guibg=#121212 # строка статуса активного активного окна терминала ':term'
+    highlight StatusLineTermNC  ctermfg=7    ctermbg=233  guifg=#AAAAAA guibg=#121212 # строка статуса НЕ активного окна терминала ':term'
+      # | Кастомный формат: ../core-vim-options/multiple-windows.vim
+        highlight StatusFType   ctermfg=6    ctermbg=236  guifg=#00AAAA guibg=#303030 # тип файла: vim, cpp, python
+        highlight StatusFPos    ctermfg=15   ctermbg=236  guifg=#FFFFFF guibg=#303030 # позиция курсора: [000184:166/000264][069%]
+    # Подсветка кода.
+    highlight Statement         ctermfg=11   ctermbg=0    guifg=#FFFF55 guibg=#000000 # if, else, for, in, while, def, return, break, switch, and, or, not
+    highlight Type              ctermfg=121  ctermbg=0    guifg=#87FFAF guibg=#000000 # атрибуты html тэгов, int, char, float, double, bool, class, struct, list, dict, ...
+    highlight Keyword           ctermfg=81   ctermbg=0    guifg=#5FD7FF guibg=#000000 # function, import, export, package, include, require, fromimport, export, package, include, require, from, public, private, protected, static, this, self, super
+    highlight Constant          ctermfg=12   ctermbg=0    guifg=#5555FF guibg=#000000 # true, false, null, None, NULL
+    highlight String            ctermfg=13   ctermbg=0    guifg=#FF55FF guibg=#000000 # "строка"
+    # vimdiff
+    highlight DiffAdd           ctermfg=0    ctermbg=121  guifg=#000000 guibg=#8CFAA2 # добавленная строка
+    highlight DiffDelete        ctermfg=0    ctermbg=217  guifg=#000000 guibg=#FAAAAC # удаленная строка
+    highlight DiffChange        ctermfg=0    ctermbg=75   guifg=#000000 guibg=#52B4FF # измененная строк
+    highlight DiffText          ctermfg=15   ctermbg=21   guifg=#FFFFFF guibg=#2602F2 # измененный текст
+    # spellcheck
+    highlight SpellBad          ctermfg=15   ctermbg=89   guifg=#FFFFFF guibg=#87005F # не распознанное слово (не найдено в словарях), ошибка в слове
+    highlight SpellCap          ctermfg=15   ctermbg=33   guifg=#FFFFFF guibg=#0087FF # слово, которое должно начинаться с заглавной буквы
+    # Всплывающее меню дополнений.
+    highlight Pmenu             ctermfg=244  ctermbg=235  guifg=#808080 guibg=#262626 # общий фон и цвет текста невыбранных элементов
+    highlight PmenuSel          ctermfg=15   ctermbg=60   guifg=#FFFFFF guibg=#5F5F87 # текущий пункт
+    highlight PmenuThumb        ctermfg=NONE ctermbg=240  guifg=NONE    guibg=#585858 # бегунок в скроллбаре
 
-    " текущая строка
-    if &diff
-        " в vimdiff не подсвечиваем текущую строку
-        highlight CursorLine    NONE
-    else
-        highlight CursorLine    term=NONE cterm=NONE ctermfg=NONE ctermbg=235  gui=NONE guisp=NONE guifg=NONE    guibg=#3A3A3A
-    endif
+    # текущая строка (в vimdiff не подсвечиваем)
+    execute(&diff ? 'highlight clear CursorLine' : 'highlight CursorLine ctermbg=235 guibg=#262626')
+    # колонка вертикального разделения буферов
+    execute('highlight VertSplit ' .. (g:issuperuser ? 'ctermfg=8 guifg=#555555' : 'ctermfg=0 guifg=#000000 ctermbg=8 guibg=#555555'))
 
-    if g:issuperuser
-        " колонка вертикального разделения буферов
-        highlight! link VertSplit DarkGrayOnBlack
-    else
-        highlight VertSplit     term=NONE cterm=NONE ctermfg=0 ctermbg=242 gui=NONE guisp=NONE guifg=#000000 guibg=#6C6C6C
-    endif
-
-    " скроллбар всплывающего меню
-    highlight! link PmenuSbar ColorColumn
-    highlight Ignore            term=NONE cterm=NONE ctermfg=233  ctermbg=0 gui=NONE guisp=NONE guifg=#121212 guibg=#000000
+    execute("highlight clear StatusFFormat\nhighlight link StatusFFormat StatusLineNC") # формат файла: utf-8 [unix]
 else
-    highlight NonText           term=NONE cterm=bold         ctermfg=4    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight Search            term=NONE cterm=bold         ctermfg=7    ctermbg=4    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight Visual            term=NONE cterm=bold,inverse ctermfg=4    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight DiffAdd           term=NONE cterm=bold         ctermfg=7    ctermbg=2    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight DiffDelete        term=NONE cterm=NONE         ctermfg=7    ctermbg=1    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight DiffText          term=NONE cterm=bold         ctermfg=7    ctermbg=1    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight SpellBad          term=NONE cterm=bold         ctermfg=7    ctermbg=5    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight CursorColumn      term=NONE cterm=bold,reverse ctermfg=0    ctermbg=NONE gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight Pmenu             term=NONE cterm=bold,reverse ctermfg=0    ctermbg=7    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight PmenuSel          term=NONE cterm=bold         ctermfg=7    ctermbg=6    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight PmenuSbar         term=NONE cterm=NONE         ctermfg=NONE ctermbg=7    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight PmenuThumb        term=NONE cterm=bold,reverse ctermfg=4    ctermbg=NONE gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight Folded            term=NONE cterm=NONE         ctermfg=3    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight StatusFFormat     term=NONE cterm=NONE         ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight StatusFPos        term=NONE cterm=bold         ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight Keyword           term=NONE cterm=NONE         ctermfg=6    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight Todo              term=NONE cterm=NONE         ctermfg=1    ctermbg=4    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight Ignore            term=NONE cterm=NONE         ctermfg=7    ctermbg=0    gui=NONE guisp=NONE guifg=NONE guibg=NONE
-    highlight CursorLine        NONE
+    # В голом TTY (8 цветов + 7 виртуальных).
+    # Base:
+    highlight LineNr            ctermfg=6 ctermbg=0    cterm=bold
+    highlight CursorLineNr      ctermfg=1 ctermbg=0    cterm=bold
+    highlight ColorColumn       ctermfg=0 ctermbg=NONE cterm=reverse,bold
+    highlight Search            ctermfg=7 ctermbg=4    cterm=bold
+    highlight WildMenu          ctermfg=3 ctermbg=NONE cterm=bold
+    highlight Directory         ctermfg=3 ctermbg=0
+    highlight NonText           ctermfg=4 ctermbg=0    cterm=bold
+    highlight MoreMsg           ctermfg=2 ctermbg=0    cterm=bold
+    highlight Todo              ctermfg=1 ctermbg=4    cterm=bold
+    # TabBar
+    highlight TabLine           ctermfg=7 ctermbg=0
+    # StatusBar
+    highlight StatusLineNC      ctermfg=7 ctermbg=0    cterm=bold
+    highlight StatusLineTerm    ctermfg=5 ctermbg=0    cterm=bold
+      # |
+        highlight StatusFType   ctermfg=6 ctermbg=0
+    # Подсветка кода.
+    highlight Statement         ctermfg=3 cterm=bold
+    highlight Keyword           ctermfg=6 cterm=bold
+    highlight Constant          ctermfg=4 cterm=bold
+    highlight String            ctermfg=5 cterm=bold
+    # vimdiff
+    highlight DiffAdd           ctermfg=0 ctermbg=2
+    highlight DiffDelete        ctermfg=0 ctermbg=1
+    highlight DiffChange        ctermfg=4 ctermbg=0    cterm=bold,reverse
+    # spellcheck
+    highlight SpellBad          ctermfg=7 ctermbg=1    cterm=bold
+    # Всплывающее меню дополнений.
+    highlight Pmenu             ctermfg=0 ctermbg=7    cterm=bold,reverse
+    highlight PmenuSel          ctermfg=7 ctermbg=6    cterm=bold
+    highlight PmenuThumb        ctermfg=4 ctermbg=NONE cterm=bold,reverse
 
-    highlight! link Directory           Identifier
-    highlight! link StatusLine          LineNr
-    highlight! link StatusLineNC        DarkGrayOnBlack
-    highlight! link StatusLineTerm      String
-    highlight! link StatusLineTermNC    DarkGrayOnBlack
-    highlight! link VertSplit           DarkGrayOnBlack
-    highlight! link WarningMsg          NonText
-    highlight! link DiffChange          Search
-    highlight! link SpellCap            Search
-    highlight! link SpellLocal          DiffAdd
-    highlight! link TabLine             Pmenu
-    highlight! link TabLineFill         ColorColumn
-    highlight! link ColorColumn         CursorColumn
-    highlight! link MatchParen          CursorColumn
-    highlight! link StatusFType         LineNr
-    highlight! link Type                Keyword
+    execute("highlight clear Visual\nhighlight link Visual Search")
+    execute("highlight clear DiffText\nhighlight link DiffText Search")
+    execute("highlight clear SpellCap\nhighlight link SpellCap Search")
+    execute("highlight clear TabLineSel\nhighlight link TabLineSel LineNr")
+    execute("highlight clear StatusFPos\nhighlight link StatusFPos StatusLineNC")
+    execute("highlight clear MatchParen\nhighlight link MatchParen ColorColumn")
+    execute("highlight clear TabLineFill\nhighlight link TabLineFill ColorColumn")
+    execute("highlight clear WarningMsg\nhighlight link WarningMsg NonText")
+    execute("highlight clear StatusLineTermNC\nhighlight link StatusLineTermNC TabLine")
+    execute("highlight clear StatusFFormat\nhighlight link StatusFFormat TabLine")
+    execute("highlight clear VertSplit\nhighlight link VertSplit TabLine")
+    execute("highlight clear Type\nhighlight link Type Keyword")
+
+    highlight clear CursorLine # в TTY текущую строку не подсвечиваем
 endif
 
-" Links
-" подсветка ошибок синтаксиса в тексте
-highlight! link Error           SpecialKey
-" сообщения об ошибке в командной строке
-highlight! link ErrorMsg        SpecialKey
-" скрытые символы
-highlight! link Conceal         DarkGrayOnBlack
-" редкое слово (слово, которое почти никогда не используется)
-highlight SpellRare NONE
-" номер текущей строки
-highlight! link CursorLineNr    SpecialKey
-" backslash, specialTag, specialChar, delimiter
-highlight! link Special         SpecialKey
-" case, default
-highlight! link Label           SpecialKey
-" other syntax
-highlight! link Tag             SpecialKey
-highlight! link SpecialChar     SpecialKey
-highlight! link Delimiter       SpecialKey
-highlight! link Debug           SpecialKey
-" заполнение строк симоволом '~' после последней строки буфера
-highlight! link EndOfBuffer     NonText
-" функции
-highlight! link Function        Identifier
-" true, false
-highlight! link Boolean         Identifier
-" подсветка найденного при наборе шаблона инкрементного поиска
-highlight! link IncSearch       Search
-" выделение в режиме 'visual', но выделял текст не сам Vim
-highlight! link VisualNOS       Search
-" вопрос с выбором [Да/нет]
-highlight! link Question        MoreMsg
-" заголовок вывода таких команд как ':set all', ':autocmd'
-highlight! link Title           ModeMsg
-" typeof, new, =, *=, += и т.д.
-highlight! link Operator        ModeMsg
-" метки свернутого текста слева окна (если 'foldcolumn' > 0)
-highlight! link FoldColumn      LineNr
-" активная вкладка
-highlight! link TabLineSel      StatusLine
-" if, then, else, endif, switch, continue, break и т.д.
-highlight! link Conditional     WildMenu
-" циклы for, do, while
-highlight! link Repeat          WildMenu
-" try, catch
-highlight! link Exception       WildMenu
-" любые другие объявления
-highlight! link Statement       WildMenu
-" специальные комментарии
-highlight! link SpecialComment  Comment
-" как Cursor, но при language-mapping
-highlight! link lCursor         Cursor
-" как Cursor, но при IME режиме ввода (для Windows)
-highlight! link CursorIM        Cursor
-" символы
-highlight! link Character       String
-" числа с плавающей запятой
-highlight! link Float           Number
-" other syntax
-highlight! link StorageClass    Type
-highlight! link Structure       Type
-highlight! link Typedef         Type
-highlight! link PreProc         Keyword
-highlight! link Underlined      Keyword
-highlight! link Include         Keyword
-highlight! link Define          Keyword
-highlight! link Macro           Keyword
-highlight! link PreCondit       Keyword
+###
+# General
+###
+highlight SignColumn ctermfg=6 ctermbg=0 guifg=#00AAAA guibg=#000000 # колонка с метками Git, ошибки, предупреждения
+highlight Folded     ctermfg=3 ctermbg=0 guifg=#AA5500 guibg=#000000 # строка со свернутым текстом (фолдинг) +--  4 lines: for (i = 0; i ---
+highlight Ignore     ctermfg=7 ctermbg=0 guifg=#AAAAAA guibg=#000000 # скрытые символы
+# spellcheck, не подсвечиваем:
+highlight clear SpellRare  # редкое, устаревшее слово
+highlight clear SpellLocal # слово на другом языке
+
+execute('highlight Comment ' .. (g:issuperuser ? 'ctermfg=7 guifg=#AAAAAA' : 'ctermfg=2 guifg=#00AA00')) # комментарии
+
+### Ссылки.
+# Делаем командой 'execute' сразу 2 команды в одну строку.
+# highlight clear <group>           - очищаем
+# highlight link  <group> <target>  - устанавливаем
+execute("highlight clear FoldColumn\nhighlight link FoldColumn LineNr")         # колонка с отметками фолдинга
+execute("highlight clear SpecialComment\nhighlight link SpecialComment LineNr") # комментарии со специальными символами: @param, @return, @brief, \class
+execute("highlight clear Special \nhighlight link Special CursorLineNr")        # \n, \t, %s, %d, @decorator
+execute("highlight clear SpecialKey\nhighlight link SpecialKey CursorLineNr")   # , , 
+execute("highlight clear PmenuSbar\nhighlight link PmenuSbar ColorColumn")      # скроллбар всплывающего меню дополнений
+execute("highlight clear Identifier\nhighlight link Identifier Directory")      # var, this
+execute("highlight clear Function\nhighlight link Function Directory")          # функции
+execute("highlight clear Boolean\nhighlight link Boolean Directory")            # true, false
+execute("highlight clear ModeMsg\nhighlight link ModeMsg MoreMsg")              # отображние '-- INSERT --', '-- VISUAL --', '-- REPLACE --'
+execute("highlight clear Question\nhighlight link Question MoreMsg")            # вопрос с выбором [Да/нет]
+execute("highlight clear Title\nhighlight link Title MoreMsg")                  # заголовок вывода таких команд как ':map', ':set all', ':autocmd'
+execute("highlight clear Operator\nhighlight link Operator MoreMsg")            # typeof, new, and, or, not, in, is
+execute("highlight clear StatusLine\nhighlight link StatusLine TabLineSel")     # строка статуса активного активного окна
+execute("highlight clear PreProc\nhighlight link PreProc Keyword")              # директивы препроцессора: #include, #define, #ifdef, #ifndef, #endif, #else, #pragma, #error
+execute("highlight clear Number\nhighlight link Number CursorLineNr")
+execute("highlight clear Float\nhighlight link Float CursorLineNr")             # числа с плавающей запятой
+execute("highlight clear Terminal\nhighlight link Terminal Normal")             # окно терминала (:term)
+execute("highlight clear EndOfBuffer\nhighlight link EndOfBuffer NonText")      # заполнение строк симоволом '~' после последней строки буфера
+execute("highlight clear Error\nhighlight link Error CursorLineNr")             # подсветка ошибок синтаксиса в тексте
+execute("highlight clear ErrorMsg\nhighlight link ErrorMsg  CursorLineNr")      # сообщения об ошибке в командной строке
+execute("highlight clear Conceal \nhighlight link Conceal Ignore")              # скрытые символы <General>
+execute("highlight clear lCursor\nhighlight link lCursor Cursor")               # как Cursor, но может иметь разные раскраски для разных языков
+execute("highlight clear Label\nhighlight link Label CursorLineNr")             # start_loop:  // `start_loop:` — это Label
+execute("highlight clear SpecialChar\nhighlight link SpecialChar Special")      # \n, \t, %s, %d, @decorator
+execute("highlight clear IncSearch\nhighlight link IncSearch Search")           # подсветка найденного при наборе шаблона инкрементного поиска
+execute("highlight clear VisualNOS\nhighlight link VisualNOS Visual")           # подсветка выделенного в тех случаях, когда Vim не может использовать стандартное визуальное выделение
+execute("highlight clear Include\nhighlight link Include Keyword")
+execute("highlight clear Define\nhighlight link Define Keyword")
+execute("highlight clear Macro\nhighlight link Macro Keyword")
+execute("highlight clear PreCondit\nhighlight link PreCondit Keyword")
+
+### Раскомментировать и получить дубликаты групп с одинаковыми цветами,
+# чтобы сделать их ссылками на оригинал:
+#
+# === ГРУППЫ С ОДИНАКОВЫМИ ЦВЕТАМИ ===
+#
+# Палитра [ctermfg:NONE ctermbg:NONE guifg:bg guibg:fg]:
+#   -> Cursor, lCursor
+#
+# Палитра [ctermfg:172 ctermbg:NONE guifg:#D78700 guibg:NONE]:
+#   -> Directory, Identifier
+#
+# ...
+
+# var color_map = {}
+#
+# for group in getcompletion('', 'highlight')
+#     if hlID(group) == synIDtrans(hlID(group))
+#         # Извлекаем цвета, если пусто — пишем NONE
+#         var c_fg = synIDattr(hlID(group), 'fg', 'cterm')
+#         var c_bg = synIDattr(hlID(group), 'bg', 'cterm')
+#         var g_fg = synIDattr(hlID(group), 'fg', 'gui')
+#         var g_bg = synIDattr(hlID(group), 'bg', 'gui')
+#
+#         var cfg = c_fg == '' ? 'NONE' : c_fg
+#         var cbg = c_bg == '' ? 'NONE' : c_bg
+#         var gfg = g_fg == '' ? 'NONE' : g_fg
+#         var gbg = g_bg == '' ? 'NONE' : g_bg
+#
+#         # Если группа осталась абсолютно пустой, пропускаем её
+#         if cfg == 'NONE' && cbg == 'NONE' && gfg == 'NONE' && gbg == 'NONE'
+#             continue
+#         endif
+#
+#         # Создаем ключ для группировки
+#         var color_key = $'{cfg}|{cbg}|{gfg}|{gbg}'
+#
+#         if !has_key(color_map, color_key)
+#             color_map[color_key] = []
+#         endif
+#         add(color_map[color_key], group)
+#     endif
+# endfor
+#
+# # Выводим результат
+# echo "=== ГРУППЫ С ОДИНАКОВЫМИ ЦВЕТАМИ ==="
+# for [colors, groups] in items(color_map)
+#     if len(groups) > 1
+#         var p = split(colors, '|')
+#         echo $"\nПалитра [ctermfg:{p[0]} ctermbg:{p[1]} guifg:{p[2]} guibg:{p[3]}]:"
+#         echo $"  -> {join(groups, ', ')}"
+#     endif
+# endfor
+
+# vim:textwidth=0:nowrap

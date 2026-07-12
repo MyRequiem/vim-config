@@ -1,13 +1,13 @@
-vim9script 
+vim9script
 
 # Цвет Status Bar в Insert Mode.
 export def SetStatusBarColorInsert()
     if v:insertmode == 'i'
-        highlight StatusLine term=NONE cterm=NONE ctermfg=15 ctermbg=4 gui=NONE guisp=NONE guifg=#FFFFFF guibg=#0000AA
-        highlight TabLineSel  term=NONE cterm=NONE ctermfg=15 ctermbg=4 gui=NONE guifg=#FFFFFF guibg=#0000AA
+        highlight StatusLine ctermfg=15 guifg=#FFFFFF ctermbg=4 guibg=#0000AA
+        highlight TabLineSel ctermfg=15 guifg=#FFFFFF ctermbg=4 guibg=#0000AA
     elseif v:insertmode == 'r'
-        highlight StatusLine term=NONE cterm=NONE ctermfg=15 ctermbg=1 gui=NONE guisp=NONE guifg=#FFFFFF guibg=#AA0000
-        highlight TabLineSel  term=NONE cterm=NONE ctermfg=15 ctermbg=1 gui=NONE guifg=#FFFFFF guibg=#AA0000
+        highlight StatusLine ctermfg=15 guifg=#FFFFFF ctermbg=1 guibg=#AA0000
+        highlight TabLineSel ctermfg=15 guifg=#FFFFFF ctermbg=1 guibg=#AA0000
     endif
     exec 'redrawtabline'
 enddef
@@ -26,11 +26,11 @@ export def SetStatusBarColorNormal()
         highlight! link TabLineSel Number
     else
         if get(g:, 'term_256_color', false)
-            highlight StatusLine term=NONE cterm=NONE ctermfg=14 ctermbg=236 gui=NONE guisp=NONE guifg=#55FFFF guibg=#303030
-            highlight TabLineSel  term=NONE cterm=NONE ctermfg=14 ctermbg=236 gui=NONE guifg=#55FFFF guibg=#303030
+            highlight StatusLine ctermfg=14 guifg=#55FFFF ctermbg=236 guibg=#303030
+            highlight TabLineSel ctermfg=14 guifg=#55FFFF ctermbg=236 guibg=#303030
         else
-            highlight StatusLine term=NONE cterm=bold ctermfg=6  ctermbg=0   gui=NONE guisp=NONE guifg=NONE    guibg=NONE
-            highlight TabLineSel  term=NONE cterm=bold ctermfg=6  ctermbg=0   gui=NONE guifg=NONE    guibg=NONE
+            highlight StatusLine ctermfg=6 ctermbg=0 cterm=bold
+            highlight TabLineSel ctermfg=6 ctermbg=0 cterm=bold
         endif
     endif
     exec 'redrawtabline'

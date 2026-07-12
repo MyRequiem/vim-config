@@ -26,6 +26,7 @@ Plugin 'jlanzarotta/bufexplorer.git',           {'name': 'bufexplorer.vim'}
 Plugin 'MyRequiem/comment.vim.git',             {'name': 'comment.vim'}
 Plugin 'airblade/vim-gitgutter.git',            {'name': 'gitgutter.vim'}
 Plugin 'Yggdroot/indentLine.git',               {'name': 'indent-line.vim'}
+Plugin 'luochen1990/rainbow',                   {'name': 'rainbow.vim'}
 Plugin 'MyRequiem/man.vim.git',                 {'name': 'man.vim'}
 Plugin 'instant-markdown/vim-instant-markdown', {'name': 'markdown'}
 Plugin 'instant-markdown/instant-markdown-d',   {'name': 'markdown-d'}             " deps for vim-instant-markdown
