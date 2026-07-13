@@ -176,7 +176,7 @@ endif
 # General
 ###
 highlight SignColumn ctermfg=6 ctermbg=0 guifg=#00AAAA guibg=#000000 # колонка с метками Git, ошибки, предупреждения
-highlight Folded     ctermfg=3 ctermbg=0 guifg=#AA5500 guibg=#000000 # строка со свернутым текстом (фолдинг) +--  4 lines: for (i = 0; i ---
+highlight Identifier ctermfg=3 ctermbg=0 guifg=#AA5500 guibg=#000000 # строка со свернутым текстом (фолдинг) +--  4 lines: for (i = 0; i ---
 highlight Ignore     ctermfg=7 ctermbg=0 guifg=#AAAAAA guibg=#000000 # скрытые символы
 # spellcheck, не подсвечиваем:
 highlight clear SpellRare  # редкое, устаревшее слово
@@ -193,9 +193,9 @@ execute("highlight clear SpecialComment\nhighlight link SpecialComment LineNr") 
 execute("highlight clear Special \nhighlight link Special CursorLineNr")        # \n, \t, %s, %d, @decorator
 execute("highlight clear SpecialKey\nhighlight link SpecialKey CursorLineNr")   # , , 
 execute("highlight clear PmenuSbar\nhighlight link PmenuSbar ColorColumn")      # скроллбар всплывающего меню дополнений
-execute("highlight clear Identifier\nhighlight link Identifier Directory")      # var, this
-execute("highlight clear Function\nhighlight link Function Directory")          # функции
-execute("highlight clear Boolean\nhighlight link Boolean Directory")            # true, false
+execute("highlight clear Folded\nhighlight link Folded Identifier")             # var, this
+execute("highlight clear Function\nhighlight link Function Identifier")         # функции
+execute("highlight clear Boolean\nhighlight link Boolean Identifier")           # true, false
 execute("highlight clear ModeMsg\nhighlight link ModeMsg MoreMsg")              # отображние '-- INSERT --', '-- VISUAL --', '-- REPLACE --'
 execute("highlight clear Question\nhighlight link Question MoreMsg")            # вопрос с выбором [Да/нет]
 execute("highlight clear Title\nhighlight link Title MoreMsg")                  # заголовок вывода таких команд как ':map', ':set all', ':autocmd'

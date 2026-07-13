@@ -1,5 +1,9 @@
 vim9script
 
+# Сбрасывает стандартные стили Netrw, группирует файлы по категориям (архивы,
+# исходный код, документы, медиа, конфиги) с помощью регулярных выражений и
+# жестко привязывает их к цветовым группам редактора.
+
 # Очистка старых стилей.
 highlight netrwPlain ctermfg=7 ctermbg=0 guifg=#AAAAAA guibg=NONE
 highlight netrwTreeBarSpace NONE

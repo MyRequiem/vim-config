@@ -26,7 +26,7 @@ vim9script
 # Name: modelines (mls)
 # Type: number
 # Default: 5
-&modelines = 2
+&modelines = 1
 
 # Создавать постоянную резервную копию файла (backup) после его успешного
 # сохранения, если установлен параметр 'writebackup' (Default on).
