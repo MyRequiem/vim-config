@@ -1,7 +1,6 @@
-" vint: -ProhibitAutocmdWithNoGroup
-autocmd FileType javascript setlocal cindent nowrap
-autocmd BufWritePre *.js silent call editing#RemoveTrailingSpaces()
-autocmd BufWinEnter *.js loadview
-autocmd BufWinLeave *.js mkview
+vim9script
 
-autocmd BufEnter *_encode.user.js setlocal filetype=text nowrap
+# ftdetect/javascript.vim
+
+# Регистрируем файлы *_encode.user.js как обычный текст без переноса строк.
+autocmd BufNewFile,BufRead *_encode.user.js setlocal filetype=text nowrap

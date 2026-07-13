@@ -55,3 +55,12 @@ vim9script
 # Type: Boolean
 # Default: false
 &expandtab = true
+
+# Режим умных автоотступов, ориентированный на синтаксис языка Си и ему
+# подобных (C++, Java, JavaScript). Редактор самостоятельно сдвигает текст
+# вправо после открывающих скобок '{', выравнивает закрывающие скобки '}' и
+# делает правильные отступы внутри блоков if, for, switch.
+# Name: cindent (cin)
+# Type: Boolean
+# Default: false
+&cindent = true

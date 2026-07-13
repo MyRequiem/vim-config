@@ -11,7 +11,6 @@ import autoload 'editing.vim'
 # ../autoload/locationlist.vim
 import autoload 'locationlist.vim'
 
-
 # <leader>
 g:mapleader = '-'
 # <localleader>
