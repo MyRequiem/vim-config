@@ -40,7 +40,7 @@ highlight! link bufExplorerHidBuf       Function
 " альтернативный буфер (переход :e #)
 highlight! link bufExplorerAltBuf       Function
 " unlisted buffer
-highlight! link bufExplorerUnlBuf       DarkGrayOnBlack
+highlight! link bufExplorerUnlBuf       Ignore
 " буфер readonly, nomodifiable
 highlight! link bufExplorerLockedBuf    Number
 highlight! link bufExplorerOpenIn       Function

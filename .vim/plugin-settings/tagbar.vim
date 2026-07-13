@@ -73,12 +73,12 @@ highlight! link TagbarSignature Comment
 " символ '*' для обозначения псевдотэгов
 highlight! link TagbarPseudoID SignColumn
 " '▸', '▾'
-highlight! link TagbarFoldIcon DarkGrayOnBlack
+highlight! link TagbarFoldIcon Ignore
 " highlighting the current tag
 highlight TagbarHighlight term=NONE cterm=bold ctermfg=1 ctermbg=NONE gui=NONE guisp=NONE guifg=#FF5555 guibg=NONE
 " 'public' visibility symbol ('+')
-highlight! link TagbarVisibilityPublic DarkGrayOnBlack
+highlight! link TagbarVisibilityPublic Ignore
 " 'protected' visibility symbol
-highlight! link TagbarVisibilityProtected DarkGrayOnBlack
+highlight! link TagbarVisibilityProtected Ignore
 " 'private' visibility symbol
-highlight! link TagbarVisibilityPrivate DarkGrayOnBlack
+highlight! link TagbarVisibilityPrivate Ignore

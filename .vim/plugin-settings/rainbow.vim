@@ -21,6 +21,9 @@ g:rainbow_conf = {
         ],
     },
     'separately': {
-        'html': 0
+        'html': 0,
+        'text': 0,
+        'diff': 0,
+        'qf': 0
     }
 }

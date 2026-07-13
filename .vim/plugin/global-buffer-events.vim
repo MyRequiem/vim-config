@@ -8,10 +8,10 @@ import autoload '../autoload/editing.vim'
 augroup Vim9GlobalBufferEvents
     autocmd!
 
-    # ЧИСТОТА КОДА: Удаляем концевые пробелы перед каждым сохранением любого
-    # файла. Проверка &buftype == '' защищает служебные окна (например,
-    # BufExplorer) от искажения данных.
-    autocmd BufWritePre * if &buftype == '' | silent! call editing.RemoveTrailingSpaces() | endif
+    # ЧИСТОТА КОДА: Удаляем концевые пробелы перед каждым сохранением файла
+    # (кроме filetype=<diff|markdown>). Проверка &buftype == '' защищает
+    # служебные окна (например, BufExplorer) от искажения данных.
+    autocmd BufWritePre * if &buftype == '' && &filetype != 'diff' && &filetype != 'markdown' | silent! call editing.RemoveTrailingSpaces() | endif
     # СОСТОЯНИЕ ОКНА: Автоматически сохраняем разметку и фолдинги при закрытии
     # файла.
     autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif

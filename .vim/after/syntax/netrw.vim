@@ -14,7 +14,7 @@ highlight link netrwDir Directory
 highlight link netrwClassify Directory
 highlight link netrwMarkFile WildMenu
 highlight link netrwExe ModeMsg
-highlight link netrwTreeBar DarkGrayOnBlack
+highlight link netrwTreeBar Ignore
 highlight link netrwComment Comment
 highlight link netrwHide Comment
 highlight link netrwHidePat String
@@ -27,7 +27,7 @@ highlight link netrwQHTopic ModeMsg
 highlight link netrwCmdNote Normal
 highlight link netrwVersion Function
 highlight link netrwSymLink LineNr
-highlight link netrwLink DarkGrayOnBlack
+highlight link netrwLink Ignore
 
 syntax match netrwBak "\(\S\+ \)*\S\+\.\%(bak\|back\)\>" contains=netrwTreeBar,@NoSpell
 syntax match netrwCompress "\(\S\+ \)*\S\+\.\%(gz\|bz2\|Z\|z\|7z\|zip\|rar\|jar\|arj\|rpm\|deb\|lzma\|cab\|lha\|lzh\|zoo\|arc\|ark\|ace\|tar\|xz\|lz\|tlz\|tgz\|tbz2\)\>" contains=netrwTreeBar,@NoSpell
@@ -46,8 +46,8 @@ syntax match netrwConfigs "\(\S\+ \)*\S\+\.\%(ini\|conf\)\>" contains=netrwTreeB
 
 # Привязка типов файлов к группам цветов.
 highlight link netrwSpecFile netrwPlain
-highlight link netrwBak DarkGrayOnBlack
-highlight link netrwTmp DarkGrayOnBlack
+highlight link netrwBak Ignore
+highlight link netrwTmp Ignore
 highlight link netrwCompress Function
 highlight link netrwCompressTxz LineNr
 highlight link netrwSource SignColumn

@@ -29,4 +29,4 @@ g:ag_highlight_matches = 1
 # Цвет подсветки найденных совпадений.
 # (Default: 'highlight AgMatches ctermfg=1 guifg=#AA0000')
 g:ag_highlight_color = 'highlight AgMatches '
-                    .. 'ctermfg=9 guifg=#FF5555'
+                    .. 'ctermfg=1 cterm=bold guifg=#FF5555'

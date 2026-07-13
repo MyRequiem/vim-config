@@ -178,6 +178,8 @@ endif
 highlight SignColumn ctermfg=6 ctermbg=0 guifg=#00AAAA guibg=#000000 # колонка с метками Git, ошибки, предупреждения
 highlight Identifier ctermfg=3 ctermbg=0 guifg=#AA5500 guibg=#000000 # строка со свернутым текстом (фолдинг) +--  4 lines: for (i = 0; i ---
 highlight Ignore     ctermfg=7 ctermbg=0 guifg=#AAAAAA guibg=#000000 # скрытые символы
+highlight DarkRed    ctermfg=1 ctermbg=0 guifg=#AA0000 guibg=#000000
+highlight DarkGreen  ctermfg=2 ctermbg=0 guifg=#00AA00 guibg=#000000
 # spellcheck, не подсвечиваем:
 highlight clear SpellRare  # редкое, устаревшее слово
 highlight clear SpellLocal # слово на другом языке
