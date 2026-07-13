@@ -1,6 +1,9 @@
 vim9script
 
 ### Переключение окна Location List (по <F4> ../user-settings/mappings.vim ).
+# Импортируется в
+#    ../user-settings/autocommands.vim
+#    ../user-settings/mappings.vim
 
 # Экспортируем переменную наружу (для чтения другими файлами).
 export var locationlist_is_open = false

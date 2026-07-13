@@ -1,8 +1,9 @@
 vim9script
 
+# Используется в ../core-vim-options/multiple-tab-pages.vim для параметра
+# 'tabline'
+
 ### Форматируем заголовки вкладок: [N filename.ext]
-# Для параметра 'tabline':
-# ../core-vim-options/multiple-tab-pages.vim
 export def ShortTabLine(): string
     var ret = ''
     # Номер активной вкладки (отсчет с 1).

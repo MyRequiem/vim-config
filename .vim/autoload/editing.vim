@@ -1,5 +1,7 @@
 vim9script
 
+# Импортируется в ../user-settings/mappings.vim
+
 # Добавление/удаление ';' в конце строки.
 export def ToggleSemicolonOnEndOfLine()
     var line = getline('.')

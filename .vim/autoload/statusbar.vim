@@ -1,5 +1,7 @@
 vim9script
 
+# Импортируется в ../user-settings/autocommands.vim
+
 # Цвет Status Bar в Insert Mode.
 export def SetStatusBarColorInsert()
     if v:insertmode == 'i'

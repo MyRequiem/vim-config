@@ -1,6 +1,7 @@
 vim9script
 
 ### Очищает ~/.vim/{backup,view,undo}
+# Импортируется в ../user-settings/commands.vim
 export def ClearVim()
     var targets = ['backup', 'view', 'undo']
 

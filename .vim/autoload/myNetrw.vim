@@ -1,5 +1,6 @@
 vim9script
 
+# Импортируется в
 # ../plugin-settings/netrwPlugin.vim
 # ../ftplugin/netrw/netrw.vim
 

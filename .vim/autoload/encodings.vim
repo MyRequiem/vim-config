@@ -1,5 +1,7 @@
 vim9script
 
+# Импортируется в ../user-settings/mappings.vim
+
 # Формирует меню кодировок файлов для чтения и записи.
 export def SetMenuEncoding(mode: string, cmd: string)
     # Указываем только те кодировки, которые реально могут пригодиться.
