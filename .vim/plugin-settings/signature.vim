@@ -1,16 +1,12 @@
-scriptencoding utf-8
+vim9script
 
-" m<symbol>     - установить/снять метку
-" '<symbol>     - перейти к метке
-" <C-n>         - на следующую метку
-" m<Space>      - удалить все метки
+###
+# :h signature
+###
 
-nnoremap <silent><leader>mr :SignatureRefresh<cr>
-let g:SignatureMap = {
-    \ 'Leader'             :  'm',
-    \ 'GotoNextLineByPos': '<C-n>',
-\}
+# m<symb>    - установить/снять метку
+# '<symb>    - перейти к метке
+# <C-n>      - на следующую метку
+# m<Space>   - удалить все метки
 
-let g:SignaturePurgeConfirmation = 0
-let g:SignatureMarkTextHL        = 'WildMenu'
-let g:SignatureEnabledAtStartup  = 1
+g:SignatureMarkTextHL = 'WildMenu'

@@ -4,6 +4,11 @@ vim9script
 # :h sessions.txt
 ###
 
+# :SessionSave   {session_name}
+# :SessionList
+# :SessionLoad   {session_name}
+# :SessionDelete {session_name}
+
 # Отключаем загрузку плагина.
 # g:loaded_sessions = 1
 

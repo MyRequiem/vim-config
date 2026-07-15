@@ -1,21 +1,23 @@
-let g:snips_author                                = 'MyRequiem'
-let g:snipMate                                    = {}
-let g:snipMate.description_in_completion          = 1
-let g:snipMate.no_match_completion_feedkeys_chars = '    '
-let g:snipMate.override                           = 1
-let g:snipMate.always_choose_first                = 0
-let g:snipMate.description_in_completion          = 1
-let g:snipMate.snippet_version                    = 1
+vim9script
 
-let g:snipMate.get_snippets  = {
-    \ 'faked_function_reference': 'snipMate#GetSnippets'
-\}
-let g:snipMate.get_scopes    = {
-    \ 'faked_function_reference': 'return split(&ft,"\\.")+[&syntax, "_"]'
-\}
-let g:snipMate.scope_aliases = {
-    \ 'javascript'    : 'javascript,html',
-    \ 'html'          : 'html,javascript',
-    \ 'cpp'           : 'c',
-    \ 'php'           : 'php,html,javascript'
-\}
+###
+# :h snipMate.txt
+###
+
+# <Ctrlr>+r <Tab>    - Insert Mode: вывести все сниппеты для текущего filetype
+
+g:snipMate = {
+    # Использовать современный и быстрый парсер шаблонов Vim 9.
+    snippet_version: 1,
+    # Показывать человеческие описания сниппетов во всплывающем меню
+    # автодополнения.
+    description_in_completion: 1,
+    # Разрешить личным сниппетам перезаписывать встроенные дефолтные.
+    override: 1,
+    # Если на один триггер есть несколько сниппетов - показывать меню выбора
+    # (а не брать первый).
+    always_choose_first: 0,
+    # Что вставлять по <Tab>, если подходящего сниппета не найдено (обычный
+    # отступ)
+    no_match_completion_feedkeys_chars: '    '
+}

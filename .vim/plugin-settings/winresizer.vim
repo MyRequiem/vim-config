@@ -1,30 +1,48 @@
-scriptencoding utf-8
+vim9script
 
-" отключение плагина
-" let g:winresizer_enable = 0
+###
+# :h winresizer.txt
+###
 
-let g:winresizer_start_key     = '<C-l>'
-let g:winresizer_gui_start_key = '<C-l>'
-" режимы:
-"    r    - изменение размеров окон
-"    m    - перемещение окон
-"    f    - изменение фокуса окон
-"    e    - переключение режимов
+# <Ctrl+l>        - активация
 
-let g:winresizer_vert_resize        = 1
-let g:winresizer_horiz_resize       = 1
-let g:winresizer_gui_enable         = 1
-let g:winresizer_finish_with_escape = 0
-" h, l, j, k
-let g:winresizer_keycode_left       = 104
-let g:winresizer_keycode_down       = 106
-let g:winresizer_keycode_up         = 107
-let g:winresizer_keycode_right      = 108
-" r, m, f, e
-let g:winresizer_keycode_resize     = 114
-let g:winresizer_keycode_move       = 109
-let g:winresizer_keycode_focus      = 102
-let g:winresizer_keycode_mode       = 101
-" <Enter>, q
-let g:winresizer_keycode_finish     = 13
-let g:winresizer_keycode_cancel     = 113
+# Переключение подрежимов внутри плагина:
+#    'r' - режим изменения размера (resize)
+#    'm' - режим перемещения самого окна (move)
+#    'f' - режим изменения фокуса окон (focus)
+#    'e' - циклическое переключение режимов (mode)
+
+# Отключение плагина.
+# g:winresizer_enable = 0
+
+# Клавиша активации режима.
+g:winresizer_start_key = '<C-l>'
+
+# Величина шага изменения размера (в символах/строках за одно нажатие)
+g:winresizer_vert_resize  = 1
+g:winresizer_horiz_resize = 1
+
+# Настройка выхода:
+# 1 - по <Escape>
+# 0 - только по <Enter>/q
+g:winresizer_finish_with_escape = 0
+
+# ==============================================================================
+# НАСТРОЙКА КЛАВИШ УПРАВЛЕНИЯ (ASCII-коды символов)
+# ==============================================================================
+
+# Навигация (h, j, k, l)
+g:winresizer_keycode_left   = 104  # 'h' - сдвинуть границу влево / переместить окно влево
+g:winresizer_keycode_down   = 106  # 'j' - сдвинуть вниз
+g:winresizer_keycode_up     = 107  # 'k' - сдвинуть вверх
+g:winresizer_keycode_right  = 108  # 'l' - сдвинуть вправо
+
+# Переключение подрежимов внутри плагина
+g:winresizer_keycode_resize = 114  # 'r' - режим изменения размера (resize)
+g:winresizer_keycode_move   = 109  # 'm' - режим перемещения самого окна (move)
+g:winresizer_keycode_focus  = 102  # 'f' - режим изменения фокуса окон (focus)
+g:winresizer_keycode_mode   = 101  # 'e' - циклическое переключение режимов (mode)
+
+# Завершение работы
+g:winresizer_keycode_finish = 13   # <Enter> - применить изменения и выйти
+g:winresizer_keycode_cancel = 113  # 'q' - отменить все изменения и вернуть как было

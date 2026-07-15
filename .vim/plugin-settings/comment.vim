@@ -18,7 +18,7 @@ g:comment_hotkey_manually = 'gC'
 # g:comment_blank_lines = 1
 
 # Символ комментария по умолчанию (Default: /* %s */).
-g:comment_default_chars    = '# %s'
+g:comment_default_chars   = '# %s'
 
 # Символы комментариев установленные пользователем для указанных &filetype.
 # Синтаксис:

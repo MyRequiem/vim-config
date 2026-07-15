@@ -1,5 +1,9 @@
-" ds{surround}      - delete surrounds: ds", ds', ds}, ds), ds<span> ...
-" dst               - delete surroundings HTML tags
-" cs{from}{to}      - change surrounds: cs"', cs}), cs"<html_tag_name> ...
-" cst{html_tag}     - change surrounding HTML tag
-" S{surround}       - add surrounds to the selected text in visual mode
+vim9script
+
+###
+# :h surround.txt
+###
+
+# ds{surround}    - удалить: ds", ds', ds}, ds), ...
+# cs{from}{to}    - изменить: cs"', cs}), ...
+# S{surround}     - добавить вокруг выделенного

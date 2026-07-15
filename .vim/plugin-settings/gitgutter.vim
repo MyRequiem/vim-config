@@ -1,5 +1,9 @@
 vim9script
 
+###
+# :h gitgutter.txt
+###
+
 # Выключить плагин.
 # g:gitgutter_enabled = 0
 
@@ -19,7 +23,7 @@ g:gitgutter_sign_modified         = '✔'
 g:gitgutter_sign_removed          = '−−'
 g:gitgutter_sign_modified_removed = '~~'
 
-highlight default link GitGutterAdd MoreMsg
-highlight default link GitGutterChange Constant
-highlight default link GitGutterDelete Number
+highlight default link GitGutterAdd          MoreMsg
+highlight default link GitGutterChange       Constant
+highlight default link GitGutterDelete       Number
 highlight default link GitGutterChangeDelete Identifier

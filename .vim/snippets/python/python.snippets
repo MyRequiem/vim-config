@@ -2,53 +2,7 @@ snippet shebang    #! /usr/bin/env python3
 	#! /usr/bin/env python3
 	# -*- coding: utf-8 -*-
 
-
-
-snippet docpackage    doxygen docs for module
-	## @package MODULE_NAME
-	# Documentation for this module
-	#
-	# More details
-	#
-	#
-	# URL: http://www.doxygen.nl/manual/docblocks.html
-
-
-
-
-snippet docfunc    doxygen docs for function
-	## Documentation for a function
-	#
-	# More details
-	#
-	# @brief       ${1} - краткое описание комментируемой сущности
-	# @detailed    подробное описание сущности
-	# @param       name description
-	# @throw       name - исключение выбрасываемое функцией
-	# @mainpage    основная страница проекта
-	# @page        дополнительные страницы проекта
-	# @ref         ссылки на страницы проекта
-	# @return      возвращаемый функцией тип и описание возвращаемого значения
-	# @code        между @code и @endcode находится пример работы с объектом
-	# @endcode
-	#
-	#
-	# URL: http://www.doxygen.nl/manual/docblocks.html
-snippet docclass    doxygen docs for class
-	## Documentation for a class
-	#
-	# More details
-	#
-	# @brief       ${1} - краткое описание комментируемой сущности
-	# @detailed    подробное описание сущности
-	# @mainpage    основная страница проекта
-	# @page        дополнительные страницы проекта
-	# @ref         ссылки на страницы проекта
-	# @code        между @code и @endcode находится пример работы с объектом
-	# @endcode
-	#
-	#
-	# URL: http://www.doxygen.nl/manual/docblocks.html
+	${1}
 snippet cls    class
 	class ${1}(${2}):
 		def __init__(self):

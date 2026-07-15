@@ -1,11 +1,9 @@
 vim9script
 
-# ../autoload/myNetrw.vim
-import autoload 'myNetrw.vim'
-
-
-# Полная справка.
+###
+# Системный плагин: /usr/share/vim/vim92/plugin/netrwPlugin.vim
 # :h pi_netrw.txt
+###
 
 # Переопределение клавиш.
 # ~/.vim/ftplugin/netrw/netrw.vim
@@ -16,6 +14,9 @@ import autoload 'myNetrw.vim'
 # Отключить плагин (не загружать).
 # let g:loaded_netrw       = 1
 # let g:loaded_netrwPlugin = 1
+
+# ../autoload/myNetrw.vim
+import autoload 'myNetrw.vim'
 
 # Показать/скрыть Netrw (<F2>).
 nnoremap <silent><F2> <ScriptCmd>myNetrw.ToggleNetrw()<CR>

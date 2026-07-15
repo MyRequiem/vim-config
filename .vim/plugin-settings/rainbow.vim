@@ -24,6 +24,7 @@ g:rainbow_conf = {
         'html': 0,
         'text': 0,
         'diff': 0,
+        'help': 0,
         'qf': 0
     }
 }

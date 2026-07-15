@@ -27,9 +27,9 @@ augroup trailing_spases
     autocmd BufReadPost * if &modifiable
         \ | if empty(execute('hi TrailingSpases', 'silent!'))
         \ |     if get(g:, 'term_256_color', false)
-        \ |         highlight TrailingSpases term=NONE cterm=NONE ctermfg=4 ctermbg=244 gui=NONE guisp=NONE guifg=#FFFFFF guibg=#808080
+        \ |         highlight TrailingSpases ctermfg=15 ctermbg=244 guifg=#FFFFFF guibg=#808080
         \ |     else
-        \ |         highlight TrailingSpases term=NONE cterm=bold,reverse ctermfg=0 ctermbg=4 gui=NONE guisp=NONE guifg=NONE guibg=NONE
+        \ |         highlight TrailingSpases ctermfg=0 ctermbg=7 cterm=bold,reverse
         \ |     endif
         \ | endif
         \ | matchadd('TrailingSpases', '\v(\s|\t)+$|\t+\s+(\t+)?|\s+\t+(\s+)?', -1)

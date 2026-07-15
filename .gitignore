@@ -6,5 +6,15 @@
 .vim/undo
 .vim/view
 
+# Игнорируем абсолютно все внутри директории pack/
+.vim/pack/*
+# Разрешаем Git заглянуть в директорию группы my-plugins/ и в директорию start/
+!.vim/pack/my-plugins/
+!.vim/pack/my-plugins/start/
+# Снова игнорируем всё, что находится внутри директории start (сами плагины).
+.vim/pack/my-plugins/start/*
+# Делаем финальное исключение скрипта (он будет отслеживаться).
+!.vim/pack/my-plugins/start/get-my-plugins.sh
+
 .vim/.netrwhist
 .vim/.netrwbook
