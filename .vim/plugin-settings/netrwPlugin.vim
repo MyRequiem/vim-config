@@ -23,10 +23,10 @@ nnoremap <silent><F2> <ScriptCmd>myNetrw.ToggleNetrw()<CR>
 
 # Если Vim запускается без пути к файлу/директории, то открываем Netrw в
 # текущей директории.
-augroup VimStartup
-    autocmd!
-    autocmd VimEnter * if expand('%') == '' | edit ./ | endif
-augroup END
+# augroup VimStartup
+#     autocmd!
+#     autocmd VimEnter * if expand('%') == '' | edit ./ | endif
+# augroup END
 
 # настройки буфера
 g:netrw_bufsettings = 'nomodifiable nomodified nonumber nobuflisted '
