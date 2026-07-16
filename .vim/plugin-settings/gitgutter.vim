@@ -19,7 +19,11 @@ nnoremap <silent> <leader>hp :GitGutterPreviewHunk<CR><C-w>w
 nnoremap <silent> <leader>hs <Nop>
 
 g:gitgutter_sign_added            = '++'
-g:gitgutter_sign_modified         = '✔'
+if g:term_256_color
+    g:gitgutter_sign_modified     = '✔'
+else
+    g:gitgutter_sign_modified     = '>>'
+endif
 g:gitgutter_sign_removed          = '−−'
 g:gitgutter_sign_modified_removed = '~~'
 

@@ -21,19 +21,19 @@ augroup icursorline
 augroup END
 
 # Подсветка пробелов в конце строк, комбинаций Tab+Space, Space+Tab.
-augroup trailing_spases
+augroup Vim9TrailingSpaces
     autocmd!
-    # В read-only буферах ничего не подсвечиваем (проверяем &modifiable).
-    autocmd BufReadPost * if &modifiable
-        \ | if empty(execute('hi TrailingSpases', 'silent!'))
-        \ |     if get(g:, 'term_256_color', false)
-        \ |         highlight TrailingSpases ctermfg=15 ctermbg=244 guifg=#FFFFFF guibg=#808080
-        \ |     else
-        \ |         highlight TrailingSpases ctermfg=0 ctermbg=7 cterm=bold,reverse
-        \ |     endif
-        \ | endif
-        \ | matchadd('TrailingSpases', '\v(\s|\t)+$|\t+\s+(\t+)?|\s+\t+(\s+)?', -1)
-        \ | endif
+    # Проверка &modifiable: в read-only буферах ничего не подсвечиваем.
+    autocmd BufReadPost * {
+        if &modifiable && empty(execute('hi TrailingSpaces', 'silent!'))
+            if g:term_256_color
+                highlight TrailingSpaces ctermfg=15 ctermbg=244 guifg=#FFFFFF guibg=#808080
+            else
+                highlight TrailingSpaces ctermfg=0 ctermbg=7
+            endif
+            matchadd('TrailingSpaces', '\v(\s|\t)+$|\t+\s+(\t+)?|\s+\t+(\s+)?', -1)
+        endif
+    }
 augroup END
 
 # Изменяем цвет status bar в зависимости от текущего режима Vim.

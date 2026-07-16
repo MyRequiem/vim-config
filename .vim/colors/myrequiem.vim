@@ -103,15 +103,14 @@ if g:term_256_color
     highlight Constant          ctermfg=12   ctermbg=0    guifg=#5555FF guibg=#000000 # true, false, null, None, NULL
     highlight String            ctermfg=13   ctermbg=0    guifg=#FF55FF guibg=#000000 # "строка"
     # vimdiff
-    highlight DiffAdd           ctermfg=0    ctermbg=121  guifg=#000000 guibg=#8CFAA2 # добавленная строка
-    highlight DiffDelete        ctermfg=0    ctermbg=217  guifg=#000000 guibg=#FAAAAC # удаленная строка
-    highlight DiffChange        ctermfg=0    ctermbg=75   guifg=#000000 guibg=#52B4FF # измененная строк
-    highlight DiffText          ctermfg=15   ctermbg=21   guifg=#FFFFFF guibg=#2602F2 # измененный текст
+    highlight DiffAdd           ctermfg=0    ctermbg=2    guifg=#000000 guibg=#00AA00 # добавленная строка
+    highlight DiffDelete        ctermfg=0    ctermbg=1    guifg=#000000 guibg=#AA0000 # удаленная строка
+    highlight DiffText          ctermfg=0    ctermbg=5    guifg=#000000 guibg=#AA00AA # измененный текст
     # spellcheck
     highlight SpellBad          ctermfg=15   ctermbg=89   guifg=#FFFFFF guibg=#87005F # не распознанное слово (не найдено в словарях), ошибка в слове
     highlight SpellCap          ctermfg=15   ctermbg=33   guifg=#FFFFFF guibg=#0087FF # слово, которое должно начинаться с заглавной буквы
     # Всплывающее меню дополнений.
-    highlight Pmenu             ctermfg=244  ctermbg=235  guifg=#808080 guibg=#262626 # общий фон и цвет текста невыбранных элементов
+    highlight Pmenu             ctermfg=244  ctermbg=235  guifg=#808080 guibg=#262626 # общий фон и цвет текста не выбранных элементов
     highlight PmenuSel          ctermfg=15   ctermbg=60   guifg=#FFFFFF guibg=#5F5F87 # текущий пункт
     highlight PmenuThumb        ctermfg=NONE ctermbg=240  guifg=NONE    guibg=#585858 # бегунок в скроллбаре
 
@@ -126,15 +125,16 @@ else
     # Base:
     highlight LineNr            ctermfg=6 ctermbg=0    cterm=bold
     highlight CursorLineNr      ctermfg=1 ctermbg=0    cterm=bold
-    highlight ColorColumn       ctermfg=0 ctermbg=NONE cterm=reverse,bold
+    highlight ColorColumn       ctermfg=0 ctermbg=7
     highlight Search            ctermfg=7 ctermbg=4    cterm=bold
-    highlight WildMenu          ctermfg=3 ctermbg=NONE cterm=bold
+    highlight WildMenu          ctermfg=3 ctermbg=0    cterm=bold
     highlight Directory         ctermfg=3 ctermbg=0
     highlight NonText           ctermfg=4 ctermbg=0    cterm=bold
     highlight MoreMsg           ctermfg=2 ctermbg=0    cterm=bold
     highlight Todo              ctermfg=1 ctermbg=4    cterm=bold
     # TabBar
     highlight TabLine           ctermfg=7 ctermbg=0
+    highlight TabLineFill       ctermfg=0 ctermbg=0
     # StatusBar
     highlight StatusLineNC      ctermfg=7 ctermbg=0    cterm=bold
     highlight StatusLineTerm    ctermfg=5 ctermbg=0    cterm=bold
@@ -148,7 +148,7 @@ else
     # vimdiff
     highlight DiffAdd           ctermfg=0 ctermbg=2
     highlight DiffDelete        ctermfg=0 ctermbg=1
-    highlight DiffChange        ctermfg=4 ctermbg=0    cterm=bold,reverse
+    highlight DiffText          ctermfg=0 ctermbg=5
     # spellcheck
     highlight SpellBad          ctermfg=7 ctermbg=1    cterm=bold
     # Всплывающее меню дополнений.
@@ -157,12 +157,10 @@ else
     highlight PmenuThumb        ctermfg=4 ctermbg=NONE cterm=bold,reverse
 
     execute("highlight clear Visual\nhighlight link Visual Search")
-    execute("highlight clear DiffText\nhighlight link DiffText Search")
     execute("highlight clear SpellCap\nhighlight link SpellCap Search")
     execute("highlight clear TabLineSel\nhighlight link TabLineSel LineNr")
     execute("highlight clear StatusFPos\nhighlight link StatusFPos StatusLineNC")
     execute("highlight clear MatchParen\nhighlight link MatchParen ColorColumn")
-    execute("highlight clear TabLineFill\nhighlight link TabLineFill ColorColumn")
     execute("highlight clear WarningMsg\nhighlight link WarningMsg NonText")
     execute("highlight clear StatusLineTermNC\nhighlight link StatusLineTermNC TabLine")
     execute("highlight clear StatusFFormat\nhighlight link StatusFFormat TabLine")
@@ -196,9 +194,10 @@ execute("highlight clear Special \nhighlight link Special CursorLineNr")        
 execute("highlight clear SpecialKey\nhighlight link SpecialKey CursorLineNr")   # , , 
 execute("highlight clear PmenuSbar\nhighlight link PmenuSbar ColorColumn")      # скроллбар всплывающего меню дополнений
 execute("highlight clear Folded\nhighlight link Folded Identifier")             # var, this
+execute("highlight clear DiffChange\nhighlight link DiffChange Search")         # vimdiff: измененная строка
 execute("highlight clear Function\nhighlight link Function Identifier")         # функции
 execute("highlight clear Boolean\nhighlight link Boolean Identifier")           # true, false
-execute("highlight clear ModeMsg\nhighlight link ModeMsg MoreMsg")              # отображние '-- INSERT --', '-- VISUAL --', '-- REPLACE --'
+execute("highlight clear ModeMsg\nhighlight link ModeMsg MoreMsg")              # отображение '-- INSERT --', '-- VISUAL --', '-- REPLACE --'
 execute("highlight clear Question\nhighlight link Question MoreMsg")            # вопрос с выбором [Да/нет]
 execute("highlight clear Title\nhighlight link Title MoreMsg")                  # заголовок вывода таких команд как ':map', ':set all', ':autocmd'
 execute("highlight clear Operator\nhighlight link Operator MoreMsg")            # typeof, new, and, or, not, in, is
@@ -207,7 +206,7 @@ execute("highlight clear PreProc\nhighlight link PreProc Keyword")              
 execute("highlight clear Number\nhighlight link Number CursorLineNr")
 execute("highlight clear Float\nhighlight link Float CursorLineNr")             # числа с плавающей запятой
 execute("highlight clear Terminal\nhighlight link Terminal Normal")             # окно терминала (:term)
-execute("highlight clear EndOfBuffer\nhighlight link EndOfBuffer NonText")      # заполнение строк симоволом '~' после последней строки буфера
+execute("highlight clear EndOfBuffer\nhighlight link EndOfBuffer NonText")      # заполнение строк символом '~' после последней строки буфера
 execute("highlight clear Error\nhighlight link Error CursorLineNr")             # подсветка ошибок синтаксиса в тексте
 execute("highlight clear ErrorMsg\nhighlight link ErrorMsg  CursorLineNr")      # сообщения об ошибке в командной строке
 execute("highlight clear Conceal \nhighlight link Conceal Ignore")              # скрытые символы <General>
