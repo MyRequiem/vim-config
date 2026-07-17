@@ -23,6 +23,7 @@ g:rainbow_conf = {
     'separately': {
         'html': 0,
         'text': 0,
+        'conf': 0,
         'diff': 0,
         'help': 0,
         'qf': 0

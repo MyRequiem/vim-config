@@ -1,19 +1,25 @@
-:MyMappings             открыть этот файл
-:MyPlugHotkeys          ~/.vim/plugin-settings/my-plug-hotkeys
+*my-mappings.txt*
+
+CONTENTS
+
+:MyMappings             Открыть этот файл: ~/.vim/doc/mymappings.txt
+    :h my-mappings.txt
+:MyPlugHotkeys          ~/.vim/doc/my-plug-hotkeys.txt
+    :h my-plug-hotkeys.txt
 :Docs                   ~/docs/linux/
 :Vimdoc                 ~/docs/linux/vim/
 :Gitdoc                 ~/docs/linux/git/
 
 :ColorSpy
-# ==============================================================================
+# ============================================================================
 # ../colors/myrequiem.vim
 # КОМАНДА ДЛЯ ОТЛАДКИ ЦВЕТОВ (Инспектор синтаксиса под курсором).
 # Наведи курсор на любое слово и выполни :ColorSpy
 # Выведет: имя текущей группы -> к какой базовой группе она привязана (линк)
 # Например окраска слова struct:
 #    Текст: 'struct' | Группа: cStructure -> Линк на: Type
-# ==============================================================================
-
+# ============================================================================
+asd asdf asdf
 <C-v><Tab>              в режиме Insert Mode вставить реальную табуляцию
 kj                      сброс режимов input и op в normal
 <C-m>                   сброс режима visual в normal
@@ -60,4 +66,4 @@ Y/T                     на первый символ строки, в коне
 <F4>                    открытие/закрытие
 ]e, [e, ]q, [q          следующая/предыдущая ошибка
 
-# vim:ft=conf
+vim:tw=80:ts=8:sw=8:ft=help:norl:noet:

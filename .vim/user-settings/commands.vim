@@ -10,5 +10,5 @@ command ClearVim clearvim.ClearVim()
 command Docs          edit $HOME/docs/linux/
 command Gitdoc        edit $HOME/docs/linux/git/
 command Vimdoc        edit $HOME/docs/linux/vim/
-command MyMappings    edit $HOME/.vim/user-settings/mymappings
-command MyPlugHotkeys edit $HOME/.vim/plugin-settings/my-plug-hotkeys
+command MyMappings    edit $HOME/.vim/doc/my-mappings.txt
+command MyPlugHotkeys edit $HOME/.vim/doc/my-plug-hotkeys.txt

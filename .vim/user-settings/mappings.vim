@@ -75,9 +75,9 @@ nnoremap <leader>ew :emenu Encoding.Write.<Tab>
 
 # Меню проверки правописания.
 nmenu SpellLang.nospell :setlocal nospell<CR>
-nmenu SpellLang.ru-en   :setlocal spell spelllang=ru_ru,en_us<CR>
 nmenu SpellLang.ru      :setlocal spell spelllang=ru_ru<CR>
 nmenu SpellLang.en      :setlocal spell spelllang=en_us<CR>
+nmenu SpellLang.ru-en   :setlocal spell spelllang=ru_ru,en_us<CR>
 nnoremap <leader>sp :emenu SpellLang.<Tab>
 
 # Меню выбора метода фолдинга.

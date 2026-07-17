@@ -23,7 +23,6 @@ g:comment_default_chars   = '# %s'
 # Символы комментариев установленные пользователем для указанных &filetype.
 # Синтаксис:
 #    g:comment_<&filetype>_chars = '<symb> %s[symb]'
-g:comment_asm_chars       = '# %s'
+g:comment_gitconfig_chars = '# %s'
 g:comment_lilo_chars      = '# %s'
 g:comment_gtkrc_chars     = '# %s'
-g:comment_c_doxygen_chars = '/**< %s */'
