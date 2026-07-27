@@ -23,8 +23,8 @@ Plugin 'VundleVim/Vundle.vim.git',              {'name': 'Vundle.vim'}
 Plugin 'jlanzarotta/bufexplorer.git',           {'name': 'bufexplorer.vim'}
 Plugin 'airblade/vim-gitgutter.git',            {'name': 'gitgutter.vim'}
 Plugin 'Yggdroot/indentLine.git',               {'name': 'indent-line.vim'}
-Plugin 'instant-markdown/vim-instant-markdown', {'name': 'markdown'}
-Plugin 'instant-markdown/instant-markdown-d',   {'name': 'markdown-d'}             " deps for vim-instant-markdown
+Plugin 'instant-markdown/vim-instant-markdown', {'name': 'markdown.vim'}
+Plugin 'instant-markdown/instant-markdown-d',   {'name': 'markdown-d.vim'}         " deps for vim-instant-markdown
 Plugin 'thinca/vim-quickrun.git',               {'name': 'quickrun.vim'}
 Plugin 'luochen1990/rainbow',                   {'name': 'rainbow.vim'}
 Plugin 'vim-scripts/vim-signature.git',         {'name': 'signature.vim'}
