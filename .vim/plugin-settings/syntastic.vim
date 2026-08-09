@@ -80,7 +80,7 @@ g:syntastic_java_checkers = ['javac']
 # CSS
 g:syntastic_css_checkers = ['csslint']
 
-# C / C++ (Перенос строк без уродливых слэшей '\')
+# C / C++
 g:syntastic_filetype_map = {
     'c.doxygen': 'c',
     'cpp.doxygen': 'cpp'
@@ -99,28 +99,16 @@ g:syntastic_cpp_checkers = [
     'gcc'
 ]
 
-# Python
-g:syntastic_python_python_exec = '/usr/bin/python3'
-g:syntastic_python_pylint_exec = '/usr/bin/pylint3'
-g:syntastic_python_checkers = [
-    'pylint',
-    'flake8',
-    'pycodestyle',
-    'pyflakes',
-    'python'
-]
-
-# Флаги игнорирования мусорных варнингов Python
-# E266 - too many leading '#' for block comment
-# E501 - line too long
-# W504 - line break occurred after a binary operator
-g:syntastic_python_pylint_args      = '--rcfile=~/.pylintrc'
-g:syntastic_python_flake8_args      = '--max-line-length=80 --ignore=E266'
-g:syntastic_python_pycodestyle_args = '--ignore=E266,E501,W504'
-
 # JavaScript
 g:syntastic_javascript_checkers = ['jslint', 'eslint', 'jscs', 'jsl']
 g:syntastic_javascript_jslint_args  = ''
 g:syntastic_javascript_eslint_args  = ''
 g:syntastic_javascript_jscs_args    = ''
 g:syntastic_javascript_jsl_args     = ''
+
+# Python
+# Syntastic ничего не знает про ruff, поэтому немножко его обманем, пусть
+# думает что это известный ему flake8:
+g:syntastic_python_checkers    = ['flake8']
+g:syntastic_python_flake8_exec = 'ruff'
+g:syntastic_python_flake8_args = 'check --output-format=pylint'
