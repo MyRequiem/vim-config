@@ -20,7 +20,7 @@ augroup Vim9GlobalBufferEvents
     # СОСТОЯНИЕ ОКНА: Сохраняем разметку и фолдинги при закрытии файла.
     # expand('%') - возвращает имя текущего файла (убеждаемся что файл
     #               физически существует на диске и  это не пустое окно)
-    autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | mkview | endif
+    autocmd BufWinLeave * if expand('%') != '' && &buftype == '' | silent! mkview | endif
 
     autocmd BufWinEnter * {
         if expand('%') != '' && &buftype == ''
