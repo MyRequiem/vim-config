@@ -10,8 +10,10 @@ vim9script
 # Сочетание клавиш для перевода: en->ru, ru->en (Default: <leader>t).
 g:translator_hotkey = 'tr'
 
-# Копировать переведенный текст в CLIPBOARD (Default: 0).
-# (Vim должен быть собран с 'xterm_clipboard')
+# Копировать переведенный текст в буфер обмена (Default: 0).
+# Vim должен быть скомпилирован с поддержкой '+clipboard' или
+# '+xterm_clipboard'. Если Vim собран без этой поддержки или открыт в чистом
+# TTY (без clipboard) текст автоматически сохранится в регистр "1.
 g:translator_copy_to_clipboard = 1
 
 # Цвет/фон переведенного текста (Default: White/Black).
